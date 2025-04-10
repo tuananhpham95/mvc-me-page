@@ -73,3 +73,7 @@ footer a {
 h4 {
   font-style: italic;
 }
+article {
+  display: flex;
+  gap: 50px;
+}

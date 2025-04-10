@@ -19,9 +19,11 @@ class ApiController extends AbstractController
     public function quote(): JsonResponse
     {
         $quotes = [
-            "Att våga är att förlora fotfästet en stund. Att inte våga är att förlora sig själv. – Søren Kierkegaard",
-            "Den som inte har mod att ta risker kommer inte att uppnå något i livet. – Muhammad Ali",
-            "Allt du kan föreställa dig är verkligt. – Pablo Picasso"
+            "Det finns ingen bättre utbildning än motgångar. - Benjamin Disraeli",
+            "Sjömannen ber inte om medvind, han lär sig segla. - Gustaf Lindborg",
+            "Att misslyckas är bara ett annat sätt att lära sig hur man gör något rätt. - Marian Wright Edelman",
+            "Du behöver inte bli någon du inte är för att bli bättre än du var. - Sidney Poitier",
+            "Det är klokare att gå sin egen väg än att gå vilse i andras fotspår. - Okänd"
         ];
 
         $randomQuote = $quotes[array_rand($quotes)];

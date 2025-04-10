@@ -4,22 +4,37 @@
 
 {% block body %}
     <h2>Redovisning</h2>
-    <h3 id="kmom01">Kmom01</h3>
-    <h4>Berätta kort om dina förkunskaper och tidigare erfarenheter kring objektorientering.</h4>
-    <p>Jag har tidigare jobbat med objektorientering genom mindre projekt i JavaScript. Jag är bekant med grunderna som klasser, objekt, arv och inkapsling, men min praktiska erfarenhet av att bygga objektorienterade system i PHP är begränsad. Detta kursmoment gav mig chansen att omsätta teorin i praktiken med Symfony.</p>
-    <h4>Berätta kort om PHPs modell för klasser och objekt. Vilka är de grunder man behöver veta/förstå för att kunna komma igång och skapa sina första klasser?</h4>
-    <p>PHPs modell för objektorientering bygger på klasser och objekt, där en klass är en mall och ett objekt är en instans av den mallen. För att komma igång behöver man förstå:</p>
-    <p><strong>Klassdeklaration</strong>: Använda class för att definiera en klass och egenskaper/metoder.</p>
-    <p><strong>Objekt</strong>: Skapa instanser med new.</p>
-    <p><strong>Egenskaper och metoder</strong>: Hantera data (public, private, protected) och beteende.</p>
-    <p><strong>Arv</strong>: Använda extends för att ärva från en annan klass.</p>
-    <p><strong>Namespaces</strong>: Organisera kod med namespace och use för att undvika konflikter.</p>
-    <h4>Reflektera kort över den kodbas, koden, strukturen som användes till uppgiften me/report, hur uppfattar du den?</h4>
-    <p>Kodbasen i me/report är välstrukturerad tack vare Symfony. Jag gillar hur controllerna (ApiController, MeController) separerar logik från vyer (Twig-mallar) och hur routing med annoteringar gör det enkelt att definiera URL:er. Strukturen med src/, templates/ och public/ är logisk. jag ser potentialen i ramverket men behöver mer tid för att bemästra det.</p>
-    <h4>Med tanke på artikeln “PHP The Right Way”, vilka delar in den finner du extra intressanta och värdefulla? Är det några särskilda områden som du känner att du vill veta mer om? Lyft fram några delar av artikeln som du känner mer värdefulla.</h4>
-    <p><strong>Testing</strong>: Artikeln betonar vikten av enhetstester och introducerar verktyg som PHPUnit. Jag ser hur testning kan göra koden mer pålitlig. Jag vill gärna lära mig mer om hur man skriver praktiska tester för Symfony-komponenter.</p>
-    <p><strong>Security</strong>: Säkerhetsavsnittet tar upp grunderna som att skydda mot SQL-injektioner och XSS-attacker, samt vikten av att använda ramverkens inbyggda skydd. Jag är nyfiken på att fördjupa mig i hur man implementerar säkra API:er och hanterar användarinput på rätt sätt.</p>
-    <h4>TIL</h4>
-    <p>Min TIL för detta kursmoment är hur Symfony kombinerar objektorientering med dependency injection och routing för att skapa en kraftfull struktur. Att använda AbstractController och JsonResponse för att bygga en JSON API var nytt och lärorikt.</p>
-
+    <article>
+        <aside>
+            <ul>
+                <li><p><a href="#kmom01">Kmom01</a></p></li>
+                <li><p><a href="#kmom02">Kmom02</a></p></li>
+                <li><p><a href="#kmom03">Kmom03</a></p></li>
+                <li><p><a href="#kmom04">Kmom04</a></p></li>
+                <li><p><a href="#kmom05">Kmom05</a></p></li>
+                <li><p><a href="#kmom06">Kmom06</a></p></li>
+                <li><p><a href="#kmom10">Kmom10</a></p></li>
+            </ul>
+        </aside>
+        <section id="kmom01">
+            <h3 id="kmom01">Kmom01</h3>
+            <h4>Berätta kort om dina förkunskaper och tidigare erfarenheter kring objektorientering.</h4>
+            <p>Jag har tidigare jobbat med objektorientering genom mindre projekt i JavaScript. Jag är bekant med grunderna som klasser, objekt, arv och inkapsling, men min praktiska erfarenhet av att bygga objektorienterade system i PHP är begränsad. Detta kursmoment gav mig chansen att omsätta teorin i praktiken med Symfony.</p>
+            <h4>Berätta kort om PHPs modell för klasser och objekt. Vilka är de grunder man behöver veta/förstå för att kunna komma igång och skapa sina första klasser?</h4>
+            <p>PHPs modell för objektorientering bygger på klasser och objekt, där en klass är en mall och ett objekt är en instans av den mallen. För att komma igång behöver man förstå:</p>
+            <p><strong>Klassdeklaration</strong>: Använda class för att definiera en klass och egenskaper/metoder.</p>
+            <p><strong>Objekt</strong>: Skapa instanser med new.</p>
+            <p><strong>Egenskaper och metoder</strong>: Hantera data (public, private, protected) och beteende.</p>
+            <p><strong>Arv</strong>: Använda extends för att ärva från en annan klass.</p>
+            <p><strong>Namespaces</strong>: Organisera kod med namespace och use för att undvika konflikter.</p>
+            <h4>Reflektera kort över den kodbas, koden, strukturen som användes till uppgiften me/report, hur uppfattar du den?</h4>
+            <p>Kodbasen i me/report är välstrukturerad tack vare Symfony. Jag gillar hur controllerna (ApiController, MeController) separerar logik från vyer (Twig-mallar) och hur routing med annoteringar gör det enkelt att definiera URL:er. Strukturen med src/, templates/ och public/ är logisk. jag ser potentialen i ramverket men behöver mer tid för att bemästra det.</p>
+            <h4>Med tanke på artikeln “PHP The Right Way”, vilka delar in den finner du extra intressanta och värdefulla? Är det några särskilda områden som du känner att du vill veta mer om? Lyft fram några delar av artikeln som du känner mer värdefulla.</h4>
+            <p><strong>Testing</strong>: Artikeln betonar vikten av enhetstester och introducerar verktyg som PHPUnit. Jag ser hur testning kan göra koden mer pålitlig. Jag vill gärna lära mig mer om hur man skriver praktiska tester för Symfony-komponenter.</p>
+            <p><strong>Security</strong>: Säkerhetsavsnittet tar upp grunderna som att skydda mot SQL-injektioner och XSS-attacker, samt vikten av att använda ramverkens inbyggda skydd. Jag är nyfiken på att fördjupa mig i hur man implementerar säkra API:er och hanterar användarinput på rätt sätt.</p>
+            <h4>TIL</h4>
+            <p>Min TIL för detta kursmoment är hur Symfony kombinerar objektorientering med dependency injection och routing för att skapa en kraftfull struktur. Att använda AbstractController och JsonResponse för att bygga en JSON API var nytt och lärorikt.</p>
+        </section>
+    </article>
+    
 {% endblock %}
