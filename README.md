@@ -1,7 +1,6 @@
 # Me-sida för MVC-kursen
 
-![MVC Me-sida](https://www.student.bth.se/~tuph24/dbwebb-kurser/mvc/me/report/public/)  
-_En webbplats byggd med Symfony för kursen MVC vid Blekinge Tekniska Högskola._
+![Skärmbild av min me-sida](images/me-page.png)
 
 ## Om projektet
 
@@ -25,3 +24,18 @@ Följ dessa steg för att klona och köra webbplatsen lokalt:
    git clone git@github.com:tuananhpham95/mvc-me-page.git
    cd mvc-me-page
    ```
+2. **Installera PHP-beroenden:**
+   ```bash
+   composer install
+   ```
+3. **Installera och bygg front-end assets:**
+   ```bash
+    npm install
+    npm run build
+   ```
+4. **Starta den lokala servern:**
+   ```bash
+   symfony server:start
+   ```
+5. **Besök webbplatsen i webbläsaren:**
+   http://127.0.0.1:8000
