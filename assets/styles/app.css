@@ -70,3 +70,6 @@ footer a {
   text-shadow: 2px 2px #00ffff;
   animation: bounce 1s infinite;
 }
+h4 {
+  font-style: italic;
+}

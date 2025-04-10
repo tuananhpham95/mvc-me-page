@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}API Översikt{% endblock %}
+
+{% block body %}
+    <h2>JSON API</h2>
+    <ul>
+        <li>
+            <strong><a href="{{ path('api_quote') }}">/api/quote</a></strong> - 
+            Returnerar ett slumpmässigt citat med dagens datum och tidsstämpel i JSON-format.
+        </li>
+        <li>
+            <strong><a href="{{ path('api_time') }}">/api/time</a></strong> - 
+            Returnerar aktuell tid, datum och tidszon i JSON-format.
+        </li>
+    </ul>
+{% endblock %}
