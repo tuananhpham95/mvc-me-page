@@ -1,6 +1,6 @@
 # Me-sida för MVC-kursen
 
-![Skärmbild av min me-sida](images/me-page.png)
+![Skärmbild av min me-sida](/assets/images/me-page.png)
 
 ## Om projektet
 
