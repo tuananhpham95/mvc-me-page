@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Om kursen{% endblock %}
+
+{% block body %}
+    <h2>Om MVC-kursen</h2>
+    <div class="about-page">
+        <div>
+            <p>MVC-kursen handlar om att lära sig Model-View-Controller-arkitekturen och bygga webbapplikationer med ramverket Symfony. Syftet är att förstå hur man strukturerar kod och skapar dynamiska webbplatser.</p>
+            <p><a href="https://github.com/dbwebb-se/mvc">Kursens Git-repo</a></p>
+            <p><a href="https://github.com/tuananhpham95/mvc-me-page">Mitt GitHub-repo</a></p>
+        </div>
+        <div>
+            <img src="{{ asset('images/mvc.png') }}" alt="MVC-bild">
+        </div>
+    </div>
+{% endblock %}
