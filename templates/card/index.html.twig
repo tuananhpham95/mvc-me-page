@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Card Game{% endblock %}
+
+{% block body %}
+<h1>Card Game</h1>
+<p>Welcome to the card game application. Below is the class structure and links to all card-related pages.</p>
+
+<h2>Class Structure</h2>
+<pre>{{ uml }}</pre>
+
+<h2>Pages</h2>
+<ul>
+    <li><a href="{{ path('session_show') }}">Show Session</a></li>
+    <li><a href="{{ path('session_delete') }}">Delete Session</a></li>
+    <li><a href="{{ path('card_deck') }}">Show Deck</a></li>
+    <li><a href="{{ path('card_deck_shuffle') }}">Shuffle Deck</a></li>
+    <li><a href="{{ path('card_deck_draw') }}">Draw One Card</a></li>
+    <li><a href="{{ path('card_deck_draw_number', {number: 5}) }}">Draw 5 Cards</a></li>
+</ul>
+{% endblock %}
