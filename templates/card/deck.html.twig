@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+   {% block title %}Deck of Cards{% endblock %}
+
+   {% block body %}
+   <h1>Deck of Cards</h1>
+   <p>Number of cards remaining: {{ cardCount }}</p>
+   <div class="card-deck">
+       {% for card in cards %}
+           <img src="{{ card.getSvgUrl() }}" alt="{{ card.getAsString() }}" class="card {{ card.getSuit()|lower }}">
+       {% endfor %}
+   </div>
+   {% endblock %}
