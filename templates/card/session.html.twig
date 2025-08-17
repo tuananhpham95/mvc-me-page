@@ -7,5 +7,10 @@
 {% for message in app.flashes('success') %}
     <div class="alert alert-success">{{ message }}</div>
 {% endfor %}
-<pre>{{ session|json_encode(constant('JSON_PRETTY_PRINT')) }}</pre>
-{% endblock %}
+<pre>
+{% if session is empty %}
+    "empty"
+{% else %}
+    {{ session|json_encode(constant('JSON_PRETTY_PRINT')) }}
+{% endif %}
+</pre>{% endblock %}
