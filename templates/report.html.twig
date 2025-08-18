@@ -35,6 +35,26 @@
             <h4>TIL</h4>
             <p>Min TIL för detta kursmoment är hur Symfony kombinerar objektorientering med dependency injection och routing för att skapa en kraftfull struktur. Att använda AbstractController och JsonResponse för att bygga en JSON API var nytt och lärorikt.</p>
         </section>
-    </article>
-    
+         <section id="kmom02">
+            <h3 id="kmom02">Kmom02</h3>
+            <h4>Förklara kort de objektorienterade konstruktionerna arv, komposition, interface och trait och hur de används i PHP.</h4>
+            <p>Arv innebär att en klass ärver egenskaper och metoder från en superklass med <code>extends</code>. I min kod ärver <code>CardGraphic</code> från <code>Card</code>, vilket gör att den kan använda och överskrida metoder som <code>getAsString()</code>. Komposition är när en klass innehåller instanser av andra klasser, som <code>CardHand</code> och <code>DeckOfCards</code> som lagrar flera <code>Card</code>-objekt i en array (1-till-många-relation). Interface definierar ett kontrakt med metoder som klasser måste implementera. Trait delar återanvändbar kod mellan klasser.</p>
+            <h4>Berätta om din implementation från uppgiften. Hur löste du uppgiften, är du nöjd/missnöjd, vilken förbättringspotential ser du i din koden och dina klasser?</h4>
+            <p>Jag byggde ett kortspel i Symfony enligt MVC-mönstret, med fokus på att skapa en robust applikation. Jag implementerade fyra klasser i <code>src/Card/</code>: <code>Card</code> som en basklass med attributen <code>suit</code> och <code>value</code>, <code>CardGraphic</code> som ärver från <code>Card</code> och hanterar SVG-bilder från Wikimedia Commons (t.ex. <code>https://upload.wikimedia.org/wikipedia/commons/d/de/English_pattern_10_of_diamonds.svg</code>), <code>CardHand</code> för att representera en korthand, och <code>DeckOfCards</code> för att hantera kortleken med metoder som <code>shuffle()</code>, <code>draw()</code>, och <code>getSortedCards()</code>. Sessionhantering implementerades med array-baserad lagring (<code>toArray()</code> och <code>fromArray()</code>) för att undvika serialiseringsproblem, vilket säkerställde att kortleken korrekt visar 47 kort efter att ha dragit 5.</p>
+            <p>För webbsidorna skapade jag rutter i <code>CardController.php</code>: <code>/card</code> visar ett UML-diagram och länkar, <code>/session</code> visar sessionens innehåll med <code>"empty"</code> för tom session
+            , <code>/session/delete</code> rensar sessionen med ett flash-meddelande, och <code>/card/deck</code>, <code>/card/deck/shuffle</code>, <code>/card/deck/draw</code>, samt <code>/card/deck/draw/:number</code> hanterar kortleksoperationer. JSON API-rutter i <code>ApiController.php</code> implementerades för <code>/api/quote</code>, <code>/api/time</code>, <code>/api/deck</code>, <code>/api/deck/shuffle</code>, <code>/api/deck/draw</code>, och <code>/api/deck/draw/:number</code> .</p>
+            <p>Stylingen i <code>app.css</code> ger en professionell kortspelskänsla med en mörkgrön filtliknande bakgrund, kort i storleken 110x154px med rundade hörn och hovereffekter, och en kortliknande layout för API-rutter.</p>
+            <p>Jag är mycket nöjd med designen och funktionaliteten, särskilt den autentiska känslan från SVG-bilderna och den stabila sessionhanteringen. UML-diagrammet på <code>/card</code> ger en tydlig översikt av klasserna. Jag är något missnöjd med laddningstiderna för SVG-bilderna, som kan vara långsamma på grund av externa förfrågningar till Wikimedia Commons.</p>
+            <p><strong>Förbättringspotential</strong>: 
+            <ul>
+                <li><strong>Prestanda</strong>: Spara SVG-bilderna lokalt i <code>public/images/cards/</code> för snabbare laddning och minskad beroende av externa resurser.</li>
+                <li><strong>Funktionalitet</strong>: Implementera den valfria <code>/card/deck/deal/:players/:cards</code>-routen för att stödja kortutdelning till flera spelare.</li>
+                <li><strong>Kodstruktur</strong>: Lägga till ett <code>CardInterface</code> för att definiera obligatoriska metoder, eller använda traits för återanvändbar kod.</li>
+           </ul>
+            <h4>Vilka är dina reflektioner så här långt med att jobba i Symfony med applikationskod enligt MVC?</h4>
+            <p>Symfony och MVC gör koden organiserad. Modellerna (<code>Card</code>, <code>DeckOfCards</code>) hanterar logik, vyerna (Twig-mallar) styr presentation, och controllerna binder samman dem. Sessionhantering och routing är kraftfulla. Jag uppskattar hur ramverket underlättar kodstandardisering.</p>
+            <h4>TIL</h4>
+            <p>Min TIL är vikten av objektorienterade principer som arv och komposition, samt hur Symfony’s sessionhantering och Twig-mallar förenklar utveckling. Jag lärde mig också att hantera externa SVG-bilder.</p>
+        </section>
 {% endblock %}
+       

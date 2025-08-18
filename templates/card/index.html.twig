@@ -3,13 +3,14 @@
 {% block title %}Card Game{% endblock %}
 
 {% block body %}
-<h1>Card Game</h1>
-<p>Welcome to the card game application. Below is the class structure and links to all card-related pages.</p>
+<div class="card-landing">
+    <h1>Card Game</h1>
+    <p>Welcome to the card game application. Below is the class structure and links to all card-related pages.</p>
+    <h2>Class Structure</h2>
+    <pre>{{ uml }}</pre>
+    <h2>Pages</h2>
+</div>
 
-<h2>Class Structure</h2>
-<pre>{{ uml }}</pre>
-
-<h2>Pages</h2>
 <ul>
     <li><a href="{{ path('session_show') }}">Show Session</a></li>
     <li><a href="{{ path('session_delete') }}">Delete Session</a></li>
