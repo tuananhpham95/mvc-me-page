@@ -3,11 +3,16 @@
 {% block title %}API Overview{% endblock %}
 
 {% block body %}
-<h1>JSON API Overview</h1>
-<p>Below is a list of available JSON API routes:</p>
-<ul>
+<div class="api-title">
+    <h1>JSON API Overview</h1>
+    <p>Below is a list of available JSON API routes</p>
+</div>
+<div class="api-routes">
     {% for route in routes %}
-        <li><strong>{{ route.route }}</strong>: {{ route.description }}</li>
+        <div class="api-route">
+            <strong>{{ route.route }}</strong>
+            <p>{{ route.description }}</p>
+        </div>
     {% endfor %}
-</ul>
+</div>
 {% endblock %}

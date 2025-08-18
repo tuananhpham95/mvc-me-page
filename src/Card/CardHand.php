@@ -18,11 +18,11 @@ class CardHand
 
     public function getAsString(): string
     {
-        return implode(', ', array_map(fn($card) => $card->getAsString(), $this->cards));
+        return implode(', ', array_map(fn ($card) => $card->getAsString(), $this->cards));
     }
 
     public function toArray(): array
     {
-        return array_map(fn($card) => $card->toArray(), $this->cards);
+        return array_map(fn ($card) => $card->toArray(), $this->cards);
     }
 }

@@ -61,7 +61,7 @@ class DeckOfCards
     public function toArray(): array
     {
         $data = [
-            'cards' => array_map(fn($card) => $card->toArray(), $this->cards),
+            'cards' => array_map(fn ($card) => $card->toArray(), $this->cards),
             'suits' => $this->suits,
             'values' => $this->values,
         ];
@@ -78,7 +78,6 @@ class DeckOfCards
         }
         $deck->suits = $data['suits'] ?? ['Hearts', 'Diamonds', 'Clubs', 'Spades'];
         $deck->values = $data['values'] ?? ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K'];
-        file_put_contents('/tmp/card_serialize.log', 'DeckOfCards fromArray: ' . count($deck->cards) . " cards\n", FILE_APPEND);
         return $deck;
     }
 }
