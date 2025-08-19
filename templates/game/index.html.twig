@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Game 21{% endblock %}
+
+{% block body %}
+<div class="game-21">
+    <h1>Game 21</h1>
+    <p>Välkommen till kortspelet 21, där målet är att komma så nära 21 som möjligt utan att gå över!</p>
+    <h2>Spelregler</h2>
+</div>
+<ul>
+    <li>Målet är att få en hand med ett värde närmare 21 än banken utan att överstiga 21.</li>
+    <li>Nummerkort (2–10) är värda sitt nominella värde, klädda kort (J, Q, K) är värda 10, och ess är värt 1 eller 14.</li>
+    <li>Du drar kort ett i taget och kan välja att stanna eller dra fler kort.</li>
+    <li>Om du överstiger 21 förlorar du (bust).</li>
+    <li>När du stannar drar banken kort tills dess poäng är 17 eller högre.</li>
+    <li>Banken vinner vid lika poäng eller om den har högre poäng utan att gå över 21.</li>
+    <li>Du vinner om banken går över 21 eller om din poäng är högre än bankens.</li>
+</ul>
+<a class="btn btn-primary">Starta Spelet</a>
+<a class="btn btn-secondary">Dokumentation</a>
+{% endblock %}
