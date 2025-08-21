@@ -3,7 +3,7 @@
 {% block title %}Game 21{% endblock %}
 
 {% block body %}
-<div class="game-21">
+<div>
     <h1>Game 21</h1>
     <p>Välkommen till kortspelet 21, där målet är att komma så nära 21 som möjligt utan att gå över!</p>
     <h2>Spelregler</h2>
@@ -18,5 +18,5 @@
     <li>Du vinner om banken går över 21 eller om din poäng är högre än bankens.</li>
 </ul>
 <a class="btn btn-primary">Starta Spelet</a>
-<a class="btn btn-secondary">Dokumentation</a>
+<a href="{{ path('game_doc') }}" class="btn btn-secondary">Dokumentation</a>
 {% endblock %}

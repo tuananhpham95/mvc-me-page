@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Game 21 Documentation{% endblock %}
+
+{% block body %}
+<h1>Game 21 Documentation</h1>
+<div>
+    <div>
+        <h2>Flowchart</h2>
+        <p>The flowchart outlines the basic flow of the game 21:</p>
+        <img src="{{ asset('build/images/blackjack.png') }}" alt="Game 21 Flowchart">
+    </div>
+    <div>
+        <h2>Pseudocode</h2>
+    <pre>
+    initialize game:
+        create deck, shuffle
+        create player and bank
+        bank sets initial pot
+        set status to 'playing'
+
+    player turn:
+        deal one card to player
+        player places bet (up to pot amount)
+        deal second card to player
+        if score = 21:
+            player wins bet amount from bank
+            end game
+        if score > 21:
+            player loses bet to bank
+            end game
+        if player chooses draw:
+            draw card from deck
+            add to player's hand
+            repeat check for score = 21 or > 21
+        if player chooses stand:
+            proceed to bank turn
+
+    bank turn:
+        while bank score < 17:
+            draw card from deck (face-up)
+            add to bank's hand
+        bank stands
+        if bank score > 21:
+            player wins bet amount
+            end game
+        compare scores:
+            if bank score = 21: bank wins
+            if player score > bank score: player wins
+            else: bank wins
+        end game
+
+    reset game:
+        create new deck, shuffle
+        reset player and bank hands
+        bank sets new pot
+        set status to 'playing'
+    </pre>
+    </div>
+</div>
+<h2>Class Descriptions</h2>
+<ul>
+    {% for name, description in classDescriptions %}
+        <li><strong>{{ name }}</strong>: {{ description }}</li>
+    {% endfor %}
+</ul>
+{% endblock %}
