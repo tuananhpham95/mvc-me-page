@@ -3,65 +3,68 @@
 {% block title %}Game 21 Documentation{% endblock %}
 
 {% block body %}
-<h1>Game 21 Documentation</h1>
-<div>
-    <div>
+<div class="documentation-container">
+    <h1>Game 21 Documentation</h1>
+    <section class="doc-section">
         <h2>Flowchart</h2>
-        <p>The flowchart outlines the basic flow of the game 21:</p>
-        <img src="{{ asset('build/images/blackjack.png') }}" alt="Game 21 Flowchart">
-    </div>
-    <div>
+        <p>The flowchart outlines the basic flow of the 21 game:</p>
+        <img src="{{ asset('build/images/blackjack.png') }}" alt="21 Flowchart" class="flowchart">
+    </section>
+    <section class="doc-section">
         <h2>Pseudocode</h2>
-    <pre>
-    initialize game:
-        create deck, shuffle
-        create player and bank
-        bank sets initial pot
-        set status to 'playing'
+        <pre>
+initialize game:
+    create deck, shuffle
+    create player and bank (each with 100 money)
+    bank sets initial pot (50)
+    set status to 'betting'
 
-    player turn:
-        deal one card to player
-        player places bet (up to pot amount)
-        deal second card to player
-        if score = 21:
-            player wins bet amount from bank
-            end game
-        if score > 21:
-            player loses bet to bank
-            end game
-        if player chooses draw:
-            draw card from deck
-            add to player's hand
-            repeat check for score = 21 or > 21
-        if player chooses stand:
-            proceed to bank turn
-
-    bank turn:
-        while bank score < 17:
-            draw card from deck (face-up)
-            add to bank's hand
-        bank stands
-        if bank score > 21:
-            player wins bet amount
-            end game
-        compare scores:
-            if bank score = 21: bank wins
-            if player score > bank score: player wins
-            else: bank wins
+player turn:
+    deal one card to player
+    player places bet (up to pot amount, deducted from player money)
+    deal second card to player
+    if score = 21:
+        player wins bet amount (player gains 2x bet, pot returns to 50)
         end game
+    if score > 21:
+        bank wins (bank gains bet, pot returns to 50)
+        end game
+    if player chooses draw:
+        draw card from deck
+        add to player's hand
+        repeat check for score = 21 or > 21
+    if player chooses stand:
+        proceed to bank turn
 
-    reset game:
-        create new deck, shuffle
-        reset player and bank hands
-        bank sets new pot
-        set status to 'playing'
-    </pre>
-    </div>
+bank turn:
+    while bank score < 17:
+        draw card from deck (face-up)
+        add to bank's hand
+    bank stands
+    if bank score > 21:
+        player wins bet amount (player gains 2x bet, pot returns to 50)
+        end game
+    compare scores:
+        if bank score = 21: bank wins (bank gains bet, pot returns to 50)
+        if player score > bank score: player wins (player gains 2x bet, pot returns to 50)
+        if player score = bank score: bank wins (bank gains bet, pot returns to 50)
+        else: bank wins (bank gains bet, pot returns to 50)
+    end game
+
+reset game:
+    create new deck, shuffle
+    reset player and bank hands
+    bank sets new pot (50)
+    set status to 'betting'
+        </pre>
+    </section>
+    <section class="doc-section">
+        <h2>Class Descriptions</h2>
+        <ul class="class-list">
+            {% for name, description in classDescriptions %}
+                <li><strong>{{ name }}</strong>: {{ description }}</li>
+            {% endfor %}
+        </ul>
+    </section>
 </div>
-<h2>Class Descriptions</h2>
-<ul>
-    {% for name, description in classDescriptions %}
-        <li><strong>{{ name }}</strong>: {{ description }}</li>
-    {% endfor %}
-</ul>
 {% endblock %}

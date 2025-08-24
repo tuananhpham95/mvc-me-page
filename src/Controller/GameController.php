@@ -2,8 +2,11 @@
 
 namespace App\Controller;
 
+use App\Card\Game21;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
 class GameController extends AbstractController
@@ -22,8 +25,8 @@ class GameController extends AbstractController
             'CardGraphic' => 'Extends Card to provide SVG URLs for card rendering.',
             'CardHand' => 'Manages a collection of cards for a player or bank.',
             'DeckOfCards' => 'Manages a deck of 52 cards with shuffle and draw operations.',
-            'Player' => 'Represents a player or bank with a hand and score calculation.',
-            'Game21' => 'Manages the game state and logic for the 21 card game.',
+            'Player' => 'Represents a player or bank with a hand, score calculation, and money for betting.',
+            'Game21' => 'Manages the game state and logic for the Tjugoett game.',
         ];
 
         return $this->render('game/doc.html.twig', [

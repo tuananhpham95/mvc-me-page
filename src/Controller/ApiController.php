@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Card\DeckOfCards;
+use App\Card\Game21;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
@@ -21,6 +22,7 @@ class ApiController extends AbstractController
             ['route' => 'POST /api/deck/shuffle', 'description' => 'Shuffles the deck and returns it as JSON.'],
             ['route' => 'POST /api/deck/draw', 'description' => 'Draws one card and returns it with remaining count as JSON.'],
             ['route' => 'POST /api/deck/draw/{number}', 'description' => 'Draws specified number of cards and returns them with remaining count as JSON.'],
+            ['route' => 'GET /api/game', 'description' => 'Returns the current state of the Tjugoett game as JSON.'],
         ];
 
         return $this->render('api/index.html.twig', [
@@ -69,7 +71,7 @@ class ApiController extends AbstractController
     public function apiDeck(SessionInterface $session): JsonResponse
     {
         $deck = $this->getDeckFromSession($session);
-        $cards = array_map(fn ($card) => $card->getAsString(), $deck->getSortedCards());
+        $cards = array_map(fn($card) => $card->getAsString(), $deck->getSortedCards());
         return $this->json([
             'cards' => $cards,
             'remaining' => $deck->getCardCount(),
@@ -81,8 +83,8 @@ class ApiController extends AbstractController
     {
         $deck = new DeckOfCards();
         $deck->shuffle();
-        $session->set('deck', $deck);
-        $cards = array_map(fn ($card) => $card->getAsString(), $deck->getCards());
+        $session->set('deck', $deck->toArray());
+        $cards = array_map(fn($card) => $card->getAsString(), $deck->getCards());
         return $this->json([
             'cards' => $cards,
             'remaining' => $deck->getCardCount(),
@@ -94,21 +96,21 @@ class ApiController extends AbstractController
     {
         $deck = $this->getDeckFromSession($session);
         $drawnCards = $deck->draw();
-        $session->set('deck', $deck);
-        $cards = array_map(fn ($card) => $card->getAsString(), $drawnCards);
+        $session->set('deck', $deck->toArray());
+        $cards = array_map(fn($card) => $card->getAsString(), $drawnCards);
         return $this->json([
             'drawn' => $cards,
             'remaining' => $deck->getCardCount(),
         ]);
     }
 
-    #[Route('/api/deck/draw/{number}', name: 'api_deck_draw_number', methods: ['POST'])]
+    #[Route('/api/deck/draw/{number<\d+>}', name: 'api_deck_draw_number', methods: ['POST'])]
     public function apiDrawNumber(SessionInterface $session, int $number): JsonResponse
     {
         $deck = $this->getDeckFromSession($session);
         $drawnCards = $deck->draw($number);
-        $session->set('deck', $deck);
-        $cards = array_map(fn ($card) => $card->getAsString(), $drawnCards);
+        $session->set('deck', $deck->toArray());
+        $cards = array_map(fn($card) => $card->getAsString(), $drawnCards);
         return $this->json([
             'drawn' => $cards,
             'remaining' => $deck->getCardCount(),
@@ -117,11 +119,23 @@ class ApiController extends AbstractController
 
     private function getDeckFromSession(SessionInterface $session): DeckOfCards
     {
-        $deck = $session->get('deck');
-        if (!$deck instanceof DeckOfCards) {
+        $deckData = $session->get('deck');
+        if (!is_array($deckData) || empty($deckData['cards'])) {
             $deck = new DeckOfCards();
-            $session->set('deck', $deck);
+            $session->set('deck', $deck->toArray());
+            return $deck;
         }
-        return $deck;
+        return DeckOfCards::fromArray($deckData);
+    }
+
+    private function getGameFromSession(SessionInterface $session): Game21
+    {
+        $gameData = $session->get('game');
+        if (!is_array($gameData) || empty($gameData['deck'])) {
+            $game = new Game21();
+            $session->set('game', $game->toArray());
+            return $game;
+        }
+        return Game21::fromArray($gameData);
     }
 }
