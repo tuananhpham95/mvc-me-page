@@ -33,4 +33,78 @@ class GameController extends AbstractController
             'classDescriptions' => $classDescriptions,
         ]);
     }
+
+    #[Route('/game/play', name: 'game_play')]
+    public function play(SessionInterface $session): Response
+    {
+        $game = $this->getGameFromSession($session);
+        if ($game->getStatus() === 'betting') {
+            $game->dealInitialCard();
+            $session->set('game', $game->toArray());
+        }
+        $maxBet = min($game->getPot(), $game->getPlayer()->getMoney());
+        return $this->render('game/play.html.twig', [
+            'game' => $game,
+            'maxBet' => $maxBet,
+        ]);
+    }
+
+    #[Route('/game/bet', name: 'game_bet', methods: ['POST'])]
+    public function bet(Request $request, SessionInterface $session): Response
+    {
+        $game = $this->getGameFromSession($session);
+        try {
+            $amount = (int)$request->request->get('bet_amount');
+            $game->placeBet($amount);
+            $session->set('game', $game->toArray());
+        } catch (\Exception $e) {
+            $this->addFlash('error', $e->getMessage());
+        }
+        return $this->redirectToRoute('game_play');
+    }
+
+    #[Route('/game/draw', name: 'game_draw', methods: ['POST'])]
+    public function draw(SessionInterface $session): Response
+    {
+        $game = $this->getGameFromSession($session);
+        try {
+            $game->playerDraw();
+            $session->set('game', $game->toArray());
+        } catch (\Exception $e) {
+            $this->addFlash('error', $e->getMessage());
+        }
+        return $this->redirectToRoute('game_play');
+    }
+
+    #[Route('/game/stand', name: 'game_stand', methods: ['POST'])]
+    public function stand(SessionInterface $session): Response
+    {
+        $game = $this->getGameFromSession($session);
+        try {
+            $game->playerStand();
+            $session->set('game', $game->toArray());
+        } catch (\Exception $e) {
+            $this->addFlash('error', $e->getMessage());
+        }
+        return $this->redirectToRoute('game_play');
+    }
+
+    #[Route('/game/reset', name: 'game_reset', methods: ['POST'])]
+    public function reset(SessionInterface $session): Response
+    {
+        $game = new Game21();
+        $session->set('game', $game->toArray());
+        return $this->redirectToRoute('game_play');
+    }
+
+    private function getGameFromSession(SessionInterface $session): Game21
+    {
+        $gameData = $session->get('game');
+        if (!is_array($gameData) || empty($gameData['deck'])) {
+            $game = new Game21();
+            $session->set('game', $game->toArray());
+            return $game;
+        }
+        return Game21::fromArray($gameData);
+    }
 }

@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Play Tjugoett{% endblock %}
+
+{% block body %}
+<div class="game-board">
+    <h1>Game 21</h1>
+    {% for message in app.flashes('error') %}
+        <div class="alert alert-error">{{ message }}</div>
+    {% endfor %}
+    <div class="game-info">
+        <p>Pot: <span class="highlight" id="pot">{{ game.pot }}</span> | Player Money: <span class="highlight" id="player-money">{{ game.player.money }}</span> | Bank Money: <span class="highlight" id="bank-money">{{ game.bank.money }}</span></p>
+    </div>    
+    {% if game.status == 'betting' %}
+        <form action="{{ path('game_bet') }}" method="post">
+            <label style="color:#fff;" for="bet_amount">Bet Amount (1–{{ maxBet }}):</label>
+            <input type="number" id="bet_amount" name="bet_amount" min="1" max="{{ maxBet }}" required>
+            <button type="submit" class="btn btn-primary">Place Bet</button>
+        </form>
+    {% endif %}
+    <h2>Player: {{ game.player.name }} (Score: {{ game.player.score }})</h2>
+    <div class="card-deck">
+        {% for card in game.player.hand.cards %}
+            <img src="{{ card.getSvgUrl() }}" alt="{{ card.getAsString() }}" class="card">
+        {% endfor %}
+    </div>
+    {% if game.status == 'playing' %}
+        <form action="{{ path('game_draw') }}" method="post">
+            <button type="submit" class="btn btn-primary">Draw Card</button>
+        </form>
+        <form action="{{ path('game_stand') }}" method="post">
+            <button type="submit" class="btn btn-secondary">Stand</button>
+        </form>
+    {% endif %}
+    <h2>Bank: {{ game.bank.name }} (Score: {{ game.status == 'finished' ? game.bank.score : 'Hidden' }})</h2>
+    <div class="card-deck">
+        {% if game.status == 'finished' %}
+            {% for card in game.bank.hand.cards %}
+                <img src="{{ card.getSvgUrl() }}" alt="{{ card.getAsString() }}" class="card">
+            {% endfor %}
+        {% else %}
+            {% for card in game.bank.hand.cards %}
+                <div class="card-back">?</div>
+            {% endfor %}
+        {% endif %}
+    </div>
+    {% if game.winner %}
+        <p class="game-result">
+            Winner: {{ game.winner }}
+            {% if game.currentBet %}
+                (Bet: {{ game.currentBet }})
+                {% if game.winner == 'Player' %}
+                    (Player gains {{ game.currentBet * 2 }}, Pot returns to {{ game.pot }})
+                {% else %}
+                    (Bank gains {{ game.currentBet }}, Pot returns to {{ game.pot }})
+                {% endif %}
+            {% endif %}
+        </p>
+        <form action="{{ path('game_reset') }}" method="post">
+            <button type="submit" class="btn btn-primary">New Game</button>
+        </form>
+    {% endif %}
+</div>
+{% endblock %}
