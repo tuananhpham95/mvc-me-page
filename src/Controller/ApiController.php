@@ -22,7 +22,7 @@ class ApiController extends AbstractController
             ['route' => 'POST /api/deck/shuffle', 'description' => 'Shuffles the deck and returns it as JSON.'],
             ['route' => 'POST /api/deck/draw', 'description' => 'Draws one card and returns it with remaining count as JSON.'],
             ['route' => 'POST /api/deck/draw/{number}', 'description' => 'Draws specified number of cards and returns them with remaining count as JSON.'],
-            ['route' => 'GET /api/game', 'description' => 'Returns the current state of the Tjugoett game as JSON.'],
+            ['route' => 'GET /api/game', 'description' => 'Returns the current state of the game 21 as JSON.'],
         ];
 
         return $this->render('api/index.html.twig', [
