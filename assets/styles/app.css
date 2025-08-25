@@ -27,15 +27,6 @@ header h1 {
   color: #fff;
 }
 
-header::before {
-  content: "♠♥♦♣";
-  font-size: 1.2em;
-  position: absolute;
-  top: 10px;
-  left: 20px;
-  opacity: 0.7;
-}
-
 nav {
   background-color: #34495e;
   padding: 1.2em;
@@ -245,7 +236,9 @@ main h2 {
   flex-direction: column;
   gap: 20px;
 }
-
+.documentation-container h1 {
+  text-align: center;
+}
 .doc-section {
   background: white;
   border-radius: 10px;
