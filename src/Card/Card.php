@@ -25,14 +25,26 @@ class Card
 
     public function getAsString(): string
     {
-        return "{$this->value} {$this->suit}";
+        return "{$this->value} of {$this->suit}";
     }
 
+    
+    /**
+     * @return array{suit: string, value: string}
+     */
     public function toArray(): array
     {
         return [
             'suit' => $this->suit,
             'value' => $this->value,
         ];
+    }
+
+    /**
+     * @param array{suit: string, value: string} $data
+     */
+    public static function fromArray(array $data): self
+    {
+        return new self($data['suit'], $data['value']);
     }
 }

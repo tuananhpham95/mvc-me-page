@@ -3,7 +3,10 @@
 namespace App\Card;
 
 class CardGraphic extends Card
-{
+{ 
+    /**
+    * @var array<string, string>
+    */
     private array $suitSymbols = [
         'Hearts' => 'hearts',
         'Diamonds' => 'diamonds',

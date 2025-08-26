@@ -85,6 +85,14 @@ class Player
         return $score;
     }
 
+    /**
+     * @return array{
+     *     name: string,
+     *     hand: array<int, array{suit: string, value: string}>,
+     *     hasStood: bool,
+     *     money: int
+     * }
+     */
     public function toArray(): array
     {
         return [
@@ -95,13 +103,25 @@ class Player
         ];
     }
 
+    /**
+     * @param array{
+     *     name: string,
+     *     hand: array<int, array{suit: string, value: string}>,
+     *     hasStood?: bool,
+     *     money?: int
+     * } $data
+     */
     public static function fromArray(array $data): self
     {
         $player = new self($data['name'], $data['money'] ?? 100);
         $player->hasStood = $data['hasStood'] ?? false;
+
         foreach ($data['hand'] as $cardData) {
-            $player->hand->addCard(new CardGraphic($cardData['suit'], $cardData['value']));
+            $player->hand->addCard(
+                new CardGraphic($cardData['suit'], $cardData['value'])
+            );
         }
+
         return $player;
     }
 }

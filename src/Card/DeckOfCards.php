@@ -4,8 +4,13 @@ namespace App\Card;
 
 class DeckOfCards
 {
+    /** @var CardGraphic[] */
     private array $cards = [];
+
+    /** @var string[] */
     private array $suits = ['Hearts', 'Diamonds', 'Clubs', 'Spades'];
+
+    /** @var string[] */
     private array $values = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K'];
 
     public function __construct()
@@ -24,6 +29,10 @@ class DeckOfCards
         file_put_contents('/tmp/card_serialize.log', 'DeckOfCards shuffled: ' . count($this->cards) . " cards\n", FILE_APPEND);
     }
 
+    /**
+     * @param int $number
+     * @return CardGraphic[]
+     */
     public function draw(int $number = 1): array
     {
         if ($number < 1 || $number > count($this->cards)) {
@@ -34,6 +43,9 @@ class DeckOfCards
         return $drawnCards;
     }
 
+    /**
+     * @return CardGraphic[]
+     */
     public function getCards(): array
     {
         return $this->cards;
@@ -44,10 +56,13 @@ class DeckOfCards
         return count($this->cards);
     }
 
+    /**
+     * @return CardGraphic[]
+     */
     public function getSortedCards(): array
     {
         $sorted = $this->cards;
-        usort($sorted, function ($a, $b) {
+        usort($sorted, function (CardGraphic $a, CardGraphic $b) {
             $suitOrder = array_flip($this->suits);
             $valueOrder = array_flip($this->values);
             if ($a->getSuit() === $b->getSuit()) {
@@ -58,10 +73,17 @@ class DeckOfCards
         return $sorted;
     }
 
+    /**
+     * @return array{
+     *     cards: array<int, array<string, mixed>>,
+     *     suits: string[],
+     *     values: string[]
+     * }
+     */
     public function toArray(): array
     {
         $data = [
-            'cards' => array_map(fn ($card) => $card->toArray(), $this->cards),
+            'cards' => array_map(fn (CardGraphic $card) => $card->toArray(), $this->cards),
             'suits' => $this->suits,
             'values' => $this->values,
         ];
@@ -69,6 +91,13 @@ class DeckOfCards
         return $data;
     }
 
+    /**
+     * @param array{
+     *     cards: array<int, array{suit: string, value: string}>,
+     *     suits?: string[],
+     *     values?: string[]
+     * } $data
+     */
     public static function fromArray(array $data): self
     {
         $deck = new self();

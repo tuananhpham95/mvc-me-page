@@ -29,6 +29,7 @@ class CardController extends AbstractController
             'uml' => $uml,
         ]);
     }
+
     #[Route('/session', name: 'session_show')]
     public function session(SessionInterface $session): Response
     {
@@ -44,6 +45,7 @@ class CardController extends AbstractController
         $this->addFlash('success', 'Session has been cleared.');
         return $this->redirectToRoute('session_show');
     }
+
     #[Route('/card/deck', name: 'card_deck')]
     public function deck(SessionInterface $session): Response
     {
@@ -89,14 +91,18 @@ class CardController extends AbstractController
             'cardCount' => $deck->getCardCount(),
         ]);
     }
+
     private function getDeckFromSession(SessionInterface $session): DeckOfCards
     {
         $deckData = $session->get('deck');
-        if (!is_array($deckData) || empty($deckData['cards'])) {
+
+        if (!is_array($deckData) || !isset($deckData['cards']) || !is_array($deckData['cards'])) {
             $deck = new DeckOfCards();
             $session->set('deck', $deck->toArray());
             return $deck;
         }
+
+        /** @var array{cards: array<int, array{suit: string, value: string}>, suits?: array<string>, values?: array<string>} $deckData */
         return DeckOfCards::fromArray($deckData);
     }
 }

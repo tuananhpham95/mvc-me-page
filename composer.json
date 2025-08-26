@@ -87,7 +87,13 @@
     "post-update-cmd": [
       "@auto-scripts"
     ],
-    "csfix": "vendor/bin/php-cs-fixer fix src/ --rules=@PSR12"
+    "csfix": "vendor/bin/php-cs-fixer fix src/ --rules=@PSR12",
+    "phpmd": "../../tools/phpmd/vendor/bin/phpmd . text ../../tools/phpmd/phpmd.xml || true",
+    "phpstan": "../../tools/phpstan/vendor/bin/phpstan analyse -c ../../tools/phpstan/phpstan.neon || true",
+    "lint": [
+      "@phpmd",
+      "@phpstan"
+    ]
   },
   "conflict": {
     "symfony/symfony": "*"

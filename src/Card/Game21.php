@@ -100,14 +100,14 @@ class Game21
         $card = $this->deck->draw()[0];
         $this->player->addCard($card);
         $score = $this->player->getScore();
-        if ($score == 21) {
+        if ($score == 21 && $this->currentBet !== null) {
             $this->player->addMoney($this->currentBet * 2); // Award player's bet * 2
-            $this->pot -= $this->currentBet; // Pot returns to bank's contribution (50)
+            $this->pot -= $this->currentBet;
             $this->status = 'finished';
             $this->winner = 'Player';
-        } elseif ($score > 21) {
-            $this->bank->addMoney($this->currentBet); // Bank gains player's bet
-            $this->pot -= $this->currentBet; // Pot returns to bank's contribution (50)
+        } elseif ($score > 21 && $this->currentBet !== null) {
+            $this->bank->addMoney($this->currentBet);
+            $this->pot -= $this->currentBet;
             $this->status = 'finished';
             $this->winner = 'Bank';
         }
@@ -126,9 +126,9 @@ class Game21
     private function playBank(): void
     {
         while ($this->bank->getScore() < 17 && !$this->bank->hasStood()) {
-            if ($this->deck->getCardCount() === 0) {
-                $this->player->addMoney($this->currentBet * 2); // Award player's bet * 2
-                $this->pot -= $this->currentBet; // Pot returns to bank's contribution (50)
+            if ($this->deck->getCardCount() === 0 && $this->currentBet !== null) {
+                $this->player->addMoney($this->currentBet * 2);
+                $this->pot -= $this->currentBet;
                 $this->status = 'finished';
                 $this->winner = 'Player';
                 return;
@@ -146,25 +146,29 @@ class Game21
         $playerScore = $this->player->getScore();
         $bankScore = $this->bank->getScore();
 
+        if ($this->currentBet === null) {
+            throw new Exception('No bet placed, cannot determine winner.');
+        }
+
         if ($playerScore > 21) {
-            $this->bank->addMoney($this->currentBet); // Bank gains player's bet
-            $this->pot -= $this->currentBet; // Pot returns to bank's contribution (50)
+            $this->bank->addMoney($this->currentBet);
+            $this->pot -= $this->currentBet;
             $this->winner = 'Bank';
         } elseif ($bankScore > 21) {
-            $this->player->addMoney($this->currentBet * 2); // Award player's bet * 2
-            $this->pot -= $this->currentBet; // Pot returns to bank's contribution (50)
+            $this->player->addMoney($this->currentBet * 2);
+            $this->pot -= $this->currentBet;
             $this->winner = 'Player';
         } elseif ($bankScore == 21) {
-            $this->bank->addMoney($this->currentBet); // Bank gains player's bet
-            $this->pot -= $this->currentBet; // Pot returns to bank's contribution (50)
+            $this->bank->addMoney($this->currentBet);
+            $this->pot -= $this->currentBet;
             $this->winner = 'Bank';
         } elseif ($playerScore > $bankScore) {
-            $this->player->addMoney($this->currentBet * 2); // Award player's bet * 2
-            $this->pot -= $this->currentBet; // Pot returns to bank's contribution (50)
+            $this->player->addMoney($this->currentBet * 2);
+            $this->pot -= $this->currentBet;
             $this->winner = 'Player';
         } else {
-            $this->bank->addMoney($this->currentBet); // Bank gains player's bet
-            $this->pot -= $this->currentBet; // Pot returns to bank's contribution (50)
+            $this->bank->addMoney($this->currentBet);
+            $this->pot -= $this->currentBet;
             $this->winner = 'Bank';
         }
     }
@@ -177,10 +181,21 @@ class Game21
         $this->bank = new Player('Bank', $this->bank->getMoney());
         $this->status = 'betting';
         $this->winner = null;
-        $this->pot = 50; // Bank's new contribution
+        $this->pot = 50;
         $this->currentBet = null;
     }
 
+    /**
+     * @return array{
+     *     deck: array<mixed>,
+     *     player: array<mixed>,
+     *     bank: array<mixed>,
+     *     status: string,
+     *     winner: string|null,
+     *     pot: int,
+     *     currentBet: int|null
+     * }
+     */
     public function toArray(): array
     {
         return [
@@ -194,9 +209,21 @@ class Game21
         ];
     }
 
+    /**
+     * @param array{
+     *     deck: array{cards: array<int, array{suit: string, value: string}>, suits?: array<string>, values?: array<string>},
+     *     player: array{name: string, hand: array<int, array{suit: string, value: string}>, hasStood?: bool, money?: int},
+     *     bank: array{name: string, hand: array<int, array{suit: string, value: string}>, hasStood?: bool, money?: int},
+     *     status: string,
+     *     winner?: string|null,
+     *     pot?: int,
+     *     currentBet?: int|null
+     * } $data
+     */
     public static function fromArray(array $data): self
     {
         $game = new self();
+
         $game->deck = DeckOfCards::fromArray($data['deck']);
         $game->player = Player::fromArray($data['player']);
         $game->bank = Player::fromArray($data['bank']);
@@ -204,6 +231,7 @@ class Game21
         $game->winner = $data['winner'] ?? null;
         $game->pot = $data['pot'] ?? 50;
         $game->currentBet = $data['currentBet'] ?? null;
+
         return $game;
     }
 }

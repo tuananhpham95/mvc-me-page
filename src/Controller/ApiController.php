@@ -71,7 +71,7 @@ class ApiController extends AbstractController
     public function apiDeck(SessionInterface $session): JsonResponse
     {
         $deck = $this->getDeckFromSession($session);
-        $cards = array_map(fn($card) => $card->getAsString(), $deck->getSortedCards());
+        $cards = array_map(fn ($card) => $card->getAsString(), $deck->getSortedCards());
         return $this->json([
             'cards' => $cards,
             'remaining' => $deck->getCardCount(),
@@ -84,7 +84,7 @@ class ApiController extends AbstractController
         $deck = new DeckOfCards();
         $deck->shuffle();
         $session->set('deck', $deck->toArray());
-        $cards = array_map(fn($card) => $card->getAsString(), $deck->getCards());
+        $cards = array_map(fn ($card) => $card->getAsString(), $deck->getCards());
         return $this->json([
             'cards' => $cards,
             'remaining' => $deck->getCardCount(),
@@ -97,7 +97,7 @@ class ApiController extends AbstractController
         $deck = $this->getDeckFromSession($session);
         $drawnCards = $deck->draw();
         $session->set('deck', $deck->toArray());
-        $cards = array_map(fn($card) => $card->getAsString(), $drawnCards);
+        $cards = array_map(fn ($card) => $card->getAsString(), $drawnCards);
         return $this->json([
             'drawn' => $cards,
             'remaining' => $deck->getCardCount(),
@@ -110,7 +110,7 @@ class ApiController extends AbstractController
         $deck = $this->getDeckFromSession($session);
         $drawnCards = $deck->draw($number);
         $session->set('deck', $deck->toArray());
-        $cards = array_map(fn($card) => $card->getAsString(), $drawnCards);
+        $cards = array_map(fn ($card) => $card->getAsString(), $drawnCards);
         return $this->json([
             'drawn' => $cards,
             'remaining' => $deck->getCardCount(),
@@ -120,22 +120,13 @@ class ApiController extends AbstractController
     private function getDeckFromSession(SessionInterface $session): DeckOfCards
     {
         $deckData = $session->get('deck');
-        if (!is_array($deckData) || empty($deckData['cards'])) {
+        if (!is_array($deckData) || !isset($deckData['cards']) || !is_array($deckData['cards'])) {
             $deck = new DeckOfCards();
             $session->set('deck', $deck->toArray());
             return $deck;
         }
-        return DeckOfCards::fromArray($deckData);
-    }
 
-    private function getGameFromSession(SessionInterface $session): Game21
-    {
-        $gameData = $session->get('game');
-        if (!is_array($gameData) || empty($gameData['deck'])) {
-            $game = new Game21();
-            $session->set('game', $game->toArray());
-            return $game;
-        }
-        return Game21::fromArray($gameData);
+        /** @var array{cards: array<int, array{suit: string, value: string}>, suits?: array<string>, values?: array<string>} $deckData */
+        return DeckOfCards::fromArray($deckData);
     }
 }
