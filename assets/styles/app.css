@@ -87,7 +87,9 @@ h4 {
 main h2 {
   text-align: center;
 }
-
+.card-landing h2 {
+  text-align: start;
+}
 .btn {
   display: inline-block;
   padding: 10px 20px;
@@ -209,42 +211,26 @@ main h2 {
 
 .game-result {
   text-align: center;
-  font-size: 1.8em;
+  font-size: 1.5em;
   font-weight: 700;
   color: #1abc9c;
-  background: rgba(255, 255, 255, 0.9);
-  padding: 15px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-}
-.landing-container {
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
-  padding: 30px;
-  border-radius: 12px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
 }
 
-.hero {
-  text-align: center;
-  padding: 20px;
-  border-radius: 10px;
-}
 .documentation-container {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 50px;
 }
-.documentation-container h1 {
-  text-align: center;
-}
+
 .doc-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   background: white;
   border-radius: 10px;
   padding: 25px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  transition: transform 0.3s;
 }
 
 .doc-section h2 {
@@ -294,11 +280,14 @@ pre {
 }
 article {
   display: flex;
+  flex-direction: column;
   gap: 30px;
-  flex-wrap: wrap;
 }
 
 aside {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background: #f8f9fa;
   border-radius: 8px;
   padding: 20px;
@@ -402,12 +391,68 @@ footer a:hover {
   border-radius: 8px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 }
-
+.hero {
+  text-align: center;
+  padding: 20px;
+  border-radius: 10px;
+}
+.documentation-container h1 {
+  text-align: center;
+}
 .highlight {
   color: #1abc9c;
   font-weight: 700;
 }
+.api-container {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+  font-family: Arial, sans-serif;
+}
 
+.api-title h1 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.api-title p {
+  text-align: center;
+  color: #555;
+  margin-bottom: 2rem;
+}
+
+.api-routes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.api-route {
+  background: #f9f9f9;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  padding: 1rem 1.5rem;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.api-route:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.api-route strong {
+  display: block;
+  font-size: 1.1rem;
+  color: #2c3e50;
+  margin-bottom: 0.5rem;
+}
+
+.api-route p {
+  font-size: 0.95rem;
+  color: #555;
+  line-height: 1.4;
+}
 @keyframes bounce {
   0%,
   100% {
