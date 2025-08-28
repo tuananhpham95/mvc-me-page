@@ -5,8 +5,10 @@ namespace App\Card;
 class CardGraphic extends Card
 { 
     /**
-    * @var array<string, string>
-    */
+     * Mapping of suit names to their Unicode symbols.
+     *
+     * @var array<string, string>
+     */
     private array $suitSymbols = [
         'Hearts' => 'hearts',
         'Diamonds' => 'diamonds',
