@@ -68,6 +68,10 @@
                 <a href="namespaces/app-controller.html" class="">Controller</a>
                 
             </li>
+                    <li>
+                <a href="namespaces/app-dice.html" class="">Dice</a>
+                
+            </li>
             </ul>
 
                         </section>
@@ -76,16 +80,6 @@
                                     <h4 class="phpdocumentor-sidebar__root-namespace">
     <a href="packages/Application.html" class="">Application</a>
 </h4>
-
-                                    <h4 class="phpdocumentor-sidebar__root-namespace">
-    <a href="packages/App.html" class="">App</a>
-</h4>
-    <ul class="phpdocumentor-list">
-                    <li>
-                <a href="packages/App-Card.html" class="">Card</a>
-                
-            </li>
-            </ul>
 
                         </section>
             
@@ -132,12 +126,16 @@
         <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="Card/Player.php"><a href="files/card-player.html"><abbr title="Card/Player.php">Player.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">5</span>
+    <span class="phpdocumentor-element-found-in__line">11</span>
 
     </aside>
 
-        
+            <p class="phpdocumentor-summary">Class Player</p>
 
+
+    <section class="phpdocumentor-description"><p>Represents a player in the Game21 card game.
+Tracks the player's name, hand, score, money, and whether they have stood.</p>
+</section>
 
 
 
@@ -202,30 +200,35 @@
     <span>
                                 &nbsp;: mixed    </span>
 </dt>
+<dd>Player constructor.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a class="" href="classes/App-Card-Player.html#method_addCard">addCard()</a>
     <span>
                                 &nbsp;: void    </span>
 </dt>
+<dd>Adds a card to the player&#039;s hand.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a class="" href="classes/App-Card-Player.html#method_addMoney">addMoney()</a>
     <span>
                                 &nbsp;: void    </span>
 </dt>
+<dd>Adds money to the player&#039;s balance.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a class="" href="classes/App-Card-Player.html#method_deductMoney">deductMoney()</a>
     <span>
                                 &nbsp;: void    </span>
 </dt>
+<dd>Deducts money from the player&#039;s balance.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a class="" href="classes/App-Card-Player.html#method_fromArray">fromArray()</a>
     <span>
                                 &nbsp;: self    </span>
 </dt>
+<dd>Creates a Player instance from an array.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a class="" href="classes/App-Card-Player.html#method_getHand">getHand()</a>
@@ -250,6 +253,7 @@
     <span>
                                 &nbsp;: int    </span>
 </dt>
+<dd>Calculates the player&#039;s current score based on their hand.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a class="" href="classes/App-Card-Player.html#method_hasStood">hasStood()</a>
@@ -262,12 +266,14 @@
     <span>
                                 &nbsp;: void    </span>
 </dt>
+<dd>Marks the player as having stood.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a class="" href="classes/App-Card-Player.html#method_toArray">toArray()</a>
     <span>
                                 &nbsp;: array{name: string, hand: array<int,array{suit: string, value: string}>, hasStood: bool, money: int}    </span>
 </dt>
+<dd>Converts the player object to an array.</dd>
 
     </dl>
 
@@ -299,7 +305,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="Card/Player.php"><a href="files/card-player.html"><abbr title="Card/Player.php">Player.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">8</span>
+    <span class="phpdocumentor-element-found-in__line">14</span>
 
     </aside>
 
@@ -337,7 +343,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="Card/Player.php"><a href="files/card-player.html"><abbr title="Card/Player.php">Player.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">9</span>
+    <span class="phpdocumentor-element-found-in__line">15</span>
 
     </aside>
 
@@ -375,7 +381,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="Card/Player.php"><a href="files/card-player.html"><abbr title="Card/Player.php">Player.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">10</span>
+    <span class="phpdocumentor-element-found-in__line">16</span>
 
     </aside>
 
@@ -413,7 +419,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="Card/Player.php"><a href="files/card-player.html"><abbr title="Card/Player.php">Player.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">7</span>
+    <span class="phpdocumentor-element-found-in__line">13</span>
 
     </aside>
 
@@ -456,11 +462,12 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="Card/Player.php"><a href="files/card-player.html"><abbr title="Card/Player.php">Player.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">12</span>
+    <span class="phpdocumentor-element-found-in__line">24</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">Player constructor.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
                     <span class="phpdocumentor-signature__name">__construct</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$name</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$money</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">100</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
@@ -476,14 +483,18 @@
                 : <span class="phpdocumentor-signature__argument__return-type">string</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                
+                    <section class="phpdocumentor-description"><p>Player's name.</p>
+</section>
+
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$money</span>
                 : <span class="phpdocumentor-signature__argument__return-type">int</span>
                  = <span class="phpdocumentor-signature__argument__default-value">100</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                
+                    <section class="phpdocumentor-description"><p>Initial amount of money (default 100).</p>
+</section>
+
             </dd>
             </dl>
 
@@ -507,11 +518,12 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="Card/Player.php"><a href="files/card-player.html"><abbr title="Card/Player.php">Player.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">30</span>
+    <span class="phpdocumentor-element-found-in__line">49</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">Adds a card to the player&#039;s hand.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
                     <span class="phpdocumentor-signature__name">addCard</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><a href="classes/App-Card-Card.html"><abbr title="\App\Card\Card">Card</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$card</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
@@ -527,7 +539,9 @@
                 : <span class="phpdocumentor-signature__argument__return-type"><a href="classes/App-Card-Card.html"><abbr title="\App\Card\Card">Card</abbr></a></span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                
+                    <section class="phpdocumentor-description"><p>The card to add.</p>
+</section>
+
             </dd>
             </dl>
 
@@ -551,11 +565,12 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="Card/Player.php"><a href="files/card-player.html"><abbr title="Card/Player.php">Player.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">50</span>
+    <span class="phpdocumentor-element-found-in__line">77</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">Adds money to the player&#039;s balance.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
                     <span class="phpdocumentor-signature__name">addMoney</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$amount</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
@@ -571,7 +586,9 @@
                 : <span class="phpdocumentor-signature__argument__return-type">int</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                
+                    <section class="phpdocumentor-description"><p>Amount to add.</p>
+</section>
+
             </dd>
             </dl>
 
@@ -595,11 +612,12 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="Card/Player.php"><a href="files/card-player.html"><abbr title="Card/Player.php">Player.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">55</span>
+    <span class="phpdocumentor-element-found-in__line">88</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">Deducts money from the player&#039;s balance.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
                     <span class="phpdocumentor-signature__name">deductMoney</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$amount</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
@@ -615,11 +633,30 @@
                 : <span class="phpdocumentor-signature__argument__return-type">int</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                
+                    <section class="phpdocumentor-description"><p>Amount to deduct.</p>
+</section>
+
             </dd>
             </dl>
 
     
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="classes/App-Card-Player.html#method_deductMoney#tags" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">throws</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                <span class="phpdocumentor-tag-link"><abbr title="\Exception">Exception</abbr></span>
+                                                            
+                                                 <section class="phpdocumentor-description"><p>If the player does not have enough money.</p>
+</section>
+
+                                    </dd>
+                                            </dl>
 
     
 
@@ -639,11 +676,12 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="Card/Player.php"><a href="files/card-player.html"><abbr title="Card/Player.php">Player.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">114</span>
+    <span class="phpdocumentor-element-found-in__line">162</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">Creates a Player instance from an array.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
             <span class="phpdocumentor-signature__static">static</span>        <span class="phpdocumentor-signature__name">fromArray</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array{name: string, hand: array<int,array{suit: string, value: string}>, hasStood?: bool, money?: int}&nbsp;</span><span class="phpdocumentor-signature__argument__name">$data</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">self</span></code>
@@ -670,6 +708,10 @@
             <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
         <span class="phpdocumentor-signature__response_type">self</span>
+                    &mdash;
+                <section class="phpdocumentor-description"><p>A new Player instance.</p>
+</section>
+
             </section>
 
 </article>
@@ -687,7 +729,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="Card/Player.php"><a href="files/card-player.html"><abbr title="Card/Player.php">Player.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">25</span>
+    <span class="phpdocumentor-element-found-in__line">39</span>
 
     </aside>
 
@@ -708,6 +750,10 @@
             <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
         <span class="phpdocumentor-signature__response_type"><a href="classes/App-Card-CardHand.html"><abbr title="\App\Card\CardHand">CardHand</abbr></a></span>
+                    &mdash;
+                <section class="phpdocumentor-description"><p>Returns the player's hand of cards.</p>
+</section>
+
             </section>
 
 </article>
@@ -725,7 +771,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="Card/Player.php"><a href="files/card-player.html"><abbr title="Card/Player.php">Player.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">45</span>
+    <span class="phpdocumentor-element-found-in__line">67</span>
 
     </aside>
 
@@ -746,6 +792,10 @@
             <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
         <span class="phpdocumentor-signature__response_type">int</span>
+                    &mdash;
+                <section class="phpdocumentor-description"><p>Returns the player's current money.</p>
+</section>
+
             </section>
 
 </article>
@@ -763,7 +813,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="Card/Player.php"><a href="files/card-player.html"><abbr title="Card/Player.php">Player.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">20</span>
+    <span class="phpdocumentor-element-found-in__line">33</span>
 
     </aside>
 
@@ -784,6 +834,10 @@
             <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
         <span class="phpdocumentor-signature__response_type">string</span>
+                    &mdash;
+                <section class="phpdocumentor-description"><p>Returns the player's name.</p>
+</section>
+
             </section>
 
 </article>
@@ -801,11 +855,12 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="Card/Player.php"><a href="files/card-player.html"><abbr title="Card/Player.php">Player.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">60</span>
+    <span class="phpdocumentor-element-found-in__line">102</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">Calculates the player&#039;s current score based on their hand.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
                     <span class="phpdocumentor-signature__name">getScore</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">int</span></code>
@@ -813,7 +868,9 @@
     <div class="phpdocumentor-label-line">
         </div>
     
-    
+        <section class="phpdocumentor-description"><p>Aces are counted as 14 if it does not exceed 21, otherwise as 1.</p>
+</section>
+
     
     
 
@@ -822,6 +879,10 @@
             <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
         <span class="phpdocumentor-signature__response_type">int</span>
+                    &mdash;
+                <section class="phpdocumentor-description"><p>The player's score.</p>
+</section>
+
             </section>
 
 </article>
@@ -839,7 +900,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="Card/Player.php"><a href="files/card-player.html"><abbr title="Card/Player.php">Player.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">40</span>
+    <span class="phpdocumentor-element-found-in__line">61</span>
 
     </aside>
 
@@ -860,6 +921,10 @@
             <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
         <span class="phpdocumentor-signature__response_type">bool</span>
+                    &mdash;
+                <section class="phpdocumentor-description"><p>Returns true if the player has stood, false otherwise.</p>
+</section>
+
             </section>
 
 </article>
@@ -877,11 +942,12 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="Card/Player.php"><a href="files/card-player.html"><abbr title="Card/Player.php">Player.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">35</span>
+    <span class="phpdocumentor-element-found-in__line">55</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">Marks the player as having stood.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
                     <span class="phpdocumentor-signature__name">stand</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
@@ -911,11 +977,12 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="Card/Player.php"><a href="files/card-player.html"><abbr title="Card/Player.php">Player.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">96</span>
+    <span class="phpdocumentor-element-found-in__line">141</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">Converts the player object to an array.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
                     <span class="phpdocumentor-signature__name">toArray</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array{name: string, hand: array<int,array{suit: string, value: string}>, hasStood: bool, money: int}</span></code>

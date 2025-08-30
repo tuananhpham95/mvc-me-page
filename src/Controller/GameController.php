@@ -98,30 +98,30 @@ class GameController extends AbstractController
     }
 
     private function getGameFromSession(SessionInterface $session): Game21
-{
-    $gameData = $session->get('game');
+    {
+        $gameData = $session->get('game');
 
-    if (
-        !is_array($gameData) ||
-        !isset($gameData['deck']) ||
-        !is_array($gameData['deck'])
-    ) {
-        $game = new Game21();
-        $session->set('game', $game->toArray());
-        return $game;
+        if (
+            !is_array($gameData) ||
+            !isset($gameData['deck']) ||
+            !is_array($gameData['deck'])
+        ) {
+            $game = new Game21();
+            $session->set('game', $game->toArray());
+            return $game;
+        }
+
+        /** @var array{
+         *     deck: array{cards: array<int, array{suit: string, value: string}>, suits?: array<string>, values?: array<string>},
+         *     player: array{name: string, hand: array<int, array{suit: string, value: string}>, hasStood?: bool, money?: int},
+         *     bank: array{name: string, hand: array<int, array{suit: string, value: string}>, hasStood?: bool, money?: int},
+         *     status: string,
+         *     winner?: string|null,
+         *     pot?: int,
+         *     currentBet?: int|null
+         * } $gameData
+         */
+        return Game21::fromArray($gameData);
     }
-
-    /** @var array{
-     *     deck: array{cards: array<int, array{suit: string, value: string}>, suits?: array<string>, values?: array<string>},
-     *     player: array{name: string, hand: array<int, array{suit: string, value: string}>, hasStood?: bool, money?: int},
-     *     bank: array{name: string, hand: array<int, array{suit: string, value: string}>, hasStood?: bool, money?: int},
-     *     status: string,
-     *     winner?: string|null,
-     *     pot?: int,
-     *     currentBet?: int|null
-     * } $gameData
-     */
-    return Game21::fromArray($gameData);
-}
 
 }

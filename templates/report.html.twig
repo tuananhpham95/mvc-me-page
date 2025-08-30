@@ -79,5 +79,42 @@
             <h4>TIL</h4>
             <p>Min TIL för Kmom03 är hur objektorienterade principer som arv och komposition, kombinerat med MVC-strukturen i Symfony, skapar en robust och organiserad kodbas. Genom att använda arv i <code>CardGraphic</code> (som ärver från <code>Card</code>) och komposition i <code>Game21</code> (som använder <code>DeckOfCards</code> och <code>Player</code>) lärde jag mig att strukturera komplexa applikationer effektivt. Att integrera PHPMD och PHPStan, och lösa 23 PHPStan-fel genom att lägga till typanvisningar (t.ex. <code>@return array<string, mixed></code>) och hantera null-värden, gav mig insikt i hur statisk kodanalys förbättrar kodkvaliteten och minskar buggar. Dessutom förstärkte användningen av flödesdiagram och pseudokod vikten av problemlösningstekniker som top-down och bottom-up för att planera och implementera spelets logik. Slutligen lärde jag mig hur Symfonys sessionhantering och routing underlättar byggandet av dynamiska webbapplikationer, särskilt genom att skapa JSON API-rutter som <code>/api/game</code> för att exponera spelstate. Dessa lärdomar kommer att vara ovärderliga för framtida projekt.</p>
         </section>
+        <section id="kmom04">
+            <h3 id="kmom04">Kmom04</h3>
+            <h4>PHPUnit och testbar kod</h4>
+            <p>
+                Att skriva kod som testar annan kod med PHPUnit upplevde jag både som en utmaning och som något väldigt lärorikt. 
+                I början var det lite ovant att tänka i testfall och förutsäga hur koden borde bete sig i olika situationer, 
+                men efterhand blev det roligare när jag märkte att testerna faktiskt kunde fånga buggar och hjälpa mig att förstå flödet bättre. 
+                Jag upplever PHPUnit som ett kraftfullt verktyg som, när man väl kommit in i det, gör utvecklingen tryggare och mer strukturerad.
+            </p>
+            <p>
+                När det gäller kodtäckning lyckades jag nå 89,49 %, vilket jag är nöjd med. 
+                Jag behövde skriva ganska många olika testfall, både för normala scenarier och för edge-cases, 
+                exempelvis när spelaren får 21 direkt eller går över 21. 
+                På det sättet kände jag att jag täckte in de viktigaste delarna av logiken.
+            </p>
+            <p>
+                Jag upplever att min kod är ganska testbar, men det finns delar som är mer eller mindre enkla att testa. 
+                Metoder som returnerar tydliga värden eller uppdaterar statusar i spelet är lättare att testa än de som har mer interna beroenden, 
+                till exempel metoder som blandar kort eller kör hela bankens spelautomatik. 
+                För att förbättra testbarheten kan man använda sig av dependency injection, mock-objekt eller göra logiken mer uppdelad i små och tydliga metoder.
+            </p>
+            <p>
+                Under arbetet valde jag att skriva om delar av koden för att den skulle bli mer testbar. 
+                Bland annat lade jag till tydligare statushantering i spelet och såg till att vissa metoder returnerar värden eller uppdaterar klasser på ett mer förutsägbart sätt. 
+                Jag tänkte mycket på separation av ansvar, vilket gjorde att både koden och testerna blev mer begripliga.
+            </p>
+            <p>
+                Jag tycker definitivt att testbar kod hänger ihop med “snygg och ren kod”. 
+                När koden är uppdelad i små metoder med tydliga ansvarsområden blir den både lättare att läsa och enklare att testa. 
+                Om man märker att något är svårt att testa, är det ofta ett tecken på att koden är för komplex och behöver refaktoreras.
+            </p>
+            <p>
+                Min TIL för detta kmom är att tester inte bara är ett sätt att kontrollera att koden fungerar, 
+                utan också ett verktyg för att designa bättre kod. 
+                Genom att tänka på testbarhet redan från början kan man skriva mer robust, strukturerad och lättunderhållen kod.
+            </p>
+        </section>
 {% endblock %}
 

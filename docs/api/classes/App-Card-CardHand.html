@@ -68,6 +68,10 @@
                 <a href="namespaces/app-controller.html" class="">Controller</a>
                 
             </li>
+                    <li>
+                <a href="namespaces/app-dice.html" class="">Dice</a>
+                
+            </li>
             </ul>
 
                         </section>
@@ -76,16 +80,6 @@
                                     <h4 class="phpdocumentor-sidebar__root-namespace">
     <a href="packages/Application.html" class="">Application</a>
 </h4>
-
-                                    <h4 class="phpdocumentor-sidebar__root-namespace">
-    <a href="packages/App.html" class="">App</a>
-</h4>
-    <ul class="phpdocumentor-list">
-                    <li>
-                <a href="packages/App-Card.html" class="">Card</a>
-                
-            </li>
-            </ul>
 
                         </section>
             
@@ -132,12 +126,17 @@
         <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="Card/CardHand.php"><a href="files/card-cardhand.html"><abbr title="Card/CardHand.php">CardHand.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">8</span>
+    <span class="phpdocumentor-element-found-in__line">14</span>
 
     </aside>
 
-        
+            <p class="phpdocumentor-summary">Class CardHand</p>
 
+
+    <section class="phpdocumentor-description"><p>Represents a hand of playing cards.
+Provides methods to add cards, retrieve them,
+convert the hand to a string, and serialize/deserialize.</p>
+</section>
 
 
 
@@ -170,6 +169,7 @@
     <span>
                         &nbsp;: array&lt;string|int, <a href="classes/App-Card-Card.html"><abbr title="\App\Card\Card">Card</abbr></a>&gt;            </span>
 </dt>
+<dd>The cards currently in the hand.</dd>
 
     </dl>
 
@@ -184,17 +184,33 @@
     <span>
                                 &nbsp;: void    </span>
 </dt>
+<dd>Add a card to the hand.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a class="" href="classes/App-Card-CardHand.html#method_fromArray">fromArray()</a>
+    <span>
+                                &nbsp;: self    </span>
+</dt>
+<dd>Create a CardHand instance from an array of card data.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a class="" href="classes/App-Card-CardHand.html#method_getAsString">getAsString()</a>
     <span>
                                 &nbsp;: string    </span>
 </dt>
+<dd>Get the hand as a comma-separated string.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a class="" href="classes/App-Card-CardHand.html#method_getCards">getCards()</a>
     <span>
                                 &nbsp;: array&lt;string|int, <a href="classes/App-Card-Card.html"><abbr title="\App\Card\Card">Card</abbr></a>&gt;    </span>
+</dt>
+<dd>Get all cards in the hand.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a class="" href="classes/App-Card-CardHand.html#method_removeCard">removeCard()</a>
+    <span>
+                                &nbsp;: void    </span>
 </dt>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
@@ -202,6 +218,7 @@
     <span>
                                 &nbsp;: array&lt;int, array{suit: string, value: string}&gt;    </span>
 </dt>
+<dd>Convert the hand into an array format.</dd>
 
     </dl>
 
@@ -233,11 +250,12 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="Card/CardHand.php"><a href="files/card-cardhand.html"><abbr title="Card/CardHand.php">CardHand.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">11</span>
+    <span class="phpdocumentor-element-found-in__line">21</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">The cards currently in the hand.</p>
+
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
         <span class="phpdocumentor-signature__visibility">private</span>
@@ -276,14 +294,202 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="Card/CardHand.php"><a href="files/card-cardhand.html"><abbr title="Card/CardHand.php">CardHand.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">13</span>
+    <span class="phpdocumentor-element-found-in__line">28</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Add a card to the hand.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">addCard</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><a href="classes/App-Card-Card.html"><abbr title="\App\Card\Card">Card</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$card</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$card</span>
+                : <span class="phpdocumentor-signature__argument__return-type"><a href="classes/App-Card-Card.html"><abbr title="\App\Card\Card">Card</abbr></a></span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>The card to add.</p>
+</section>
+
+            </dd>
+            </dl>
+
+    
+
+    
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                    -static                    "
+>
+    <h4 class="phpdocumentor-element__name" id="method_fromArray">
+        fromArray()
+        <a href="classes/App-Card-CardHand.html#method_fromArray" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="Card/CardHand.php"><a href="files/card-cardhand.html"><abbr title="Card/CardHand.php">CardHand.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">80</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Create a CardHand instance from an array of card data.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+            <span class="phpdocumentor-signature__static">static</span>        <span class="phpdocumentor-signature__name">fromArray</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array&lt;int, array{suit: string, value: string}&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$data</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">self</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$data</span>
+                : <span class="phpdocumentor-signature__argument__return-type">array&lt;int, array{suit: string, value: string}&gt;</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>Array of cards with literal keys 'suit' and 'value'.</p>
+</section>
+
+            </dd>
+            </dl>
+
+    
+
+    
+
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">self</span>
+                    &mdash;
+                <section class="phpdocumentor-description"><p>A new CardHand instance populated with cards.</p>
+</section>
+
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_getAsString">
+        getAsString()
+        <a href="classes/App-Card-CardHand.html#method_getAsString" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="Card/CardHand.php"><a href="files/card-cardhand.html"><abbr title="Card/CardHand.php">CardHand.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">48</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Get the hand as a comma-separated string.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">getAsString</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+    
+    
+
+    
+
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">string</span>
+                    &mdash;
+                <section class="phpdocumentor-description"><p>A string representation of the cards, e.g. &quot;10 of Hearts, Ace of Spades&quot;.</p>
+</section>
+
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_getCards">
+        getCards()
+        <a href="classes/App-Card-CardHand.html#method_getCards" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="Card/CardHand.php"><a href="files/card-cardhand.html"><abbr title="Card/CardHand.php">CardHand.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">38</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Get all cards in the hand.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">getCards</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, <a href="classes/App-Card-Card.html"><abbr title="\App\Card\Card">Card</abbr></a>&gt;</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+    
+    
+
+    
+
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">array&lt;string|int, <a href="classes/App-Card-Card.html"><abbr title="\App\Card\Card">Card</abbr></a>&gt;</span>
+                    &mdash;
+                <section class="phpdocumentor-description"><p>Array of Card objects.</p>
+</section>
+
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_removeCard">
+        removeCard()
+        <a href="classes/App-Card-CardHand.html#method_removeCard" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="Card/CardHand.php"><a href="files/card-cardhand.html"><abbr title="Card/CardHand.php">CardHand.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">53</span>
 
     </aside>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">addCard</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><a href="classes/App-Card-Card.html"><abbr title="\App\Card\Card">Card</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$card</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+                    <span class="phpdocumentor-signature__name">removeCard</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><a href="classes/App-Card-Card.html"><abbr title="\App\Card\Card">Card</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$card</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
@@ -312,82 +518,6 @@
             -public
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="method_getAsString">
-        getAsString()
-        <a href="classes/App-Card-CardHand.html#method_getAsString" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="Card/CardHand.php"><a href="files/card-cardhand.html"><abbr title="Card/CardHand.php">CardHand.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">26</span>
-
-    </aside>
-
-    
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">getAsString</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
-
-    <div class="phpdocumentor-label-line">
-        </div>
-    
-    
-    
-    
-
-    
-
-            <section>
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-        <span class="phpdocumentor-signature__response_type">string</span>
-            </section>
-
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -public
-                                                        "
->
-    <h4 class="phpdocumentor-element__name" id="method_getCards">
-        getCards()
-        <a href="classes/App-Card-CardHand.html#method_getCards" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="Card/CardHand.php"><a href="files/card-cardhand.html"><abbr title="Card/CardHand.php">CardHand.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">21</span>
-
-    </aside>
-
-    
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">getCards</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, <a href="classes/App-Card-Card.html"><abbr title="\App\Card\Card">Card</abbr></a>&gt;</span></code>
-
-    <div class="phpdocumentor-label-line">
-        </div>
-    
-    
-    
-    
-
-    
-
-            <section>
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-        <span class="phpdocumentor-signature__response_type">array&lt;string|int, <a href="classes/App-Card-Card.html"><abbr title="\App\Card\Card">Card</abbr></a>&gt;</span>
-            </section>
-
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -public
-                                                        "
->
     <h4 class="phpdocumentor-element__name" id="method_toArray">
         toArray()
         <a href="classes/App-Card-CardHand.html#method_toArray" class="headerlink"><i class="fas fa-link"></i></a>
@@ -396,11 +526,12 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="Card/CardHand.php"><a href="files/card-cardhand.html"><abbr title="Card/CardHand.php">CardHand.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">34</span>
+    <span class="phpdocumentor-element-found-in__line">66</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">Convert the hand into an array format.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
                     <span class="phpdocumentor-signature__name">toArray</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;int, array{suit: string, value: string}&gt;</span></code>
@@ -417,6 +548,10 @@
             <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
         <span class="phpdocumentor-signature__response_type">array&lt;int, array{suit: string, value: string}&gt;</span>
+                    &mdash;
+                <section class="phpdocumentor-description"><p>Array of card representations with literal keys.</p>
+</section>
+
             </section>
 
 </article>
@@ -543,8 +678,10 @@
             <li>
                 <ul class="phpdocumentor-list -clean">
                                             <li class=""><a href="classes/App-Card-CardHand.html#method_addCard">addCard()</a></li>
+                                            <li class=""><a href="classes/App-Card-CardHand.html#method_fromArray">fromArray()</a></li>
                                             <li class=""><a href="classes/App-Card-CardHand.html#method_getAsString">getAsString()</a></li>
                                             <li class=""><a href="classes/App-Card-CardHand.html#method_getCards">getCards()</a></li>
+                                            <li class=""><a href="classes/App-Card-CardHand.html#method_removeCard">removeCard()</a></li>
                                             <li class=""><a href="classes/App-Card-CardHand.html#method_toArray">toArray()</a></li>
                                     </ul>
             </li>

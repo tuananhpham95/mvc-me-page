@@ -68,6 +68,10 @@
                 <a href="namespaces/app-controller.html" class="">Controller</a>
                 
             </li>
+                    <li>
+                <a href="namespaces/app-dice.html" class="">Dice</a>
+                
+            </li>
             </ul>
 
                         </section>
@@ -76,16 +80,6 @@
                                     <h4 class="phpdocumentor-sidebar__root-namespace">
     <a href="packages/Application.html" class="">Application</a>
 </h4>
-
-                                    <h4 class="phpdocumentor-sidebar__root-namespace">
-    <a href="packages/App.html" class="">App</a>
-</h4>
-    <ul class="phpdocumentor-list">
-                    <li>
-                <a href="packages/App-Card.html" class="">Card</a>
-                
-            </li>
-            </ul>
 
                         </section>
             
@@ -135,14 +129,16 @@
         <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="Card/CardGraphic.php"><a href="files/card-cardgraphic.html"><abbr title="Card/CardGraphic.php">CardGraphic.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">5</span>
+    <span class="phpdocumentor-element-found-in__line">12</span>
 
     </aside>
 
-            <p class="phpdocumentor-summary">Class Card</p>
+            <p class="phpdocumentor-summary">Class CardGraphic</p>
 
 
-    <section class="phpdocumentor-description"><p>Represents a single playing card with a suit and value.</p>
+    <section class="phpdocumentor-description"><p>Represents a playing card with graphical support.
+Extends the base Card class and adds methods for rendering
+the card as text and retrieving the corresponding SVG file URL.</p>
 </section>
 
 
@@ -176,20 +172,21 @@
     <span>
                         &nbsp;: string            </span>
 </dt>
-<dd>The suit of the card (e.g. Hearts, Spades).</dd>
+<dd>The suit of the card (e.g., Hearts, Diamonds, Clubs, Spades).</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -protected">
     <a class="" href="classes/App-Card-Card.html#property_value">$value</a>
     <span>
                         &nbsp;: string            </span>
 </dt>
-<dd>The value of the card (e.g. 2, 10, King, Ace).</dd>
+<dd>The value of the card (e.g., Ace, 2, King).</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -private">
     <a class="" href="classes/App-Card-CardGraphic.html#property_suitSymbols">$suitSymbols</a>
     <span>
                         &nbsp;: array&lt;string, string&gt;            </span>
 </dt>
+<dd>Mapping of suit names to their symbol keywords used in SVG paths.</dd>
 
     </dl>
 
@@ -204,54 +201,56 @@
     <span>
                                 &nbsp;: mixed    </span>
 </dt>
-<dd>Card constructor.</dd>
+<dd>Constructs a new Card instance.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a class="" href="classes/App-Card-Card.html#method_fromArray">fromArray()</a>
     <span>
                                 &nbsp;: self    </span>
 </dt>
-<dd>Create a Card object from an associative array.</dd>
+<dd>Creates a Card instance from an array.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a class="" href="classes/App-Card-CardGraphic.html#method_getAsString">getAsString()</a>
     <span>
                                 &nbsp;: string    </span>
 </dt>
-<dd>Returns the card as a string, e.g. &quot;Ace of Spades&quot;.</dd>
+<dd>Returns the card as a string representation.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a class="" href="classes/App-Card-Card.html#method_getSuit">getSuit()</a>
     <span>
                                 &nbsp;: string    </span>
 </dt>
-<dd>Get the suit of the card.</dd>
+<dd>Gets the suit of the card.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a class="" href="classes/App-Card-CardGraphic.html#method_getSvgUrl">getSvgUrl()</a>
     <span>
                                 &nbsp;: string    </span>
 </dt>
+<dd>Returns the URL to the SVG file representing this card.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a class="" href="classes/App-Card-Card.html#method_getValue">getValue()</a>
     <span>
                                 &nbsp;: string    </span>
 </dt>
-<dd>Get the value of the card.</dd>
+<dd>Gets the value of the card.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a class="" href="classes/App-Card-Card.html#method_toArray">toArray()</a>
     <span>
-                                &nbsp;: array{suit: string, value: string}    </span>
+                                &nbsp;: array&lt;string, string&gt;    </span>
 </dt>
-<dd>Convert the card to an associative array.</dd>
+<dd>Converts the card to an array representation.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -private">
     <a class="" href="classes/App-Card-CardGraphic.html#method_getSvgFilePath">getSvgFilePath()</a>
     <span>
                                 &nbsp;: string    </span>
 </dt>
+<dd>Returns the specific SVG file path for a given card value and suit.</dd>
 
     </dl>
 
@@ -283,11 +282,11 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="Card/Card.php"><a href="files/card-card.html"><abbr title="Card/Card.php">Card.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">19</span>
+    <span class="phpdocumentor-element-found-in__line">15</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">The suit of the card (e.g. Hearts, Spades).</p>
+        <p class="phpdocumentor-summary">The suit of the card (e.g., Hearts, Diamonds, Clubs, Spades).</p>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
@@ -322,11 +321,11 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="Card/Card.php"><a href="files/card-card.html"><abbr title="Card/Card.php">Card.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">26</span>
+    <span class="phpdocumentor-element-found-in__line">22</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">The value of the card (e.g. 2, 10, King, Ace).</p>
+        <p class="phpdocumentor-summary">The value of the card (e.g., Ace, 2, King).</p>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
@@ -361,11 +360,12 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="Card/CardGraphic.php"><a href="files/card-cardgraphic.html"><abbr title="Card/CardGraphic.php">CardGraphic.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">10</span>
+    <span class="phpdocumentor-element-found-in__line">19</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">Mapping of suit names to their symbol keywords used in SVG paths.</p>
+
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
         <span class="phpdocumentor-signature__visibility">private</span>
@@ -404,11 +404,11 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="Card/Card.php"><a href="files/card-card.html"><abbr title="Card/Card.php">Card.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">34</span>
+    <span class="phpdocumentor-element-found-in__line">30</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Card constructor.</p>
+        <p class="phpdocumentor-summary">Constructs a new Card instance.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
@@ -460,15 +460,15 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="Card/Card.php"><a href="files/card-card.html"><abbr title="Card/Card.php">Card.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">89</span>
+    <span class="phpdocumentor-element-found-in__line">85</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Create a Card object from an associative array.</p>
+        <p class="phpdocumentor-summary">Creates a Card instance from an array.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-            <span class="phpdocumentor-signature__static">static</span>        <span class="phpdocumentor-signature__name">fromArray</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array{suit: string, value: string}&nbsp;</span><span class="phpdocumentor-signature__argument__name">$data</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">self</span></code>
+            <span class="phpdocumentor-signature__static">static</span>        <span class="phpdocumentor-signature__name">fromArray</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array&lt;string, string&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$data</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">self</span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
@@ -478,10 +478,12 @@
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$data</span>
-                : <span class="phpdocumentor-signature__argument__return-type">array{suit: string, value: string}</span>
+                : <span class="phpdocumentor-signature__argument__return-type">array&lt;string, string&gt;</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                
+                    <section class="phpdocumentor-description"><p>Array with suit and value.</p>
+</section>
+
             </dd>
             </dl>
 
@@ -509,11 +511,11 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="Card/CardGraphic.php"><a href="files/card-cardgraphic.html"><abbr title="Card/CardGraphic.php">CardGraphic.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">17</span>
+    <span class="phpdocumentor-element-found-in__line">31</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Returns the card as a string, e.g. &quot;Ace of Spades&quot;.</p>
+        <p class="phpdocumentor-summary">Returns the card as a string representation.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
@@ -531,6 +533,10 @@
             <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
         <span class="phpdocumentor-signature__response_type">string</span>
+                    &mdash;
+                <section class="phpdocumentor-description"><p>A string like &quot;10 of Hearts&quot;.</p>
+</section>
+
             </section>
 
 </article>
@@ -548,11 +554,11 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="Card/Card.php"><a href="files/card-card.html"><abbr title="Card/Card.php">Card.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">45</span>
+    <span class="phpdocumentor-element-found-in__line">41</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Get the suit of the card.</p>
+        <p class="phpdocumentor-summary">Gets the suit of the card.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
@@ -570,6 +576,10 @@
             <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
         <span class="phpdocumentor-signature__response_type">string</span>
+                    &mdash;
+                <section class="phpdocumentor-description"><p>The suit of the card.</p>
+</section>
+
             </section>
 
 </article>
@@ -587,11 +597,12 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="Card/CardGraphic.php"><a href="files/card-cardgraphic.html"><abbr title="Card/CardGraphic.php">CardGraphic.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">23</span>
+    <span class="phpdocumentor-element-found-in__line">42</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">Returns the URL to the SVG file representing this card.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
                     <span class="phpdocumentor-signature__name">getSvgUrl</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
@@ -608,6 +619,10 @@
             <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
         <span class="phpdocumentor-signature__response_type">string</span>
+                    &mdash;
+                <section class="phpdocumentor-description"><p>The Wikimedia Commons URL of the card SVG.</p>
+</section>
+
             </section>
 
 </article>
@@ -625,11 +640,11 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="Card/Card.php"><a href="files/card-card.html"><abbr title="Card/Card.php">Card.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">55</span>
+    <span class="phpdocumentor-element-found-in__line">51</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Get the value of the card.</p>
+        <p class="phpdocumentor-summary">Gets the value of the card.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
@@ -647,6 +662,10 @@
             <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
         <span class="phpdocumentor-signature__response_type">string</span>
+                    &mdash;
+                <section class="phpdocumentor-description"><p>The value of the card.</p>
+</section>
+
             </section>
 
 </article>
@@ -664,15 +683,15 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="Card/Card.php"><a href="files/card-card.html"><abbr title="Card/Card.php">Card.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">75</span>
+    <span class="phpdocumentor-element-found-in__line">71</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Convert the card to an associative array.</p>
+        <p class="phpdocumentor-summary">Converts the card to an array representation.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">toArray</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array{suit: string, value: string}</span></code>
+                    <span class="phpdocumentor-signature__name">toArray</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string, string&gt;</span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
@@ -685,7 +704,11 @@
 
             <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-        <span class="phpdocumentor-signature__response_type">array{suit: string, value: string}</span>
+        <span class="phpdocumentor-signature__response_type">array&lt;string, string&gt;</span>
+                    &mdash;
+                <section class="phpdocumentor-description"><p>Array with suit and value.</p>
+</section>
+
             </section>
 
 </article>
@@ -703,11 +726,12 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="Card/CardGraphic.php"><a href="files/card-cardgraphic.html"><abbr title="Card/CardGraphic.php">CardGraphic.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">39</span>
+    <span class="phpdocumentor-element-found-in__line">65</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">Returns the specific SVG file path for a given card value and suit.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">private</span>
                     <span class="phpdocumentor-signature__name">getSvgFilePath</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$value</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$suit</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
@@ -723,14 +747,18 @@
                 : <span class="phpdocumentor-signature__argument__return-type">string</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                
+                    <section class="phpdocumentor-description"><p>The card value in lowercase (e.g., &quot;ace&quot;, &quot;2&quot;, &quot;king&quot;).</p>
+</section>
+
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$suit</span>
                 : <span class="phpdocumentor-signature__argument__return-type">string</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                
+                    <section class="phpdocumentor-description"><p>The card suit in lowercase (e.g., &quot;hearts&quot;).</p>
+</section>
+
             </dd>
             </dl>
 
@@ -741,6 +769,10 @@
             <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
         <span class="phpdocumentor-signature__response_type">string</span>
+                    &mdash;
+                <section class="phpdocumentor-description"><p>The relative SVG path on Wikimedia Commons.</p>
+</section>
+
             </section>
 
 </article>

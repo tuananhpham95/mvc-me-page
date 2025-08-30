@@ -2,17 +2,41 @@
 
 namespace App\Card;
 
+/**
+ * Class DeckOfCards
+ *
+ * Represents a full deck of 52 playing cards using the CardGraphic class.
+ * Provides functionality to shuffle, draw cards, get counts, sort,
+ * and serialize/deserialize the deck to and from arrays.
+ */
 class DeckOfCards
 {
-    /** @var CardGraphic[] */
+    /**
+     * All cards currently in the deck.
+     *
+     * @var CardGraphic[]
+     */
     private array $cards = [];
 
-    /** @var string[] */
+    /**
+     * The suits available in the deck.
+     *
+     * @var string[]
+     */
     private array $suits = ['Hearts', 'Diamonds', 'Clubs', 'Spades'];
 
-    /** @var string[] */
+    /**
+     * The values available in the deck.
+     *
+     * @var string[]
+     */
     private array $values = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K'];
 
+    /**
+     * Construct a new deck of 52 cards.
+     *
+     * Creates all combinations of suits and values as CardGraphic objects.
+     */
     public function __construct()
     {
         foreach ($this->suits as $suit) {
@@ -23,6 +47,11 @@ class DeckOfCards
         file_put_contents('/tmp/card_serialize.log', 'DeckOfCards constructed: ' . count($this->cards) . " cards\n", FILE_APPEND);
     }
 
+    /**
+     * Shuffle the deck randomly.
+     *
+     * @return void
+     */
     public function shuffle(): void
     {
         shuffle($this->cards);
@@ -30,8 +59,12 @@ class DeckOfCards
     }
 
     /**
-     * @param int $number
-     * @return CardGraphic[]
+     * Draw one or more cards from the top of the deck.
+     *
+     * @param int $number The number of cards to draw.
+     * @return CardGraphic[] The drawn cards.
+     *
+     * @throws \InvalidArgumentException If trying to draw more cards than remain in the deck.
      */
     public function draw(int $number = 1): array
     {
@@ -44,6 +77,8 @@ class DeckOfCards
     }
 
     /**
+     * Get all cards currently in the deck.
+     *
      * @return CardGraphic[]
      */
     public function getCards(): array
@@ -51,13 +86,20 @@ class DeckOfCards
         return $this->cards;
     }
 
+    /**
+     * Get the number of cards currently left in the deck.
+     *
+     * @return int The number of remaining cards.
+     */
     public function getCardCount(): int
     {
         return count($this->cards);
     }
 
     /**
-     * @return CardGraphic[]
+     * Get all cards in a sorted order by suit and value.
+     *
+     * @return CardGraphic[] The sorted cards.
      */
     public function getSortedCards(): array
     {
@@ -74,8 +116,10 @@ class DeckOfCards
     }
 
     /**
+     * Convert the deck into an array representation.
+     *
      * @return array{
-     *     cards: array<int, array<string, mixed>>,
+     *     cards: array<int, array{suit: string, value: string}>,
      *     suits: string[],
      *     values: string[]
      * }
@@ -83,20 +127,29 @@ class DeckOfCards
     public function toArray(): array
     {
         $data = [
-            'cards' => array_map(fn (CardGraphic $card) => $card->toArray(), $this->cards),
+            'cards' => array_map(fn (CardGraphic $card): array => [
+                'suit' => $card->getSuit(),
+                'value' => $card->getValue()
+            ], $this->cards),
             'suits' => $this->suits,
             'values' => $this->values,
         ];
+
         file_put_contents('/tmp/card_serialize.log', 'DeckOfCards toArray: ' . json_encode($data, JSON_PRETTY_PRINT) . "\n", FILE_APPEND);
+
         return $data;
     }
 
+
     /**
+     * Recreate a DeckOfCards instance from array data.
+     *
      * @param array{
      *     cards: array<int, array{suit: string, value: string}>,
      *     suits?: string[],
      *     values?: string[]
-     * } $data
+     * } $data Array of deck data.
+     * @return self A new DeckOfCards instance.
      */
     public static function fromArray(array $data): self
     {
