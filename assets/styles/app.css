@@ -1,10 +1,13 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Playfair+Display:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Playfair+Display:wght@700&family=Merriweather:wght@400;700&display=swap");
+* {
+  box-sizing: border-box;
+}
 
 body {
   font-family: "Roboto", Arial, sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #1a3c34;
+  background-color: #f4f1ea;
   background: linear-gradient(135deg, #1a3c34 0%, #2e5a50 100%);
   color: #333;
 }
@@ -72,6 +75,7 @@ main {
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
   min-height: calc(100vh - 200px);
   padding-bottom: 80px;
+  overflow-x: hidden;
 }
 
 h1,
@@ -87,9 +91,11 @@ h4 {
 main h2 {
   text-align: center;
 }
+
 .card-landing h2 {
   text-align: start;
 }
+
 .btn {
   display: inline-block;
   padding: 10px 20px;
@@ -189,6 +195,7 @@ main h2 {
   background: #2e5a50;
   border-radius: 10px;
 }
+
 .game-board h1,
 .game-board h2 {
   text-align: center;
@@ -268,6 +275,7 @@ main h2 {
   color: #2c3e50;
   font-weight: 700;
 }
+
 pre {
   background: #2c3e50;
   color: #f8f9fa;
@@ -278,6 +286,7 @@ pre {
   font-size: 0.95em;
   box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.3);
 }
+
 article {
   display: flex;
   flex-direction: column;
@@ -384,6 +393,7 @@ footer a:hover {
   text-shadow: 2px 2px #00ffff;
   animation: bounce 1s infinite;
 }
+
 .game-info {
   text-align: center;
   background: rgba(255, 255, 255, 0.9);
@@ -391,18 +401,22 @@ footer a:hover {
   border-radius: 8px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 }
+
 .hero {
   text-align: center;
   padding: 20px;
   border-radius: 10px;
 }
+
 .documentation-container h1 {
   text-align: center;
 }
+
 .highlight {
   color: #1abc9c;
   font-weight: 700;
 }
+
 .api-container {
   max-width: 900px;
   margin: 2rem auto;
@@ -453,6 +467,169 @@ footer a:hover {
   color: #555;
   line-height: 1.4;
 }
+
+/* Stilar för bibliotekssidorna */
+.library-hero {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 500px;
+  text-align: center;
+  padding: 3em 1.5em;
+  border-radius: 12px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+  margin-bottom: 2em;
+  background-image: url(../images/library.webp);
+}
+
+.library-hero h1 {
+  font-size: 2.5em;
+  color: #fff;
+  margin-bottom: 0.5em;
+}
+
+.library-hero p {
+  font-size: 1.2em;
+  color: #f8f9fa;
+  max-width: 800px;
+  margin: 0 auto 1.5em;
+}
+
+.library-actions {
+  display: flex;
+  justify-content: center;
+  gap: 1em;
+}
+
+.library-form-container {
+  max-width: 400px;
+  padding: 2em;
+  background: #f9f9f9;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.form-group {
+  margin-bottom: 1.5em;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 0.5em;
+}
+
+.form-control {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 1em;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.form-control:focus {
+  border-color: #1abc9c;
+  box-shadow: 0 0 8px rgba(26, 188, 156, 0.3);
+  outline: none;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: center;
+  gap: 1em;
+  margin-top: 1.5em;
+}
+
+.book-details {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 2em;
+  background: #f9f9f9cc;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+.book-details-page main {
+  background-image: url("../images/books.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.book-card {
+  align-items: center;
+  background: #3e454c;
+  padding: 1.5em;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s;
+  width: 100%;
+}
+.book-card img {
+  width: 100%; /* rộng bằng khung */
+  height: 400px; /* chiều cao cố định (bạn có thể đổi giá trị) */
+  display: block;
+  border-radius: 8px;
+}
+
+.book-card:hover {
+  transform: translateY(-3px);
+}
+
+.book-image {
+  max-width: 200px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.book-info {
+  flex: 1;
+}
+
+.book-info h3 {
+  margin-top: 14px;
+  font-size: 1em;
+}
+
+.book-info p {
+  margin: 0.5em 0;
+  font-size: 1em;
+  color: #ffffff;
+}
+.book-info a {
+  margin: 0.5em 0;
+  font-size: 1em;
+  color: #ffffff;
+}
+
+.book-actions {
+  display: flex;
+  gap: 1em;
+  margin-top: 1em;
+  justify-content: center;
+  align-items: center;
+}
+
+.library-books {
+  display: flex;
+  flex-direction: column;
+  gap: 3em;
+  padding: 2em;
+  background: #f9f9f9;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  overflow-x: hidden;
+  background-image: url(../images/library.webp);
+}
+
+.book-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5em;
+  width: 100%;
+}
+
 @keyframes bounce {
   0%,
   100% {
@@ -526,6 +703,33 @@ footer a:hover {
     width: 100%;
     margin-bottom: 10px;
   }
+
+  .library-hero {
+    padding: 2em 1em;
+  }
+
+  .library-hero h1 {
+    font-size: 2em;
+  }
+
+  .library-hero p {
+    font-size: 1em;
+  }
+
+  .book-card {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .book-image {
+    max-width: 150px;
+  }
+
+  .book-grid {
+    grid-template-columns: 1fr;
+    gap: 1em;
+  }
 }
 
 @media (max-width: 480px) {
@@ -563,5 +767,29 @@ footer a:hover {
 
   .doc-section h2 {
     font-size: 1.4em;
+  }
+
+  .library-form-container {
+    padding: 1.5em;
+  }
+
+  .book-details {
+    padding: 1.5em;
+  }
+
+  .library-books {
+    padding: 1.5em;
+  }
+
+  .book-image {
+    max-width: 120px;
+  }
+
+  .book-info h3 {
+    font-size: 1.5em;
+  }
+
+  .book-info p {
+    font-size: 1em;
   }
 }

@@ -4,8 +4,8 @@ namespace App\Controller;
 
 use App\Card\Game21;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -38,11 +38,12 @@ class GameController extends AbstractController
     public function play(SessionInterface $session): Response
     {
         $game = $this->getGameFromSession($session);
-        if ($game->getStatus() === 'betting') {
+        if ('betting' === $game->getStatus()) {
             $game->dealInitialCard();
             $session->set('game', $game->toArray());
         }
         $maxBet = min($game->getPot(), $game->getPlayer()->getMoney());
+
         return $this->render('game/play.html.twig', [
             'game' => $game,
             'maxBet' => $maxBet,
@@ -54,12 +55,13 @@ class GameController extends AbstractController
     {
         $game = $this->getGameFromSession($session);
         try {
-            $amount = (int)$request->request->get('bet_amount');
+            $amount = (int) $request->request->get('bet_amount');
             $game->placeBet($amount);
             $session->set('game', $game->toArray());
         } catch (\Exception $e) {
             $this->addFlash('error', $e->getMessage());
         }
+
         return $this->redirectToRoute('game_play');
     }
 
@@ -73,6 +75,7 @@ class GameController extends AbstractController
         } catch (\Exception $e) {
             $this->addFlash('error', $e->getMessage());
         }
+
         return $this->redirectToRoute('game_play');
     }
 
@@ -86,6 +89,7 @@ class GameController extends AbstractController
         } catch (\Exception $e) {
             $this->addFlash('error', $e->getMessage());
         }
+
         return $this->redirectToRoute('game_play');
     }
 
@@ -94,6 +98,7 @@ class GameController extends AbstractController
     {
         $game = new Game21();
         $session->set('game', $game->toArray());
+
         return $this->redirectToRoute('game_play');
     }
 
@@ -102,19 +107,37 @@ class GameController extends AbstractController
         $gameData = $session->get('game');
 
         if (
-            !is_array($gameData) ||
-            !isset($gameData['deck']) ||
-            !is_array($gameData['deck'])
+            !is_array($gameData)
+            || !isset($gameData['deck'])
+            || !is_array($gameData['deck'])
+            || !isset($gameData['deck']['cards'])
+            || !is_array($gameData['deck']['cards'])
         ) {
             $game = new Game21();
             $session->set('game', $game->toArray());
+
             return $game;
         }
 
-        /** @var array{
-         *     deck: array{cards: array<int, array{suit: string, value: string}>, suits?: array<string>, values?: array<string>},
-         *     player: array{name: string, hand: array<int, array{suit: string, value: string}>, hasStood?: bool, money?: int},
-         *     bank: array{name: string, hand: array<int, array{suit: string, value: string}>, hasStood?: bool, money?: int},
+        /**
+         * @var array{
+         *     deck: array{
+         *         cards: array<int, array{suit: string, value: string}>,
+         *         suits?: string[],
+         *         values?: string[]
+         *     },
+         *     player: array{
+         *         name: string,
+         *         hand: array<int, array{suit: string, value: string}>,
+         *         hasStood?: bool,
+         *         money?: int
+         *     },
+         *     bank: array{
+         *         name: string,
+         *         hand: array<int, array{suit: string, value: string}>,
+         *         hasStood?: bool,
+         *         money?: int
+         *     },
          *     status: string,
          *     winner?: string|null,
          *     pot?: int,
@@ -123,5 +146,6 @@ class GameController extends AbstractController
          */
         return Game21::fromArray($gameData);
     }
+
 
 }

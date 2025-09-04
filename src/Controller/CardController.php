@@ -43,6 +43,7 @@ class CardController extends AbstractController
     {
         $session->clear();
         $this->addFlash('success', 'Session has been cleared.');
+
         return $this->redirectToRoute('session_show');
     }
 
@@ -50,6 +51,7 @@ class CardController extends AbstractController
     public function deck(SessionInterface $session): Response
     {
         $deck = $this->getDeckFromSession($session);
+
         return $this->render('card/deck.html.twig', [
             'cards' => $deck->getSortedCards(),
             'cardCount' => $deck->getCardCount(),
@@ -62,6 +64,7 @@ class CardController extends AbstractController
         $deck = new DeckOfCards();
         $deck->shuffle();
         $session->set('deck', $deck->toArray());
+
         return $this->render('card/deck.html.twig', [
             'cards' => $deck->getCards(),
             'cardCount' => $deck->getCardCount(),
@@ -74,6 +77,7 @@ class CardController extends AbstractController
         $deck = $this->getDeckFromSession($session);
         $drawnCards = $deck->draw();
         $session->set('deck', $deck->toArray());
+
         return $this->render('card/draw.html.twig', [
             'drawnCards' => $drawnCards,
             'cardCount' => $deck->getCardCount(),
@@ -86,6 +90,7 @@ class CardController extends AbstractController
         $deck = $this->getDeckFromSession($session);
         $drawnCards = $deck->draw($number);
         $session->set('deck', $deck->toArray());
+
         return $this->render('card/draw.html.twig', [
             'drawnCards' => $drawnCards,
             'cardCount' => $deck->getCardCount(),
@@ -99,10 +104,17 @@ class CardController extends AbstractController
         if (!is_array($deckData) || !isset($deckData['cards']) || !is_array($deckData['cards'])) {
             $deck = new DeckOfCards();
             $session->set('deck', $deck->toArray());
+
             return $deck;
         }
 
-        /** @var array{cards: array<int, array{suit: string, value: string}>, suits?: array<string>, values?: array<string>} $deckData */
+        /**
+         * @var array{
+         *     cards: array<int, array{suit: string, value: string}>,
+         *     suits?: string[],
+         *     values?: string[]
+         * } $deckData
+         */
         return DeckOfCards::fromArray($deckData);
     }
 }

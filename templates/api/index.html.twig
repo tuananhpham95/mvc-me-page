@@ -10,8 +10,8 @@
 <div class="api-routes">
     {% for route in routes %}
         <div class="api-route">
-            <strong>{{ route.route }}</strong>
-            <p>{{ route.description }}</p>
+            <strong>{{ route.route|raw }}</strong>
+            <p>{{ route.description|raw }}</p>
         </div>
     {% endfor %}
 </div>

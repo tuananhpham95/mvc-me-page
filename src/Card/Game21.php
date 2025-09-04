@@ -2,57 +2,42 @@
 
 namespace App\Card;
 
-use Exception;
 /**
  * Manages the game21 logic, handling betting, card dealing, and winner determination.
  */
 class Game21
 {   /**
     * The deck of cards used in the game.
-    *
-    * @var DeckOfCards
     */
     private DeckOfCards $deck;
 
     /**
      * The player participating in the game.
-     *
-     * @var Player
      */
     private Player $player;
 
     /**
      * The bank (dealer) participating in the game.
-     *
-     * @var Player
      */
     private Player $bank;
 
     /**
      * The current state of the game (betting, playing, player_stand, finished).
-     *
-     * @var string
      */
     private string $status; // 'playing', 'betting', 'player_stand', 'finished'
 
-     /**
+    /**
      * The winner of the game, if determined.
-     *
-     * @var string|null
      */
     private ?string $winner;
 
     /**
      * The current pot value.
-     *
-     * @var int
      */
     private int $pot;
 
     /**
      * The current bet amount, if any.
-     *
-     * @var int|null
      */
     private ?int $currentBet;
 
@@ -74,7 +59,7 @@ class Game21
     /**
      * Returns the deck of cards used in the game.
      *
-     * @return DeckOfCards The deck of cards.
+     * @return DeckOfCards the deck of cards
      */
     public function getDeck(): DeckOfCards
     {
@@ -84,7 +69,7 @@ class Game21
     /**
      * Returns the player object.
      *
-     * @return Player The player in the game.
+     * @return Player the player in the game
      */
     public function getPlayer(): Player
     {
@@ -94,7 +79,7 @@ class Game21
     /**
      * Returns the bank (dealer) object.
      *
-     * @return Player The bank in the game.
+     * @return Player the bank in the game
      */
     public function getBank(): Player
     {
@@ -104,7 +89,7 @@ class Game21
     /**
      * Returns the current game status.
      *
-     * @return string The current status (betting, playing, player_stand, finished).
+     * @return string the current status (betting, playing, player_stand, finished)
      */
     public function getStatus(): string
     {
@@ -114,7 +99,7 @@ class Game21
     /**
      * Returns the winner of the game, if determined.
      *
-     * @return string|null The winner's name or null if not determined.
+     * @return string|null the winner's name or null if not determined
      */
     public function getWinner(): ?string
     {
@@ -124,7 +109,7 @@ class Game21
     /**
      * Returns the current pot value.
      *
-     * @return int The total pot amount.
+     * @return int the total pot amount
      */
     public function getPot(): int
     {
@@ -134,7 +119,7 @@ class Game21
     /**
      * Returns the current bet amount.
      *
-     * @return int|null The bet amount or null if no bet is placed.
+     * @return int|null the bet amount or null if no bet is placed
      */
     public function getCurrentBet(): ?int
     {
@@ -144,15 +129,15 @@ class Game21
     /**
      * Deals an initial card to the player in the betting state.
      *
-     * @throws Exception If the game is not in betting state or deck is empty.
+     * @throws \Exception if the game is not in betting state or deck is empty
      */
     public function dealInitialCard(): void
     {
-        if ($this->status !== 'betting') {
-            throw new Exception('Cannot deal initial card: game not in betting state.');
+        if ('betting' !== $this->status) {
+            throw new \Exception('Cannot deal initial card: game not in betting state.');
         }
-        if ($this->deck->getCardCount() === 0) {
-            throw new Exception('No cards left in the deck.');
+        if (0 === $this->deck->getCardCount()) {
+            throw new \Exception('No cards left in the deck.');
         }
         $card = $this->deck->draw()[0];
         $this->player->addCard($card);
@@ -161,16 +146,17 @@ class Game21
     /**
      * Places a bet, updates the pot, and deals a card to start the playing state.
      *
-     * @param int $amount The bet amount.
-     * @throws Exception If the bet is invalid or deck is empty.
+     * @param int $amount the bet amount
+     *
+     * @throws \Exception if the bet is invalid or deck is empty
      */
     public function placeBet(int $amount): void
     {
-        if ($this->status !== 'betting' || $amount > $this->pot || $amount > $this->player->getMoney() || $amount <= 0) {
-            throw new Exception('Invalid bet: must be positive, less than pot, and within player funds.');
+        if ('betting' !== $this->status || $amount > $this->pot || $amount > $this->player->getMoney() || $amount <= 0) {
+            throw new \Exception('Invalid bet: must be positive, less than pot, and within player funds.');
         }
-        if ($this->deck->getCardCount() === 0) {
-            throw new Exception('No cards left in the deck.');
+        if (0 === $this->deck->getCardCount()) {
+            throw new \Exception('No cards left in the deck.');
         }
         $this->currentBet = $amount;
         $this->player->deductMoney($amount);
@@ -183,25 +169,25 @@ class Game21
     /**
      * Allows the player to draw a card and evaluates the score for win or bust.
      *
-     * @throws Exception If the game is not in playing state or deck is empty.
+     * @throws \Exception if the game is not in playing state or deck is empty
      */
     public function playerDraw(): void
     {
-        if ($this->status !== 'playing') {
-            throw new Exception('Cannot draw: game is not in playing state.');
+        if ('playing' !== $this->status) {
+            throw new \Exception('Cannot draw: game is not in playing state.');
         }
-        if ($this->deck->getCardCount() === 0) {
-            throw new Exception('No cards left in the deck.');
+        if (0 === $this->deck->getCardCount()) {
+            throw new \Exception('No cards left in the deck.');
         }
         $card = $this->deck->draw()[0];
         $this->player->addCard($card);
         $score = $this->player->getScore();
-        if ($score == 21 && $this->currentBet !== null) {
+        if (21 == $score && null !== $this->currentBet) {
             $this->player->addMoney($this->currentBet * 2); // Award player's bet * 2
             $this->pot -= $this->currentBet;
             $this->status = 'finished';
             $this->winner = 'Player';
-        } elseif ($score > 21 && $this->currentBet !== null) {
+        } elseif ($score > 21 && null !== $this->currentBet) {
             $this->bank->addMoney($this->currentBet);
             $this->pot -= $this->currentBet;
             $this->status = 'finished';
@@ -212,12 +198,12 @@ class Game21
     /**
      * Allows the player to stand, triggering the bank's turn.
      *
-     * @throws Exception If the game is not in playing state.
+     * @throws \Exception if the game is not in playing state
      */
     public function playerStand(): void
     {
-        if ($this->status !== 'playing') {
-            throw new Exception('Cannot stand: game is not in playing state.');
+        if ('playing' !== $this->status) {
+            throw new \Exception('Cannot stand: game is not in playing state.');
         }
         $this->player->stand();
         $this->status = 'player_stand';
@@ -230,11 +216,12 @@ class Game21
     private function playBank(): void
     {
         while ($this->bank->getScore() < 17 && !$this->bank->hasStood()) {
-            if ($this->deck->getCardCount() === 0 && $this->currentBet !== null) {
+            if (0 === $this->deck->getCardCount() && null !== $this->currentBet) {
                 $this->player->addMoney($this->currentBet * 2);
                 $this->pot -= $this->currentBet;
                 $this->status = 'finished';
                 $this->winner = 'Player';
+
                 return;
             }
             $card = $this->deck->draw()[0];
@@ -248,15 +235,15 @@ class Game21
     /**
      * Determines the winner by comparing player and bank scores.
      *
-     * @throws Exception If no bet has been placed.
+     * @throws \Exception if no bet has been placed
      */
     private function determineWinner(): void
     {
         $playerScore = $this->player->getScore();
         $bankScore = $this->bank->getScore();
 
-        if ($this->currentBet === null) {
-            throw new Exception('No bet placed, cannot determine winner.');
+        if (null === $this->currentBet) {
+            throw new \Exception('No bet placed, cannot determine winner.');
         }
 
         if ($playerScore > 21) {
@@ -267,7 +254,7 @@ class Game21
             $this->player->addMoney($this->currentBet * 2);
             $this->pot -= $this->currentBet;
             $this->winner = 'Player';
-        } elseif ($bankScore == 21) {
+        } elseif (21 == $bankScore) {
             $this->bank->addMoney($this->currentBet);
             $this->pot -= $this->currentBet;
             $this->winner = 'Bank';
@@ -308,7 +295,7 @@ class Game21
      *     winner: string|null,
      *     pot: int,
      *     currentBet: int|null
-     * } The game state as an array.
+     * } The game state as an array
      */
     public function toArray(): array
     {
@@ -325,6 +312,7 @@ class Game21
 
     /**
      * Creates a Game21 instance from an array representation.
+     *
      * @param array{
      *     deck: array{cards: array<int, array{suit: string, value: string}>, suits?: array<string>, values?: array<string>},
      *     player: array{name: string, hand: array<int, array{suit: string, value: string}>, hasStood?: bool, money?: int},

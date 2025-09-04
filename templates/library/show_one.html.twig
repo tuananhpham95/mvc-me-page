@@ -1,0 +1,29 @@
+
+   {% extends 'base.html.twig' %}
+
+   {% block title %}Book Details{% endblock %}
+
+    {% block body_class %}book-details-page{% endblock %}
+
+   {% block body %}
+       <section class="book-details">
+           <h1>{{ book.title }}</h1>
+           <div class="book-card">
+               {% if book.image %}
+                   <img src="{{ asset('images/' ~ book.image) }}" alt="{{ book.title }}">
+               {% endif %}
+               <div class="book-info">
+                   <p><strong>ISBN:</strong> {{ book.isbn }}</p>
+                   <p><strong>Författare:</strong> {{ book.author }}</p>
+                   <div class="book-actions">
+                       <a href="{{ path('library_update', {'id': book.id}) }}" class="btn btn-primary">Redigera</a>
+                       <form method="post" action="{{ path('library_delete', {'id': book.id}) }}" style="display:inline;" onsubmit="return confirm('Är du säker?');">
+                           <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ book.id) }}">
+                           <button type="submit" class="btn btn-secondary">Radera</button>
+                       </form>
+                       <a href="{{ path('library_show_all') }}" class="btn btn-secondary">Tillbaka till alla böcker</a>
+                   </div>
+               </div>
+           </div>
+       </section>
+   {% endblock %}

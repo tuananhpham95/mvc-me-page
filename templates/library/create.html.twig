@@ -1,0 +1,41 @@
+
+   {% extends 'base.html.twig' %}
+
+   {% block title %}Create Book{% endblock %}
+
+    {% block body_class %}book-details-page{% endblock %}
+
+   {% block body %}
+       <section class="library-form-container">
+           <h1>Lägg till en ny bok</h1>
+           {% for flash_message in app.flashes('success') %}
+               <div class="alert alert-success">{{ flash_message }}</div>
+           {% endfor %}
+           {{ form_start(form) }}
+               <div class="form-group">
+                   {{ form_label(form.title) }}
+                   {{ form_widget(form.title, {'attr': {'class': 'form-control'}}) }}
+                   {{ form_errors(form.title) }}
+               </div>
+               <div class="form-group">
+                   {{ form_label(form.isbn) }}
+                   {{ form_widget(form.isbn, {'attr': {'class': 'form-control'}}) }}
+                   {{ form_errors(form.isbn) }}
+               </div>
+               <div class="form-group">
+                   {{ form_label(form.author) }}
+                   {{ form_widget(form.author, {'attr': {'class': 'form-control'}}) }}
+                   {{ form_errors(form.author) }}
+               </div>
+               <div class="form-group">
+                   {{ form_label(form.image) }}
+                   {{ form_widget(form.image, {'attr': {'class': 'form-control'}}) }}
+                   {{ form_errors(form.image) }}
+               </div>
+               <div class="form-actions">
+                   {{ form_widget(form.save, {'attr': {'class': 'btn btn-primary'}}) }}
+                   <a href="{{ path('library_index') }}" class="btn btn-secondary">Tillbaka</a>
+               </div>
+           {{ form_end(form) }}
+       </section>
+   {% endblock %}

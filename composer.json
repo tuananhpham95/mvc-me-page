@@ -1,4 +1,6 @@
 {
+  "name": "me/report",
+  "description": "Symfony Report Application",
   "type": "project",
   "license": "proprietary",
   "minimum-stability": "stable",
@@ -7,7 +9,6 @@
     "php": ">=8.2",
     "ext-ctype": "*",
     "ext-iconv": "*",
-    "doctrine/dbal": "^3.10.1",
     "doctrine/doctrine-bundle": "^2.15.1",
     "doctrine/doctrine-migrations-bundle": "^3.4.2",
     "doctrine/orm": "^3.5.2",
@@ -19,7 +20,7 @@
     "symfony/doctrine-messenger": "7.2.*",
     "symfony/dotenv": "7.2.*",
     "symfony/expression-language": "7.2.*",
-    "symfony/flex": "^2.8.1",
+    "symfony/flex": "^2.8.2",
     "symfony/form": "7.2.*",
     "symfony/framework-bundle": "7.2.*",
     "symfony/http-client": "7.2.*",
@@ -34,11 +35,11 @@
     "symfony/runtime": "7.2.*",
     "symfony/security-bundle": "7.2.*",
     "symfony/serializer": "7.2.*",
-    "symfony/stimulus-bundle": "^2.29.1",
+    "symfony/stimulus-bundle": "^2.30.0",
     "symfony/string": "7.2.*",
     "symfony/translation": "7.2.*",
     "symfony/twig-bundle": "7.2.*",
-    "symfony/ux-turbo": "^2.29.1",
+    "symfony/ux-turbo": "^2.30.0",
     "symfony/validator": "7.2.*",
     "symfony/web-link": "7.2.*",
     "symfony/webpack-encore-bundle": "^2.3",
@@ -46,9 +47,23 @@
     "twig/extra-bundle": "^2.12|^3.21",
     "twig/twig": "^2.12|^3.21.1"
   },
+  "require-dev": {
+    "doctrine/doctrine-fixtures-bundle": "^4.1",
+    "phpstan/extension-installer": "^1.4.3",
+    "phpstan/phpstan-doctrine": "^2.0.4",
+    "phpunit/phpunit": "^9.6.25",
+    "symfony/browser-kit": "7.2.*",
+    "symfony/css-selector": "7.2.*",
+    "symfony/debug-bundle": "7.2.*",
+    "symfony/maker-bundle": "^1.64",
+    "symfony/phpunit-bridge": "^7.3.3",
+    "symfony/stopwatch": "7.2.*",
+    "symfony/web-profiler-bundle": "7.2.*"
+  },
   "config": {
     "allow-plugins": {
       "php-http/discovery": true,
+      "phpstan/extension-installer": true,
       "symfony/flex": true,
       "symfony/runtime": true
     },
@@ -87,14 +102,15 @@
     "post-update-cmd": [
       "@auto-scripts"
     ],
-    "csfix": "vendor/bin/php-cs-fixer fix src/ --rules=@PSR12",
-    "phpmd": "../../tools/phpmd/vendor/bin/phpmd . text ../../tools/phpmd/phpmd.xml || true",
-    "phpstan": "../../tools/phpstan/vendor/bin/phpstan analyse -c ../../tools/phpstan/phpstan.neon || true",
+    "csfix": "tools/php-cs-fixer/vendor/bin/php-cs-fixer fix --config=tools/php-cs-fixer/.php-cs-fixer.dist.php",
+    "csfix:dry": "tools/php-cs-fixer/vendor/bin/php-cs-fixer fix --config=tools/php-cs-fixer/.php-cs-fixer.dist.php --dry-run -v",
+    "phpmd": "tools/phpmd/vendor/bin/phpmd src text phpmd.xml || true",
+    "phpstan": "php -d memory_limit=512M tools/phpstan/vendor/bin/phpstan analyse -c tools/phpstan/phpstan.neon || true",
     "lint": [
       "@phpmd",
       "@phpstan"
     ],
-    "phpdoc": "../../tools/phpdoc/phpdoc --config=../../tools/phpdoc/phpdoc.xml",
+    "phpdoc": "tools/phpdoc/phpdoc --config=tools/phpdoc/phpdoc.xml",
     "phpunit": "XDEBUG_MODE=coverage bin/phpunit"
   },
   "conflict": {
@@ -105,16 +121,5 @@
       "allow-contrib": false,
       "require": "7.2.*"
     }
-  },
-  "require-dev": {
-    "friendsofphp/php-cs-fixer": "^3.86",
-    "phpunit/phpunit": "^9.6.24",
-    "symfony/browser-kit": "7.2.*",
-    "symfony/css-selector": "7.2.*",
-    "symfony/debug-bundle": "7.2.*",
-    "symfony/maker-bundle": "^1.64",
-    "symfony/phpunit-bridge": "^7.3.1",
-    "symfony/stopwatch": "7.2.*",
-    "symfony/web-profiler-bundle": "7.2.*"
   }
 }

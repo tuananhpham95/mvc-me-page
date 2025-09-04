@@ -3,7 +3,7 @@
 namespace App\Card;
 
 /**
- * Class Player
+ * Class Player.
  *
  * Represents a player in the Game21 card game.
  * Tracks the player's name, hand, score, money, and whether they have stood.
@@ -18,8 +18,8 @@ class Player
     /**
      * Player constructor.
      *
-     * @param string $name Player's name.
-     * @param int $money Initial amount of money (default 100).
+     * @param string $name  player's name
+     * @param int    $money initial amount of money (default 100)
      */
     public function __construct(string $name, int $money = 100)
     {
@@ -44,7 +44,7 @@ class Player
     /**
      * Adds a card to the player's hand.
      *
-     * @param Card $card The card to add.
+     * @param Card $card the card to add
      */
     public function addCard(Card $card): void
     {
@@ -72,7 +72,7 @@ class Player
     /**
      * Adds money to the player's balance.
      *
-     * @param int $amount Amount to add.
+     * @param int $amount amount to add
      */
     public function addMoney(int $amount): void
     {
@@ -82,8 +82,9 @@ class Player
     /**
      * Deducts money from the player's balance.
      *
-     * @param int $amount Amount to deduct.
-     * @throws \Exception If the player does not have enough money.
+     * @param int $amount amount to deduct
+     *
+     * @throws \Exception if the player does not have enough money
      */
     public function deductMoney(int $amount): void
     {
@@ -97,7 +98,7 @@ class Player
      * Calculates the player's current score based on their hand.
      * Aces are counted as 14 if it does not exceed 21, otherwise as 1.
      *
-     * @return int The player's score.
+     * @return int the player's score
      */
     public function getScore(): int
     {
@@ -105,26 +106,27 @@ class Player
         $aces = 0;
         foreach ($this->hand->getCards() as $card) {
             $value = $card->getValue();
-            if ($value === 'A') {
-                $aces++;
-            } elseif ($value === 'J') {
+            if ('A' === $value) {
+                ++$aces;
+            } elseif ('J' === $value) {
                 $score += 11;
-            } elseif ($value === 'Q') {
+            } elseif ('Q' === $value) {
                 $score += 12;
-            } elseif ($value === 'K') {
+            } elseif ('K' === $value) {
                 $score += 13;
             } else {
-                $score += (int)$value;
+                $score += (int) $value;
             }
         }
 
-        for ($i = 0; $i < $aces; $i++) {
+        for ($i = 0; $i < $aces; ++$i) {
             if ($score + 14 <= 21) {
                 $score += 14;
             } else {
-                $score += 1;
+                ++$score;
             }
         }
+
         return $score;
     }
 
@@ -157,7 +159,8 @@ class Player
      *     hasStood?: bool,
      *     money?: int
      * } $data
-     * @return self A new Player instance.
+     *
+     * @return self a new Player instance
      */
     public static function fromArray(array $data): self
     {

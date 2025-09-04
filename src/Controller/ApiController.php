@@ -3,7 +3,8 @@
 namespace App\Controller;
 
 use App\Card\DeckOfCards;
-use App\Card\Game21;
+use App\Entity\Book;
+use App\Repository\BookRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
@@ -23,6 +24,8 @@ class ApiController extends AbstractController
             ['route' => 'POST /api/deck/draw', 'description' => 'Draws one card and returns it with remaining count as JSON.'],
             ['route' => 'POST /api/deck/draw/{number}', 'description' => 'Draws specified number of cards and returns them with remaining count as JSON.'],
             ['route' => 'GET /api/game', 'description' => 'Returns the current state of the game 21 as JSON.'],
+            ['route' => 'GET /api/library/books', 'description' => 'Returns all books in the library as JSON.'],
+            ['route' => 'GET /api/library/book/{isbn}', 'description' => 'Returns a book by ISBN as JSON. Example: <a href="'.$this->generateUrl('api_library_book', ['isbn' => '9780446310789']).'">/api/library/book/9780446310789</a>'],
         ];
 
         return $this->render('api/index.html.twig', [
@@ -34,11 +37,11 @@ class ApiController extends AbstractController
     public function quote(): JsonResponse
     {
         $quotes = [
-            "Det finns ingen bättre utbildning än motgångar. - Benjamin Disraeli",
-            "Sjömannen ber inte om medvind, han lär sig segla. - Gustaf Lindborg",
-            "Att misslyckas är bara ett annat sätt att lära sig hur man gör något rätt. - Marian Wright Edelman",
-            "Du behöver inte bli någon du inte är för att bli bättre än du var. - Sidney Poitier",
-            "Det är klokare att gå sin egen väg än att gå vilse i andras fotspår. - Okänd"
+            'Det finns ingen bättre utbildning än motgångar. - Benjamin Disraeli',
+            'Sjömannen ber inte om medvind, han lär sig segla. - Gustaf Lindborg',
+            'Att misslyckas är bara ett annat sätt att lära sig hur man gör något rätt. - Marian Wright Edelman',
+            'Du behöver inte bli någon du inte är för att bli bättre än du var. - Sidney Poitier',
+            'Det är klokare att gå sin egen väg än att gå vilse i andras fotspår. - Okänd',
         ];
 
         $randomQuote = $quotes[array_rand($quotes)];
@@ -47,7 +50,7 @@ class ApiController extends AbstractController
         $data = [
             'quote' => $randomQuote,
             'date' => $date->format('Y-m-d'),
-            'timestamp' => $date->format('Y-m-d H:i:s')
+            'timestamp' => $date->format('Y-m-d H:i:s'),
         ];
 
         return new JsonResponse($data);
@@ -61,7 +64,7 @@ class ApiController extends AbstractController
         $data = [
             'current_time' => $date->format('H:i:s'),
             'current_date' => $date->format('Y-m-d'),
-            'timezone' => $date->getTimezone()->getName()
+            'timezone' => $date->getTimezone()->getName(),
         ];
 
         return new JsonResponse($data);
@@ -72,6 +75,7 @@ class ApiController extends AbstractController
     {
         $deck = $this->getDeckFromSession($session);
         $cards = array_map(fn ($card) => $card->getAsString(), $deck->getSortedCards());
+
         return $this->json([
             'cards' => $cards,
             'remaining' => $deck->getCardCount(),
@@ -85,6 +89,7 @@ class ApiController extends AbstractController
         $deck->shuffle();
         $session->set('deck', $deck->toArray());
         $cards = array_map(fn ($card) => $card->getAsString(), $deck->getCards());
+
         return $this->json([
             'cards' => $cards,
             'remaining' => $deck->getCardCount(),
@@ -98,6 +103,7 @@ class ApiController extends AbstractController
         $drawnCards = $deck->draw();
         $session->set('deck', $deck->toArray());
         $cards = array_map(fn ($card) => $card->getAsString(), $drawnCards);
+
         return $this->json([
             'drawn' => $cards,
             'remaining' => $deck->getCardCount(),
@@ -111,6 +117,7 @@ class ApiController extends AbstractController
         $drawnCards = $deck->draw($number);
         $session->set('deck', $deck->toArray());
         $cards = array_map(fn ($card) => $card->getAsString(), $drawnCards);
+
         return $this->json([
             'drawn' => $cards,
             'remaining' => $deck->getCardCount(),
@@ -120,13 +127,72 @@ class ApiController extends AbstractController
     private function getDeckFromSession(SessionInterface $session): DeckOfCards
     {
         $deckData = $session->get('deck');
+
         if (!is_array($deckData) || !isset($deckData['cards']) || !is_array($deckData['cards'])) {
             $deck = new DeckOfCards();
             $session->set('deck', $deck->toArray());
             return $deck;
         }
 
-        /** @var array{cards: array<int, array{suit: string, value: string}>, suits?: array<string>, values?: array<string>} $deckData */
+        /**
+         * @var array{
+         *     cards: array<int, array{suit: string, value: string}>,
+         *     suits?: string[],
+         *     values?: string[]
+         * } $deckData
+         */
         return DeckOfCards::fromArray($deckData);
+    }
+
+
+
+    #[Route('/api/library/books', name: 'api_books')]
+    public function books(BookRepository $repo): JsonResponse
+    {
+        return $this->json($repo->findAll());
+    }
+
+    #[Route('/api/library/book/{isbn}', name: 'api_book')]
+    public function book(BookRepository $repo, string $isbn): JsonResponse
+    {
+        $book = $repo->findOneBy(['isbn' => $isbn]);
+
+        return $this->json($book);
+    }
+
+    #[Route('/library/books', name: 'api_library_books')]
+    public function showAllBooks(BookRepository $bookRepository): JsonResponse
+    {
+        $books = $bookRepository->findAll();
+        $data = array_map(fn ($book) => [
+            'id' => $book->getId(),
+            'title' => $book->getTitle(),
+            'isbn' => $book->getIsbn(),
+            'author' => $book->getAuthor(),
+            'image' => $book->getImage(),
+        ], $books);
+
+        return $this->json($data);
+    }
+
+    /**
+     * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
+     */
+    #[Route('/library/book/{isbn}', name: 'api_library_book')]
+    public function showBookByIsbn(string $isbn, BookRepository $bookRepository): JsonResponse
+    {
+        /** @var Book|null $book */
+        $book = $bookRepository->findOneBy(['isbn' => $isbn]);
+        if (!$book) {
+            throw $this->createNotFoundException('Book not found');
+        }
+
+        return $this->json([
+            'id' => $book->getId(),
+            'title' => $book->getTitle(),
+            'isbn' => $book->getIsbn(),
+            'author' => $book->getAuthor(),
+            'image' => $book->getImage(),
+        ]);
     }
 }

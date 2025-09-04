@@ -3,7 +3,7 @@
 namespace App\Card;
 
 /**
- * Class CardGraphic
+ * Class CardGraphic.
  *
  * Represents a playing card with graphical support.
  * Extends the base Card class and adds methods for rendering
@@ -20,47 +20,50 @@ class CardGraphic extends Card
         'Hearts' => 'hearts',
         'Diamonds' => 'diamonds',
         'Clubs' => 'clubs',
-        'Spades' => 'spades'
+        'Spades' => 'spades',
     ];
 
     /**
      * Returns the card as a string representation.
      *
-     * @return string A string like "10 of Hearts".
+     * @return string a string like "10 of Hearts"
      */
     public function getAsString(): string
     {
         $suit = $this->suitSymbols[$this->suit] ?? $this->suit;
+
         return "{$this->value} of {$this->suit}";
     }
 
     /**
      * Returns the URL to the SVG file representing this card.
      *
-     * @return string The Wikimedia Commons URL of the card SVG.
+     * @return string the Wikimedia Commons URL of the card SVG
      */
     public function getSvgUrl(): string
     {
         $suit = $this->suitSymbols[$this->suit] ?? $this->suit;
         $value = strtolower($this->value);
-        if ($value === 'a') {
+        if ('a' === $value) {
             $value = 'ace';
-        } elseif ($value === 'j') {
+        } elseif ('j' === $value) {
             $value = 'jack';
-        } elseif ($value === 'q') {
+        } elseif ('q' === $value) {
             $value = 'queen';
-        } elseif ($value === 'k') {
+        } elseif ('k' === $value) {
             $value = 'king';
         }
-        return "https://upload.wikimedia.org/wikipedia/commons/" . $this->getSvgFilePath($value, $suit);
+
+        return 'https://upload.wikimedia.org/wikipedia/commons/'.$this->getSvgFilePath($value, $suit);
     }
 
     /**
      * Returns the specific SVG file path for a given card value and suit.
      *
      * @param string $value The card value in lowercase (e.g., "ace", "2", "king").
-     * @param string $suit The card suit in lowercase (e.g., "hearts").
-     * @return string The relative SVG path on Wikimedia Commons.
+     * @param string $suit  The card suit in lowercase (e.g., "hearts").
+     *
+     * @return string the relative SVG path on Wikimedia Commons
      */
     private function getSvgFilePath(string $value, string $suit): string
     {
@@ -118,6 +121,7 @@ class CardGraphic extends Card
             'queen_of_spades' => 'c/ca/English_pattern_queen_of_spades.svg',
             'king_of_spades' => 'f/f1/English_pattern_king_of_spades.svg',
         ];
+
         return $paths["{$value}_of_{$suit}"] ?? '';
     }
 }

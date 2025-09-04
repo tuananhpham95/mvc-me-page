@@ -5,7 +5,6 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\HttpFoundation\JsonResponse;
 
 class MeController extends AbstractController
 {
@@ -31,6 +30,7 @@ class MeController extends AbstractController
     public function lucky(): Response
     {
         $luckyValue = rand(1, 100);
+
         return $this->render('lucky.html.twig', ['luckyValue' => $luckyValue]);
     }
 }
