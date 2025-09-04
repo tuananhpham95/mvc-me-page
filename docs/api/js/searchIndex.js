@@ -621,26 +621,6 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-Controller-MeController.html#method_lucky"
         },                {
-            "fqsen": "\\App\\DataFixtures\\AppFixtures",
-            "name": "AppFixtures",
-            "summary": "",
-            "url": "classes/App-DataFixtures-AppFixtures.html"
-        },                {
-            "fqsen": "\\App\\DataFixtures\\AppFixtures\u003A\u003Aload\u0028\u0029",
-            "name": "load",
-            "summary": "",
-            "url": "classes/App-DataFixtures-AppFixtures.html#method_load"
-        },                {
-            "fqsen": "\\App\\DataFixtures\\BookFixtures",
-            "name": "BookFixtures",
-            "summary": "",
-            "url": "classes/App-DataFixtures-BookFixtures.html"
-        },                {
-            "fqsen": "\\App\\DataFixtures\\BookFixtures\u003A\u003Aload\u0028\u0029",
-            "name": "load",
-            "summary": "",
-            "url": "classes/App-DataFixtures-BookFixtures.html#method_load"
-        },                {
             "fqsen": "\\App\\Dice\\Dice",
             "name": "Dice",
             "summary": "",
@@ -790,11 +770,6 @@ Search.appendIndex(
             "name": "Controller",
             "summary": "",
             "url": "namespaces/app-controller.html"
-        },                {
-            "fqsen": "\\App\\DataFixtures",
-            "name": "DataFixtures",
-            "summary": "",
-            "url": "namespaces/app-datafixtures.html"
         },                {
             "fqsen": "\\App\\Dice",
             "name": "Dice",
