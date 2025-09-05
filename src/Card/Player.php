@@ -133,7 +133,9 @@ class Player
     /**
      * Converts the player object to an array.
      *
-     * @return array{
+     * @return array<string, mixed> The player as array
+     *
+     * @phpstan-return array{
      *     name: string,
      *     hand: array<int, array{suit: string, value: string}>,
      *     hasStood: bool,
@@ -150,10 +152,13 @@ class Player
         ];
     }
 
+
     /**
      * Creates a Player instance from an array.
      *
-     * @param array{
+     * @param array<string, mixed> $data Input data
+     *
+     * @phpstan-param array{
      *     name: string,
      *     hand: array<int, array{suit: string, value: string}>,
      *     hasStood?: bool,

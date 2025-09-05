@@ -2,15 +2,20 @@
 
 declare(strict_types=1);
 
-/**
- * Execute the command like this:
- *  php-cs-fixer --config=.php-cs-fixer.dist.php fix src tests
- */
-require_once __DIR__.'/vendor/autoload.php';
+require_once __DIR__ . '/vendor/autoload.php';
 
-$finder = PhpCsFixer\Finder::create();
+use PhpCsFixer\Config;
+use PhpCsFixer\Finder;
 
-$config = new PhpCsFixer\Config();
-$config->setFinder($finder);
+// Hitta filer i src och tests, exkludera var och vendor
+$finder = Finder::create()
+    ->in([__DIR__ . '/src', __DIR__ . '/tests'])
+    ->exclude(['var', 'vendor']);
+
+$config = new Config();
+$config->setRules([
+    '@PSR12' => true,
+])
+->setFinder($finder);
 
 return $config;

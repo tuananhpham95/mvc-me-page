@@ -287,15 +287,17 @@ class Game21
     /**
      * Converts the game state to an array representation.
      *
-     * @return array{
-     *     deck: array<mixed>,
-     *     player: array<mixed>,
-     *     bank: array<mixed>,
+     * @return array<string, mixed> The game state as an array
+     *
+     * @phpstan-return array{
+     *     deck: array{cards: array<int, array{suit: string, value: string}>, suits?: string[], values?: string[]},
+     *     player: array{name: string, hand: array<int, array{suit: string, value: string}>, hasStood?: bool, money?: int},
+     *     bank: array{name: string, hand: array<int, array{suit: string, value: string}>, hasStood?: bool, money?: int},
      *     status: string,
-     *     winner: string|null,
-     *     pot: int,
-     *     currentBet: int|null
-     * } The game state as an array
+     *     winner?: string|null,
+     *     pot?: int,
+     *     currentBet?: int|null
+     * }
      */
     public function toArray(): array
     {
@@ -313,8 +315,10 @@ class Game21
     /**
      * Creates a Game21 instance from an array representation.
      *
-     * @param array{
-     *     deck: array{cards: array<int, array{suit: string, value: string}>, suits?: array<string>, values?: array<string>},
+     * @param array<string, mixed> $data The array representation of the game
+     *
+     * @phpstan-param array{
+     *     deck: array{cards: array<int, array{suit: string, value: string}>, suits?: string[], values?: string[]},
      *     player: array{name: string, hand: array<int, array{suit: string, value: string}>, hasStood?: bool, money?: int},
      *     bank: array{name: string, hand: array<int, array{suit: string, value: string}>, hasStood?: bool, money?: int},
      *     status: string,

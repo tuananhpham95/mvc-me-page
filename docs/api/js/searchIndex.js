@@ -718,7 +718,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Entity\\Book\u003A\u003A\u0024image",
             "name": "image",
-            "summary": "The\u0020image\u0020URL\u0020of\u0020the\u0020book\u0020\u0028optional\u0029.",
+            "summary": "",
             "url": "classes/App-Entity-Book.html#property_image"
         },                {
             "fqsen": "\\App\\Form\\BookType",

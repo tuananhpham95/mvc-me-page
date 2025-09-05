@@ -37,7 +37,7 @@ class Book
     private string $author = '';
 
     /**
-     * The image URL of the book (optional).
+     * @var string|null The book image URL
      */
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private ?string $image = null;

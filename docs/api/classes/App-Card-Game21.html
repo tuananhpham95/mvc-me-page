@@ -334,7 +334,7 @@
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a class="" href="classes/App-Card-Game21.html#method_toArray">toArray()</a>
     <span>
-                                &nbsp;: array{deck: array, player: array, bank: array, status: string, winner: string|null, pot: int, currentBet: int|null}    </span>
+                                &nbsp;: array&lt;string, mixed&gt;    </span>
 </dt>
 <dd>Converts the game state to an array representation.</dd>
 
@@ -747,7 +747,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Card/Game21.php"><a href="files/src-card-game21.html"><abbr title="src/Card/Game21.php">Game21.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">326</span>
+    <span class="phpdocumentor-element-found-in__line">330</span>
 
     </aside>
 
@@ -755,7 +755,7 @@
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-            <span class="phpdocumentor-signature__static">static</span>        <span class="phpdocumentor-signature__name">fromArray</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array{deck: array{cards: array<int,array{suit: string, value: string}>, suits?: string[], values?: string[]}, player: array{name: string, hand: array<int,array{suit: string, value: string}>, hasStood?: bool, money?: int}, bank: array{name: string, hand: array<int,array{suit: string, value: string}>, hasStood?: bool, money?: int}, status: string, winner?: string|null, pot?: int, currentBet?: int|null}&nbsp;</span><span class="phpdocumentor-signature__argument__name">$data</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">self</span></code>
+            <span class="phpdocumentor-signature__static">static</span>        <span class="phpdocumentor-signature__name">fromArray</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array&lt;string, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$data</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">self</span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
@@ -765,14 +765,40 @@
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$data</span>
-                : <span class="phpdocumentor-signature__argument__return-type">array{deck: array{cards: array<int,array{suit: string, value: string}>, suits?: string[], values?: string[]}, player: array{name: string, hand: array<int,array{suit: string, value: string}>, hasStood?: bool, money?: int}, bank: array{name: string, hand: array<int,array{suit: string, value: string}>, hasStood?: bool, money?: int}, status: string, winner?: string|null, pot?: int, currentBet?: int|null}</span>
+                : <span class="phpdocumentor-signature__argument__return-type">array&lt;string, mixed&gt;</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                
+                    <section class="phpdocumentor-description"><p>The array representation of the game</p>
+</section>
+
             </dd>
             </dl>
 
     
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="classes/App-Card-Game21.html#method_fromArray#tags" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">phpstan-param</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>array{
+deck: array{cards: array&lt;int, array{suit: string, value: string}&gt;, suits?: string[], values?: string[]},
+player: array{name: string, hand: array&lt;int, array{suit: string, value: string}&gt;, hasStood?: bool, money?: int},
+bank: array{name: string, hand: array&lt;int, array{suit: string, value: string}&gt;, hasStood?: bool, money?: int},
+status: string,
+winner?: string|null,
+pot?: int,
+currentBet?: int|null
+} $data</p>
+</section>
+
+                                    </dd>
+                                            </dl>
 
     
 
@@ -1300,7 +1326,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Card/Game21.php"><a href="files/src-card-game21.html"><abbr title="src/Card/Game21.php">Game21.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">300</span>
+    <span class="phpdocumentor-element-found-in__line">302</span>
 
     </aside>
 
@@ -1308,7 +1334,7 @@
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">toArray</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array{deck: array, player: array, bank: array, status: string, winner: string|null, pot: int, currentBet: int|null}</span></code>
+                    <span class="phpdocumentor-signature__name">toArray</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string, mixed&gt;</span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
@@ -1316,12 +1342,36 @@
     
     
     
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="classes/App-Card-Game21.html#method_toArray#tags" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">phpstan-return</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>array{
+deck: array{cards: array&lt;int, array{suit: string, value: string}&gt;, suits?: string[], values?: string[]},
+player: array{name: string, hand: array&lt;int, array{suit: string, value: string}&gt;, hasStood?: bool, money?: int},
+bank: array{name: string, hand: array&lt;int, array{suit: string, value: string}&gt;, hasStood?: bool, money?: int},
+status: string,
+winner?: string|null,
+pot?: int,
+currentBet?: int|null
+}</p>
+</section>
+
+                                    </dd>
+                                            </dl>
 
     
 
             <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-        <span class="phpdocumentor-signature__response_type">array{deck: array, player: array, bank: array, status: string, winner: string|null, pot: int, currentBet: int|null}</span>
+        <span class="phpdocumentor-signature__response_type">array&lt;string, mixed&gt;</span>
                     &mdash;
                 <section class="phpdocumentor-description"><p>The game state as an array</p>
 </section>

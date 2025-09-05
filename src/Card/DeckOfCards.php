@@ -118,24 +118,33 @@ class DeckOfCards
     }
 
     /**
-     * Convert the deck into an array representation.
-     *@return array{cards: array<int, array>, suits: string[], values: string[]}
-     */
-    public function toArray(): array
-    {
-        $data = [
-            'cards' => array_map(fn (CardGraphic $card): array => [
-                'suit' => $card->getSuit(),
-                'value' => $card->getValue(),
-            ], $this->cards),
-            'suits' => $this->suits,
-            'values' => $this->values,
+ * Convert the deck into an array representation.
+ *
+ * @return array{
+ *     cards: array<int, array{suit: string, value: string}>,
+ *     suits: string[],
+ *     values: string[]
+ * }
+ */
+public function toArray(): array
+{
+    $cardsArray = [];
+    foreach ($this->cards as $card) {
+        $cardsArray[] = [
+            'suit' => $card->getSuit(),
+            'value' => $card->getValue(),
         ];
-
-        file_put_contents('/tmp/card_serialize.log', 'DeckOfCards toArray: '.json_encode($data, JSON_PRETTY_PRINT)."\n", FILE_APPEND);
-
-        return $data;
     }
+
+    $data = [
+        'cards' => $cardsArray,
+        'suits' => $this->suits,
+        'values' => $this->values,
+    ];
+
+    return $data;
+}
+
 
     /**
      * Recreate a DeckOfCards instance from array data.
