@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1757102417">
-  <project timestamp="1757102417">
+<coverage generated="1757104132">
+  <project timestamp="1757104132">
     <file name="/Users/dannipham/dbwebb-kurser/mvc/me/report/src/Card/Card.php">
       <class name="App\Card\Card" namespace="global">
         <metrics complexity="6" methods="6" coveredmethods="6" conditionals="0" coveredconditionals="0" statements="10" coveredstatements="10" elements="16" coveredelements="16"/>
@@ -182,7 +182,7 @@
     </file>
     <file name="/Users/dannipham/dbwebb-kurser/mvc/me/report/src/Card/Game21.php">
       <class name="App\Card\Game21" namespace="global">
-        <metrics complexity="40" methods="17" coveredmethods="8" conditionals="0" coveredconditionals="0" statements="114" coveredstatements="58" elements="131" coveredelements="66"/>
+        <metrics complexity="40" methods="17" coveredmethods="8" conditionals="0" coveredconditionals="0" statements="114" coveredstatements="62" elements="131" coveredelements="70"/>
       </class>
       <line num="47" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="7"/>
       <line num="49" type="stmt" count="7"/>
@@ -225,7 +225,7 @@
       <line num="164" type="stmt" count="4"/>
       <line num="165" type="stmt" count="4"/>
       <line num="166" type="stmt" count="4"/>
-      <line num="174" type="method" name="playerDraw" visibility="public" complexity="7" crap="9.15" count="2"/>
+      <line num="174" type="method" name="playerDraw" visibility="public" complexity="7" crap="7.08" count="2"/>
       <line num="176" type="stmt" count="2"/>
       <line num="177" type="stmt" count="0"/>
       <line num="179" type="stmt" count="2"/>
@@ -234,15 +234,15 @@
       <line num="183" type="stmt" count="2"/>
       <line num="184" type="stmt" count="2"/>
       <line num="185" type="stmt" count="2"/>
-      <line num="186" type="stmt" count="0"/>
-      <line num="187" type="stmt" count="0"/>
-      <line num="188" type="stmt" count="0"/>
-      <line num="189" type="stmt" count="0"/>
-      <line num="190" type="stmt" count="2"/>
-      <line num="191" type="stmt" count="2"/>
-      <line num="192" type="stmt" count="2"/>
-      <line num="193" type="stmt" count="2"/>
-      <line num="194" type="stmt" count="2"/>
+      <line num="186" type="stmt" count="1"/>
+      <line num="187" type="stmt" count="1"/>
+      <line num="188" type="stmt" count="1"/>
+      <line num="189" type="stmt" count="1"/>
+      <line num="190" type="stmt" count="1"/>
+      <line num="191" type="stmt" count="1"/>
+      <line num="192" type="stmt" count="1"/>
+      <line num="193" type="stmt" count="1"/>
+      <line num="194" type="stmt" count="1"/>
       <line num="203" type="method" name="playerStand" visibility="public" complexity="2" crap="2.03" count="1"/>
       <line num="205" type="stmt" count="1"/>
       <line num="206" type="stmt" count="0"/>
@@ -315,11 +315,11 @@
       <line num="339" type="stmt" count="0"/>
       <line num="340" type="stmt" count="0"/>
       <line num="342" type="stmt" count="0"/>
-      <metrics loc="345" ncloc="217" classes="1" methods="17" coveredmethods="8" conditionals="0" coveredconditionals="0" statements="114" coveredstatements="58" elements="131" coveredelements="66"/>
+      <metrics loc="345" ncloc="217" classes="1" methods="17" coveredmethods="8" conditionals="0" coveredconditionals="0" statements="114" coveredstatements="62" elements="131" coveredelements="70"/>
     </file>
     <file name="/Users/dannipham/dbwebb-kurser/mvc/me/report/src/Card/Player.php">
       <class name="App\Card\Player" namespace="global">
-        <metrics complexity="21" methods="12" coveredmethods="12" conditionals="0" coveredconditionals="0" statements="45" coveredstatements="45" elements="57" coveredelements="57"/>
+        <metrics complexity="21" methods="12" coveredmethods="11" conditionals="0" coveredconditionals="0" statements="45" coveredstatements="44" elements="57" coveredelements="55"/>
       </class>
       <line num="24" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="14"/>
       <line num="26" type="stmt" count="14"/>
@@ -344,24 +344,24 @@
       <line num="91" type="stmt" count="6"/>
       <line num="92" type="stmt" count="1"/>
       <line num="94" type="stmt" count="5"/>
-      <line num="103" type="method" name="getScore" visibility="public" complexity="8" crap="8" count="5"/>
+      <line num="103" type="method" name="getScore" visibility="public" complexity="8" crap="8.01" count="5"/>
       <line num="105" type="stmt" count="5"/>
       <line num="106" type="stmt" count="5"/>
       <line num="107" type="stmt" count="5"/>
       <line num="108" type="stmt" count="5"/>
       <line num="109" type="stmt" count="5"/>
-      <line num="110" type="stmt" count="2"/>
+      <line num="110" type="stmt" count="3"/>
       <line num="111" type="stmt" count="3"/>
-      <line num="112" type="stmt" count="2"/>
+      <line num="112" type="stmt" count="0"/>
       <line num="113" type="stmt" count="3"/>
       <line num="114" type="stmt" count="1"/>
       <line num="115" type="stmt" count="3"/>
       <line num="116" type="stmt" count="1"/>
       <line num="118" type="stmt" count="3"/>
       <line num="122" type="stmt" count="5"/>
-      <line num="123" type="stmt" count="2"/>
+      <line num="123" type="stmt" count="3"/>
       <line num="124" type="stmt" count="2"/>
-      <line num="126" type="stmt" count="1"/>
+      <line num="126" type="stmt" count="2"/>
       <line num="130" type="stmt" count="5"/>
       <line num="145" type="method" name="toArray" visibility="public" complexity="1" crap="1" count="1"/>
       <line num="147" type="stmt" count="1"/>
@@ -378,7 +378,7 @@
       <line num="177" type="stmt" count="1"/>
       <line num="178" type="stmt" count="1"/>
       <line num="181" type="stmt" count="1"/>
-      <metrics loc="184" ncloc="118" classes="1" methods="12" coveredmethods="12" conditionals="0" coveredconditionals="0" statements="45" coveredstatements="45" elements="57" coveredelements="57"/>
+      <metrics loc="184" ncloc="118" classes="1" methods="12" coveredmethods="11" conditionals="0" coveredconditionals="0" statements="45" coveredstatements="44" elements="57" coveredelements="55"/>
     </file>
     <file name="/Users/dannipham/dbwebb-kurser/mvc/me/report/src/Command/SeedBooksCommand.php">
       <class name="App\Command\SeedBooksCommand" namespace="global">
@@ -819,6 +819,6 @@
       <line num="21" type="stmt" count="1"/>
       <metrics loc="24" ncloc="16" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
     </file>
-    <metrics files="17" loc="2007" ncloc="1447" classes="16" methods="109" coveredmethods="52" conditionals="0" coveredconditionals="0" statements="607" coveredstatements="243" elements="716" coveredelements="295"/>
+    <metrics files="17" loc="2007" ncloc="1447" classes="16" methods="109" coveredmethods="51" conditionals="0" coveredconditionals="0" statements="607" coveredstatements="246" elements="716" coveredelements="297"/>
   </project>
 </coverage>

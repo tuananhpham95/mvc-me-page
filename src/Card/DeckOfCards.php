@@ -118,32 +118,32 @@ class DeckOfCards
     }
 
     /**
- * Convert the deck into an array representation.
- *
- * @return array{
- *     cards: array<int, array{suit: string, value: string}>,
- *     suits: string[],
- *     values: string[]
- * }
- */
-public function toArray(): array
-{
-    $cardsArray = [];
-    foreach ($this->cards as $card) {
-        $cardsArray[] = [
-            'suit' => $card->getSuit(),
-            'value' => $card->getValue(),
+     * Convert the deck into an array representation.
+     *
+     * @return array{
+     *     cards: array<int, array{suit: string, value: string}>,
+     *     suits: string[],
+     *     values: string[]
+     * }
+     */
+    public function toArray(): array
+    {
+        $cardsArray = [];
+        foreach ($this->cards as $card) {
+            $cardsArray[] = [
+                'suit' => $card->getSuit(),
+                'value' => $card->getValue(),
+            ];
+        }
+
+        $data = [
+            'cards' => $cardsArray,
+            'suits' => $this->suits,
+            'values' => $this->values,
         ];
+
+        return $data;
     }
-
-    $data = [
-        'cards' => $cardsArray,
-        'suits' => $this->suits,
-        'values' => $this->values,
-    ];
-
-    return $data;
-}
 
 
     /**
@@ -153,9 +153,9 @@ public function toArray(): array
      *     cards: array<int, array{suit: string, value: string}>,
      *     suits?: string[],
      *     values?: string[]
-     * } $data Array of deck data
+     * } $data
      *
-     * @return self a new DeckOfCards instance
+     * @return self
      */
     public static function fromArray(array $data): self
     {
