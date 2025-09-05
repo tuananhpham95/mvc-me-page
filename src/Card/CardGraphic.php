@@ -30,8 +30,6 @@ class CardGraphic extends Card
      */
     public function getAsString(): string
     {
-        $suit = $this->suitSymbols[$this->suit] ?? $this->suit;
-
         return "{$this->value} of {$this->suit}";
     }
 

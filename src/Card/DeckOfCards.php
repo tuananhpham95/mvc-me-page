@@ -119,12 +119,7 @@ class DeckOfCards
 
     /**
      * Convert the deck into an array representation.
-     *
-     * @return array{
-     *     cards: array<int, array{suit: string, value: string}>,
-     *     suits: string[],
-     *     values: string[]
-     * }
+     *@return array{cards: array<int, array>, suits: string[], values: string[]}
      */
     public function toArray(): array
     {
