@@ -1,136 +1,62 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
-  <testsuite name="" tests="41" assertions="76" errors="1" warnings="0" failures="3" skipped="0" time="1.152852">
-    <testsuite name="Project Test Suite" tests="41" assertions="76" errors="1" warnings="0" failures="3" skipped="0" time="1.152852">
-      <testsuite name="App\Tests\Card\CardGraphicTest" file="/Users/dannipham/dbwebb-kurser/mvc/me/report/tests/Card/CardGraphicTest.php" tests="2" assertions="4" errors="0" warnings="0" failures="0" skipped="0" time="0.011114">
-        <testcase name="testGetSvgUrl" class="App\Tests\Card\CardGraphicTest" classname="App.Tests.Card.CardGraphicTest" file="/Users/dannipham/dbwebb-kurser/mvc/me/report/tests/Card/CardGraphicTest.php" line="16" assertions="2" time="0.010670"/>
-        <testcase name="testGetAsString" class="App\Tests\Card\CardGraphicTest" classname="App.Tests.Card.CardGraphicTest" file="/Users/dannipham/dbwebb-kurser/mvc/me/report/tests/Card/CardGraphicTest.php" line="28" assertions="2" time="0.000444"/>
+  <testsuite name="" tests="38" assertions="72" errors="0" warnings="0" failures="0" skipped="0" time="0.114080">
+    <testsuite name="Project Test Suite" tests="38" assertions="72" errors="0" warnings="0" failures="0" skipped="0" time="0.114080">
+      <testsuite name="App\Tests\Card\CardGraphicTest" file="/Users/dannipham/dbwebb-kurser/mvc/me/report/tests/Card/CardGraphicTest.php" tests="2" assertions="4" errors="0" warnings="0" failures="0" skipped="0" time="0.009997">
+        <testcase name="testGetSvgUrl" class="App\Tests\Card\CardGraphicTest" classname="App.Tests.Card.CardGraphicTest" file="/Users/dannipham/dbwebb-kurser/mvc/me/report/tests/Card/CardGraphicTest.php" line="16" assertions="2" time="0.009457"/>
+        <testcase name="testGetAsString" class="App\Tests\Card\CardGraphicTest" classname="App.Tests.Card.CardGraphicTest" file="/Users/dannipham/dbwebb-kurser/mvc/me/report/tests/Card/CardGraphicTest.php" line="28" assertions="2" time="0.000540"/>
       </testsuite>
-      <testsuite name="App\Tests\Card\CardHandTest" file="/Users/dannipham/dbwebb-kurser/mvc/me/report/tests/Card/CardHandTest.php" tests="4" assertions="6" errors="0" warnings="0" failures="0" skipped="0" time="0.005091">
-        <testcase name="testAddCardAndGetCards" class="App\Tests\Card\CardHandTest" classname="App.Tests.Card.CardHandTest" file="/Users/dannipham/dbwebb-kurser/mvc/me/report/tests/Card/CardHandTest.php" line="17" assertions="2" time="0.002644"/>
-        <testcase name="testToArray" class="App\Tests\Card\CardHandTest" classname="App.Tests.Card.CardHandTest" file="/Users/dannipham/dbwebb-kurser/mvc/me/report/tests/Card/CardHandTest.php" line="29" assertions="1" time="0.000566"/>
-        <testcase name="testFromArray" class="App\Tests\Card\CardHandTest" classname="App.Tests.Card.CardHandTest" file="/Users/dannipham/dbwebb-kurser/mvc/me/report/tests/Card/CardHandTest.php" line="41" assertions="2" time="0.000514"/>
-        <testcase name="testEmptyHand" class="App\Tests\Card\CardHandTest" classname="App.Tests.Card.CardHandTest" file="/Users/dannipham/dbwebb-kurser/mvc/me/report/tests/Card/CardHandTest.php" line="52" assertions="1" time="0.001367"/>
+      <testsuite name="App\Tests\Card\CardHandTest" file="/Users/dannipham/dbwebb-kurser/mvc/me/report/tests/Card/CardHandTest.php" tests="4" assertions="6" errors="0" warnings="0" failures="0" skipped="0" time="0.004277">
+        <testcase name="testAddCardAndGetCards" class="App\Tests\Card\CardHandTest" classname="App.Tests.Card.CardHandTest" file="/Users/dannipham/dbwebb-kurser/mvc/me/report/tests/Card/CardHandTest.php" line="17" assertions="2" time="0.001947"/>
+        <testcase name="testToArray" class="App\Tests\Card\CardHandTest" classname="App.Tests.Card.CardHandTest" file="/Users/dannipham/dbwebb-kurser/mvc/me/report/tests/Card/CardHandTest.php" line="29" assertions="1" time="0.000538"/>
+        <testcase name="testFromArray" class="App\Tests\Card\CardHandTest" classname="App.Tests.Card.CardHandTest" file="/Users/dannipham/dbwebb-kurser/mvc/me/report/tests/Card/CardHandTest.php" line="41" assertions="2" time="0.000439"/>
+        <testcase name="testEmptyHand" class="App\Tests\Card\CardHandTest" classname="App.Tests.Card.CardHandTest" file="/Users/dannipham/dbwebb-kurser/mvc/me/report/tests/Card/CardHandTest.php" line="52" assertions="1" time="0.001353"/>
       </testsuite>
-      <testsuite name="App\Tests\Card\CardTest" file="/Users/dannipham/dbwebb-kurser/mvc/me/report/tests/Card/CardTest.php" tests="3" assertions="6" errors="0" warnings="0" failures="0" skipped="0" time="0.001631">
-        <testcase name="testConstructAndGetters" class="App\Tests\Card\CardTest" classname="App.Tests.Card.CardTest" file="/Users/dannipham/dbwebb-kurser/mvc/me/report/tests/Card/CardTest.php" line="16" assertions="3" time="0.000572"/>
-        <testcase name="testToArray" class="App\Tests\Card\CardTest" classname="App.Tests.Card.CardTest" file="/Users/dannipham/dbwebb-kurser/mvc/me/report/tests/Card/CardTest.php" line="27" assertions="1" time="0.000517"/>
-        <testcase name="testFromArray" class="App\Tests\Card\CardTest" classname="App.Tests.Card.CardTest" file="/Users/dannipham/dbwebb-kurser/mvc/me/report/tests/Card/CardTest.php" line="37" assertions="2" time="0.000542"/>
+      <testsuite name="App\Tests\Card\CardTest" file="/Users/dannipham/dbwebb-kurser/mvc/me/report/tests/Card/CardTest.php" tests="3" assertions="6" errors="0" warnings="0" failures="0" skipped="0" time="0.001738">
+        <testcase name="testConstructAndGetters" class="App\Tests\Card\CardTest" classname="App.Tests.Card.CardTest" file="/Users/dannipham/dbwebb-kurser/mvc/me/report/tests/Card/CardTest.php" line="16" assertions="3" time="0.000807"/>
+        <testcase name="testToArray" class="App\Tests\Card\CardTest" classname="App.Tests.Card.CardTest" file="/Users/dannipham/dbwebb-kurser/mvc/me/report/tests/Card/CardTest.php" line="27" assertions="1" time="0.000553"/>
+        <testcase name="testFromArray" class="App\Tests\Card\CardTest" classname="App.Tests.Card.CardTest" file="/Users/dannipham/dbwebb-kurser/mvc/me/report/tests/Card/CardTest.php" line="37" assertions="2" time="0.000377"/>
       </testsuite>
-      <testsuite name="App\Tests\Card\DeckOfCardsTest" file="/Users/dannipham/dbwebb-kurser/mvc/me/report/tests/Card/DeckOfCardsTest.php" tests="7" assertions="11" errors="0" warnings="0" failures="0" skipped="0" time="0.032791">
-        <testcase name="testConstruct" class="App\Tests\Card\DeckOfCardsTest" classname="App.Tests.Card.DeckOfCardsTest" file="/Users/dannipham/dbwebb-kurser/mvc/me/report/tests/Card/DeckOfCardsTest.php" line="16" assertions="1" time="0.003279"/>
-        <testcase name="testDraw" class="App\Tests\Card\DeckOfCardsTest" classname="App.Tests.Card.DeckOfCardsTest" file="/Users/dannipham/dbwebb-kurser/mvc/me/report/tests/Card/DeckOfCardsTest.php" line="25" assertions="2" time="0.000892"/>
-        <testcase name="testDrawTooManyCards" class="App\Tests\Card\DeckOfCardsTest" classname="App.Tests.Card.DeckOfCardsTest" file="/Users/dannipham/dbwebb-kurser/mvc/me/report/tests/Card/DeckOfCardsTest.php" line="36" assertions="1" time="0.001929"/>
-        <testcase name="testShuffle" class="App\Tests\Card\DeckOfCardsTest" classname="App.Tests.Card.DeckOfCardsTest" file="/Users/dannipham/dbwebb-kurser/mvc/me/report/tests/Card/DeckOfCardsTest.php" line="46" assertions="2" time="0.018507"/>
-        <testcase name="testGetSortedCards" class="App\Tests\Card\DeckOfCardsTest" classname="App.Tests.Card.DeckOfCardsTest" file="/Users/dannipham/dbwebb-kurser/mvc/me/report/tests/Card/DeckOfCardsTest.php" line="59" assertions="2" time="0.005636"/>
-        <testcase name="testToArrayAndFromArray" class="App\Tests\Card\DeckOfCardsTest" classname="App.Tests.Card.DeckOfCardsTest" file="/Users/dannipham/dbwebb-kurser/mvc/me/report/tests/Card/DeckOfCardsTest.php" line="71" assertions="1" time="0.001641"/>
-        <testcase name="testGetCardCount" class="App\Tests\Card\DeckOfCardsTest" classname="App.Tests.Card.DeckOfCardsTest" file="/Users/dannipham/dbwebb-kurser/mvc/me/report/tests/Card/DeckOfCardsTest.php" line="82" assertions="2" time="0.000908"/>
+      <testsuite name="App\Tests\Card\DeckOfCardsTest" file="/Users/dannipham/dbwebb-kurser/mvc/me/report/tests/Card/DeckOfCardsTest.php" tests="7" assertions="11" errors="0" warnings="0" failures="0" skipped="0" time="0.042678">
+        <testcase name="testConstruct" class="App\Tests\Card\DeckOfCardsTest" classname="App.Tests.Card.DeckOfCardsTest" file="/Users/dannipham/dbwebb-kurser/mvc/me/report/tests/Card/DeckOfCardsTest.php" line="16" assertions="1" time="0.003127"/>
+        <testcase name="testDraw" class="App\Tests\Card\DeckOfCardsTest" classname="App.Tests.Card.DeckOfCardsTest" file="/Users/dannipham/dbwebb-kurser/mvc/me/report/tests/Card/DeckOfCardsTest.php" line="25" assertions="2" time="0.000847"/>
+        <testcase name="testDrawTooManyCards" class="App\Tests\Card\DeckOfCardsTest" classname="App.Tests.Card.DeckOfCardsTest" file="/Users/dannipham/dbwebb-kurser/mvc/me/report/tests/Card/DeckOfCardsTest.php" line="36" assertions="1" time="0.001885"/>
+        <testcase name="testShuffle" class="App\Tests\Card\DeckOfCardsTest" classname="App.Tests.Card.DeckOfCardsTest" file="/Users/dannipham/dbwebb-kurser/mvc/me/report/tests/Card/DeckOfCardsTest.php" line="46" assertions="2" time="0.028146"/>
+        <testcase name="testGetSortedCards" class="App\Tests\Card\DeckOfCardsTest" classname="App.Tests.Card.DeckOfCardsTest" file="/Users/dannipham/dbwebb-kurser/mvc/me/report/tests/Card/DeckOfCardsTest.php" line="59" assertions="2" time="0.006391"/>
+        <testcase name="testToArrayAndFromArray" class="App\Tests\Card\DeckOfCardsTest" classname="App.Tests.Card.DeckOfCardsTest" file="/Users/dannipham/dbwebb-kurser/mvc/me/report/tests/Card/DeckOfCardsTest.php" line="71" assertions="1" time="0.001443"/>
+        <testcase name="testGetCardCount" class="App\Tests\Card\DeckOfCardsTest" classname="App.Tests.Card.DeckOfCardsTest" file="/Users/dannipham/dbwebb-kurser/mvc/me/report/tests/Card/DeckOfCardsTest.php" line="82" assertions="2" time="0.000842"/>
       </testsuite>
-      <testsuite name="App\Tests\Card\Game21Test" file="/Users/dannipham/dbwebb-kurser/mvc/me/report/tests/Card/Game21Test.php" tests="7" assertions="22" errors="0" warnings="0" failures="1" skipped="0" time="0.012950">
-        <testcase name="testConstruct" class="App\Tests\Card\Game21Test" classname="App.Tests.Card.Game21Test" file="/Users/dannipham/dbwebb-kurser/mvc/me/report/tests/Card/Game21Test.php" line="11" assertions="7" time="0.004954"/>
-        <testcase name="testDealInitialCard" class="App\Tests\Card\Game21Test" classname="App.Tests.Card.Game21Test" file="/Users/dannipham/dbwebb-kurser/mvc/me/report/tests/Card/Game21Test.php" line="23" assertions="2" time="0.001233"/>
-        <testcase name="testPlaceBet" class="App\Tests\Card\Game21Test" classname="App.Tests.Card.Game21Test" file="/Users/dannipham/dbwebb-kurser/mvc/me/report/tests/Card/Game21Test.php" line="31" assertions="5" time="0.001010"/>
-        <testcase name="testPlaceBetInvalid" class="App\Tests\Card\Game21Test" classname="App.Tests.Card.Game21Test" file="/Users/dannipham/dbwebb-kurser/mvc/me/report/tests/Card/Game21Test.php" line="42" assertions="1" time="0.000769"/>
-        <testcase name="testPlayerDrawBust" class="App\Tests\Card\Game21Test" classname="App.Tests.Card.Game21Test" file="/Users/dannipham/dbwebb-kurser/mvc/me/report/tests/Card/Game21Test.php" line="49" assertions="2" time="0.001009"/>
-        <testcase name="testPlayerDrawTo21" class="App\Tests\Card\Game21Test" classname="App.Tests.Card.Game21Test" file="/Users/dannipham/dbwebb-kurser/mvc/me/report/tests/Card/Game21Test.php" line="67" assertions="1" time="0.001772">
-          <failure type="PHPUnit\Framework\ExpectationFailedException">App\Tests\Card\Game21Test::testPlayerDrawTo21
-Player should reach 21
-Failed asserting that two strings are identical.
---- Expected
-+++ Actual
-@@ @@
--'finished'
-+'playing'
-
-/Users/dannipham/dbwebb-kurser/mvc/me/report/tests/Card/Game21Test.php:81
-/Users/dannipham/dbwebb-kurser/mvc/me/report/vendor/phpunit/phpunit/phpunit:107</failure>
-        </testcase>
-        <testcase name="testPlayerStandAndBankPlay" class="App\Tests\Card\Game21Test" classname="App.Tests.Card.Game21Test" file="/Users/dannipham/dbwebb-kurser/mvc/me/report/tests/Card/Game21Test.php" line="85" assertions="4" time="0.002202"/>
+      <testsuite name="App\Tests\Card\Game21Test" file="/Users/dannipham/dbwebb-kurser/mvc/me/report/tests/Card/Game21Test.php" tests="7" assertions="22" errors="0" warnings="0" failures="0" skipped="0" time="0.012916">
+        <testcase name="testConstruct" class="App\Tests\Card\Game21Test" classname="App.Tests.Card.Game21Test" file="/Users/dannipham/dbwebb-kurser/mvc/me/report/tests/Card/Game21Test.php" line="11" assertions="7" time="0.004772"/>
+        <testcase name="testDealInitialCard" class="App\Tests\Card\Game21Test" classname="App.Tests.Card.Game21Test" file="/Users/dannipham/dbwebb-kurser/mvc/me/report/tests/Card/Game21Test.php" line="23" assertions="2" time="0.001424"/>
+        <testcase name="testPlaceBet" class="App\Tests\Card\Game21Test" classname="App.Tests.Card.Game21Test" file="/Users/dannipham/dbwebb-kurser/mvc/me/report/tests/Card/Game21Test.php" line="31" assertions="5" time="0.001025"/>
+        <testcase name="testPlaceBetInvalid" class="App\Tests\Card\Game21Test" classname="App.Tests.Card.Game21Test" file="/Users/dannipham/dbwebb-kurser/mvc/me/report/tests/Card/Game21Test.php" line="42" assertions="1" time="0.000917"/>
+        <testcase name="testPlayerDrawBust" class="App\Tests\Card\Game21Test" classname="App.Tests.Card.Game21Test" file="/Users/dannipham/dbwebb-kurser/mvc/me/report/tests/Card/Game21Test.php" line="49" assertions="2" time="0.001355"/>
+        <testcase name="testPlayerDrawTo21" class="App\Tests\Card\Game21Test" classname="App.Tests.Card.Game21Test" file="/Users/dannipham/dbwebb-kurser/mvc/me/report/tests/Card/Game21Test.php" line="67" assertions="1" time="0.001177"/>
+        <testcase name="testPlayerStandAndBankPlay" class="App\Tests\Card\Game21Test" classname="App.Tests.Card.Game21Test" file="/Users/dannipham/dbwebb-kurser/mvc/me/report/tests/Card/Game21Test.php" line="85" assertions="4" time="0.002245"/>
       </testsuite>
-      <testsuite name="App\Tests\Card\PlayerTest" file="/Users/dannipham/dbwebb-kurser/mvc/me/report/tests/Card/PlayerTest.php" tests="7" assertions="13" errors="0" warnings="0" failures="0" skipped="0" time="0.004873">
-        <testcase name="testConstructAndGetters" class="App\Tests\Card\PlayerTest" classname="App.Tests.Card.PlayerTest" file="/Users/dannipham/dbwebb-kurser/mvc/me/report/tests/Card/PlayerTest.php" line="18" assertions="4" time="0.001509"/>
-        <testcase name="testAddCardAndScore" class="App\Tests\Card\PlayerTest" classname="App.Tests.Card.PlayerTest" file="/Users/dannipham/dbwebb-kurser/mvc/me/report/tests/Card/PlayerTest.php" line="30" assertions="1" time="0.000613"/>
-        <testcase name="testScoreWithMultipleAces" class="App\Tests\Card\PlayerTest" classname="App.Tests.Card.PlayerTest" file="/Users/dannipham/dbwebb-kurser/mvc/me/report/tests/Card/PlayerTest.php" line="50" assertions="1" time="0.000447"/>
-        <testcase name="testStand" class="App\Tests\Card\PlayerTest" classname="App.Tests.Card.PlayerTest" file="/Users/dannipham/dbwebb-kurser/mvc/me/report/tests/Card/PlayerTest.php" line="69" assertions="1" time="0.000925"/>
-        <testcase name="testMoneyOperations" class="App\Tests\Card\PlayerTest" classname="App.Tests.Card.PlayerTest" file="/Users/dannipham/dbwebb-kurser/mvc/me/report/tests/Card/PlayerTest.php" line="79" assertions="2" time="0.000433"/>
-        <testcase name="testDeductMoneyException" class="App\Tests\Card\PlayerTest" classname="App.Tests.Card.PlayerTest" file="/Users/dannipham/dbwebb-kurser/mvc/me/report/tests/Card/PlayerTest.php" line="91" assertions="1" time="0.000483"/>
-        <testcase name="testToArrayAndFromArray" class="App\Tests\Card\PlayerTest" classname="App.Tests.Card.PlayerTest" file="/Users/dannipham/dbwebb-kurser/mvc/me/report/tests/Card/PlayerTest.php" line="101" assertions="3" time="0.000462"/>
+      <testsuite name="App\Tests\Card\PlayerTest" file="/Users/dannipham/dbwebb-kurser/mvc/me/report/tests/Card/PlayerTest.php" tests="7" assertions="13" errors="0" warnings="0" failures="0" skipped="0" time="0.006014">
+        <testcase name="testConstructAndGetters" class="App\Tests\Card\PlayerTest" classname="App.Tests.Card.PlayerTest" file="/Users/dannipham/dbwebb-kurser/mvc/me/report/tests/Card/PlayerTest.php" line="18" assertions="4" time="0.001396"/>
+        <testcase name="testAddCardAndScore" class="App\Tests\Card\PlayerTest" classname="App.Tests.Card.PlayerTest" file="/Users/dannipham/dbwebb-kurser/mvc/me/report/tests/Card/PlayerTest.php" line="30" assertions="1" time="0.000609"/>
+        <testcase name="testScoreWithMultipleAces" class="App\Tests\Card\PlayerTest" classname="App.Tests.Card.PlayerTest" file="/Users/dannipham/dbwebb-kurser/mvc/me/report/tests/Card/PlayerTest.php" line="50" assertions="1" time="0.000697"/>
+        <testcase name="testStand" class="App\Tests\Card\PlayerTest" classname="App.Tests.Card.PlayerTest" file="/Users/dannipham/dbwebb-kurser/mvc/me/report/tests/Card/PlayerTest.php" line="69" assertions="1" time="0.001534"/>
+        <testcase name="testMoneyOperations" class="App\Tests\Card\PlayerTest" classname="App.Tests.Card.PlayerTest" file="/Users/dannipham/dbwebb-kurser/mvc/me/report/tests/Card/PlayerTest.php" line="79" assertions="2" time="0.000394"/>
+        <testcase name="testDeductMoneyException" class="App\Tests\Card\PlayerTest" classname="App.Tests.Card.PlayerTest" file="/Users/dannipham/dbwebb-kurser/mvc/me/report/tests/Card/PlayerTest.php" line="91" assertions="1" time="0.000671"/>
+        <testcase name="testToArrayAndFromArray" class="App\Tests\Card\PlayerTest" classname="App.Tests.Card.PlayerTest" file="/Users/dannipham/dbwebb-kurser/mvc/me/report/tests/Card/PlayerTest.php" line="101" assertions="3" time="0.000713"/>
       </testsuite>
-      <testsuite name="App\Dice\DiceTest" file="/Users/dannipham/dbwebb-kurser/mvc/me/report/tests/Dice/DiceTest.php" tests="1" assertions="2" errors="0" warnings="0" failures="0" skipped="0" time="0.002427">
-        <testcase name="testCreateDice" class="App\Dice\DiceTest" classname="App.Dice.DiceTest" file="/Users/dannipham/dbwebb-kurser/mvc/me/report/tests/Dice/DiceTest.php" line="16" assertions="2" time="0.002427"/>
+      <testsuite name="App\Dice\DiceTest" file="/Users/dannipham/dbwebb-kurser/mvc/me/report/tests/Dice/DiceTest.php" tests="1" assertions="2" errors="0" warnings="0" failures="0" skipped="0" time="0.001805">
+        <testcase name="testCreateDice" class="App\Dice\DiceTest" classname="App.Dice.DiceTest" file="/Users/dannipham/dbwebb-kurser/mvc/me/report/tests/Dice/DiceTest.php" line="16" assertions="2" time="0.001805"/>
       </testsuite>
-      <testsuite name="App\Tests\Repository\BookRepositoryTest" file="/Users/dannipham/dbwebb-kurser/mvc/me/report/tests/Library/BookRepositoryTest.php" tests="1" assertions="1" errors="0" warnings="0" failures="0" skipped="0" time="0.027110">
-        <testcase name="testRepositoryInstantiation" class="App\Tests\Repository\BookRepositoryTest" classname="App.Tests.Repository.BookRepositoryTest" file="/Users/dannipham/dbwebb-kurser/mvc/me/report/tests/Library/BookRepositoryTest.php" line="26" assertions="1" time="0.027110"/>
+      <testsuite name="App\Tests\Repository\BookRepositoryTest" file="/Users/dannipham/dbwebb-kurser/mvc/me/report/tests/Library/BookRepositoryTest.php" tests="1" assertions="1" errors="0" warnings="0" failures="0" skipped="0" time="0.030714">
+        <testcase name="testRepositoryInstantiation" class="App\Tests\Repository\BookRepositoryTest" classname="App.Tests.Repository.BookRepositoryTest" file="/Users/dannipham/dbwebb-kurser/mvc/me/report/tests/Library/BookRepositoryTest.php" line="26" assertions="1" time="0.030714"/>
       </testsuite>
-      <testsuite name="App\Tests\Entity\BookTest" file="/Users/dannipham/dbwebb-kurser/mvc/me/report/tests/Library/BookTest.php" tests="6" assertions="7" errors="0" warnings="0" failures="0" skipped="0" time="0.004260">
-        <testcase name="testCreateBook" class="App\Tests\Entity\BookTest" classname="App.Tests.Entity.BookTest" file="/Users/dannipham/dbwebb-kurser/mvc/me/report/tests/Library/BookTest.php" line="13" assertions="1" time="0.002364"/>
-        <testcase name="testTitle" class="App\Tests\Entity\BookTest" classname="App.Tests.Entity.BookTest" file="/Users/dannipham/dbwebb-kurser/mvc/me/report/tests/Library/BookTest.php" line="22" assertions="1" time="0.000441"/>
-        <testcase name="testIsbn" class="App\Tests\Entity\BookTest" classname="App.Tests.Entity.BookTest" file="/Users/dannipham/dbwebb-kurser/mvc/me/report/tests/Library/BookTest.php" line="32" assertions="1" time="0.000372"/>
-        <testcase name="testAuthor" class="App\Tests\Entity\BookTest" classname="App.Tests.Entity.BookTest" file="/Users/dannipham/dbwebb-kurser/mvc/me/report/tests/Library/BookTest.php" line="42" assertions="1" time="0.000351"/>
-        <testcase name="testImage" class="App\Tests\Entity\BookTest" classname="App.Tests.Entity.BookTest" file="/Users/dannipham/dbwebb-kurser/mvc/me/report/tests/Library/BookTest.php" line="52" assertions="2" time="0.000362"/>
-        <testcase name="testId" class="App\Tests\Entity\BookTest" classname="App.Tests.Entity.BookTest" file="/Users/dannipham/dbwebb-kurser/mvc/me/report/tests/Library/BookTest.php" line="65" assertions="1" time="0.000370"/>
-      </testsuite>
-      <testsuite name="App\Tests\Controller\LibraryControllerTest" file="/Users/dannipham/dbwebb-kurser/mvc/me/report/tests/Library/LibraryControllerTest.php" tests="3" assertions="4" errors="1" warnings="0" failures="2" skipped="0" time="1.050605">
-        <testcase name="testIndex" class="App\Tests\Controller\LibraryControllerTest" classname="App.Tests.Controller.LibraryControllerTest" file="/Users/dannipham/dbwebb-kurser/mvc/me/report/tests/Library/LibraryControllerTest.php" line="9" assertions="1" time="0.621318">
-          <failure type="PHPUnit\Framework\ExpectationFailedException">App\Tests\Controller\LibraryControllerTest::testIndex
-Failed asserting that the Response is successful.
-HTTP/1.1 301 Moved Permanently&#13;
-Content-Type: text/html; charset=utf-8&#13;
-Date:         Wed, 10 Sep 2025 16:02:54 GMT&#13;
-Location:     http://localhost/library/&#13;
-X-Robots-Tag: noindex&#13;
-&#13;
-&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-    &lt;head&gt;
-        &lt;meta charset="UTF-8" /&gt;
-        &lt;meta http-equiv="refresh" content="0;url='http://localhost/library/'" /&gt;
-
-        &lt;title&gt;Redirecting to http://localhost/library/&lt;/title&gt;
-    &lt;/head&gt;
-    &lt;body&gt;
-        Redirecting to &lt;a href="http://localhost/library/"&gt;http://localhost/library/&lt;/a&gt;.
-    &lt;/body&gt;
-&lt;/html&gt;
-
-/Users/dannipham/dbwebb-kurser/mvc/me/report/vendor/symfony/framework-bundle/Test/BrowserKitAssertionsTrait.php:148
-/Users/dannipham/dbwebb-kurser/mvc/me/report/vendor/symfony/framework-bundle/Test/BrowserKitAssertionsTrait.php:33
-/Users/dannipham/dbwebb-kurser/mvc/me/report/tests/Library/LibraryControllerTest.php:14
-/Users/dannipham/dbwebb-kurser/mvc/me/report/vendor/phpunit/phpunit/phpunit:107</failure>
-        </testcase>
-        <testcase name="testCreate" class="App\Tests\Controller\LibraryControllerTest" classname="App.Tests.Controller.LibraryControllerTest" file="/Users/dannipham/dbwebb-kurser/mvc/me/report/tests/Library/LibraryControllerTest.php" line="18" assertions="3" time="0.412314">
-          <failure type="PHPUnit\Framework\ExpectationFailedException">App\Tests\Controller\LibraryControllerTest::testCreate
-Failed asserting that Symfony\Component\DomCrawler\Crawler Object &amp;00000000000007a10000000000000000 (
-    'defaultNamespacePrefix' =&gt; 'default'
-    'namespaces' =&gt; Array &amp;0 ()
-    'cachedNamespaces' =&gt; ArrayObject Object &amp;00000000000007900000000000000000 ()
-    'baseHref' =&gt; 'http://localhost/library/create'
-    'document' =&gt; DOMDocument Object &amp;000000000000081d0000000000000000 ()
-    'nodes' =&gt; Array &amp;1 (
-        0 =&gt; DOMElement Object &amp;00000000000007a50000000000000000 ()
-    )
-    'isHtml' =&gt; true
-    'html5Parser' =&gt; Masterminds\HTML5 Object &amp;00000000000007980000000000000000 (
-        'defaultOptions' =&gt; Array &amp;2 (
-            'encode_entities' =&gt; false
-            'disable_html_ns' =&gt; true
-        )
-        'errors' =&gt; Array &amp;3 ()
-    )
-    'uri' =&gt; 'http://localhost/library/create'
-) matches selector "h1" and the text "Me-sida för MVC-kursen" of the node matching selector "h1" contains "Lägg till en ny bok".
-
-/Users/dannipham/dbwebb-kurser/mvc/me/report/vendor/symfony/framework-bundle/Test/DomCrawlerAssertionsTrait.php:44
-/Users/dannipham/dbwebb-kurser/mvc/me/report/tests/Library/LibraryControllerTest.php:24
-/Users/dannipham/dbwebb-kurser/mvc/me/report/vendor/phpunit/phpunit/phpunit:107</failure>
-        </testcase>
-        <testcase name="testDeleteSuccess" class="App\Tests\Controller\LibraryControllerTest" classname="App.Tests.Controller.LibraryControllerTest" file="/Users/dannipham/dbwebb-kurser/mvc/me/report/tests/Library/LibraryControllerTest.php" line="27" assertions="0" time="0.016973">
-          <error type="Error">App\Tests\Controller\LibraryControllerTest::testDeleteSuccess
-Error: Class "App\Tests\Controller\Book" not found
-
-/Users/dannipham/dbwebb-kurser/mvc/me/report/tests/Library/LibraryControllerTest.php:33
-/Users/dannipham/dbwebb-kurser/mvc/me/report/vendor/phpunit/phpunit/phpunit:107</error>
-        </testcase>
+      <testsuite name="App\Tests\Entity\BookTest" file="/Users/dannipham/dbwebb-kurser/mvc/me/report/tests/Library/BookTest.php" tests="6" assertions="7" errors="0" warnings="0" failures="0" skipped="0" time="0.003941">
+        <testcase name="testCreateBook" class="App\Tests\Entity\BookTest" classname="App.Tests.Entity.BookTest" file="/Users/dannipham/dbwebb-kurser/mvc/me/report/tests/Library/BookTest.php" line="13" assertions="1" time="0.001488"/>
+        <testcase name="testTitle" class="App\Tests\Entity\BookTest" classname="App.Tests.Entity.BookTest" file="/Users/dannipham/dbwebb-kurser/mvc/me/report/tests/Library/BookTest.php" line="22" assertions="1" time="0.000501"/>
+        <testcase name="testIsbn" class="App\Tests\Entity\BookTest" classname="App.Tests.Entity.BookTest" file="/Users/dannipham/dbwebb-kurser/mvc/me/report/tests/Library/BookTest.php" line="32" assertions="1" time="0.000392"/>
+        <testcase name="testAuthor" class="App\Tests\Entity\BookTest" classname="App.Tests.Entity.BookTest" file="/Users/dannipham/dbwebb-kurser/mvc/me/report/tests/Library/BookTest.php" line="42" assertions="1" time="0.000408"/>
+        <testcase name="testImage" class="App\Tests\Entity\BookTest" classname="App.Tests.Entity.BookTest" file="/Users/dannipham/dbwebb-kurser/mvc/me/report/tests/Library/BookTest.php" line="52" assertions="2" time="0.000714"/>
+        <testcase name="testId" class="App\Tests\Entity\BookTest" classname="App.Tests.Entity.BookTest" file="/Users/dannipham/dbwebb-kurser/mvc/me/report/tests/Library/BookTest.php" line="65" assertions="1" time="0.000437"/>
       </testsuite>
     </testsuite>
   </testsuite>

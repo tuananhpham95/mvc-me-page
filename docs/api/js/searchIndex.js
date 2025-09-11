@@ -621,6 +621,16 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-Controller-MeController.html#method_lucky"
         },                {
+            "fqsen": "\\App\\Controller\\MetricsController",
+            "name": "MetricsController",
+            "summary": "",
+            "url": "classes/App-Controller-MetricsController.html"
+        },                {
+            "fqsen": "\\App\\Controller\\MetricsController\u003A\u003Aindex\u0028\u0029",
+            "name": "index",
+            "summary": "Displays\u0020the\u0020metrics\u0020analysis\u0020page\u0020for\u0020code\u0020quality.",
+            "url": "classes/App-Controller-MetricsController.html#method_index"
+        },                {
             "fqsen": "\\App\\Dice\\Dice",
             "name": "Dice",
             "summary": "",
