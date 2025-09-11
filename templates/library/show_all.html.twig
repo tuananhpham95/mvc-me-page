@@ -1,43 +1,60 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}All Books{% endblock %}
+{% block title %}
+    All Books
+{% endblock %}
 
 {% block body %}
-    <section class="library-books">
-        <h1>Alla Böcker</h1>
-        {% for flash_message in app.flashes('success') %}
-            <div class="alert alert-success">{{ flash_message }}</div>
-        {% endfor %}
-        {% if books|length > 0 %}
-            <div class="book-grid">
-                {% for book in books %}
-                    <div class="book-card">
-                        {% if book.image %}
+<section class="library-books">
+    <h1>Alla Böcker</h1>
+
+    {# Hiển thị các flash messages #}
+    {% for flash_message in app.flashes('success') %}
+        <div class="alert alert-success">
+            {{ flash_message }}
+        </div>
+    {% endfor %}
+
+    {% if books|length > 0 %}
+        <div class="book-grid">
+            {% for book in books %}
+                <div class="book-card">
+                    {% if book.image %}
+                        <a href="{{ path('library_show', {'id': book.id}) }}">
+                            <img src="{{ asset(book.image) }}" alt="{{ book.title }}">
+                        </a>
+                    {% endif %}
+
+                    <div class="book-info">
+                        <h3>
                             <a href="{{ path('library_show', {'id': book.id}) }}">
-                                <img src="{{ asset('images/' ~ book.image) }}" alt="{{ book.title }}">
-                            </a>                          
-                        {% endif %}
-                        <div class="book-info">
-                            <h3><a href="{{ path('library_show', {'id': book.id}) }}">{{ book.title }}</a></h3>
-                            <p><strong>ISBN:</strong> {{ book.isbn }}</p>
-                            <p><strong>Författare:</strong> {{ book.author }}</p>
-                            <div class="book-actions">
-                                <a href="{{ path('library_update', {'id': book.id}) }}" class="btn btn-primary">Redigera</a>
-                                <form method="post" action="{{ path('library_delete', {'id': book.id}) }}" style="display:inline;" onsubmit="return confirm('Är du säker?');">
-                                    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ book.id) }}">
-                                    <button type="submit" class="btn btn-secondary">Radera</button>
-                                </form>
-                            </div>
+                                {{ book.title }}
+                            </a>
+                        </h3>
+                        <p><strong>ISBN:</strong> {{ book.isbn }}</p>
+                        <p><strong>Författare:</strong> {{ book.author }}</p>
+
+                        <div class="book-actions">
+                            <a href="{{ path('library_update', {'id': book.id}) }}" class="btn btn-primary">
+                                Redigera
+                            </a>
+
+                            <form method="post" action="{{ path('library_delete', {'id': book.id}) }}" style="display:inline;" onsubmit="return confirm('Är du säker?');">
+                                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ book.id) }}">
+                                <button type="submit" class="btn btn-secondary">Radera</button>
+                            </form>
                         </div>
                     </div>
-                {% endfor %}
-            </div>
-        {% else %}
-            <p>Inga böcker hittades.</p>
-        {% endif %}
-        <div class="library-actions">
-            <a href="{{ path('library_create') }}" class="btn btn-primary">Lägg till ny bok</a>
-            <a href="{{ path('library_index') }}" class="btn btn-secondary">Tillbaka till biblioteket</a>
+                </div>
+            {% endfor %}
         </div>
-    </section>
-{% endblock %}  
+    {% else %}
+        <p>Inga böcker hittades.</p>
+    {% endif %}
+
+    <div class="library-actions">
+        <a href="{{ path('library_create') }}" class="btn btn-primary">Lägg till ny bok</a>
+        <a href="{{ path('library_index') }}" class="btn btn-secondary">Tillbaka till biblioteket</a>
+    </div>
+</section>
+{% endblock %}

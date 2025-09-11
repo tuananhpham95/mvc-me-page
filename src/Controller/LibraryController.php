@@ -38,6 +38,7 @@ class LibraryController extends AbstractController
     public function create(Request $request, EntityManagerInterface $entityManager): Response
     {
         $book = new Book();
+
         $form = $this->createFormBuilder($book)
             ->add('title', TextType::class, ['label' => 'Title'])
             ->add('isbn', TextType::class, ['label' => 'ISBN'])
@@ -47,6 +48,7 @@ class LibraryController extends AbstractController
             ->getForm();
 
         $form->handleRequest($request);
+
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->persist($book);
             $entityManager->flush();
@@ -111,6 +113,7 @@ class LibraryController extends AbstractController
             ->getForm();
 
         $form->handleRequest($request);
+
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
             $this->addFlash('success', 'Book updated successfully.');
@@ -156,11 +159,13 @@ class LibraryController extends AbstractController
     public function reset(EntityManagerInterface $entityManager): Response
     {
         $entityManager->createQuery('DELETE FROM App\Entity\Book')->execute();
+
         $books = [
             ['title' => 'To Kill a Mockingbird', 'isbn' => '9780446310789', 'author' => 'Harper Lee', 'image' => '/images/to-kill-a-mockingbird.jpg'],
             ['title' => '1984', 'isbn' => '9780451524935', 'author' => 'George Orwell', 'image' => '/images/1984.jpg'],
             ['title' => 'Pride and Prejudice', 'isbn' => '9780141439518', 'author' => 'Jane Austen', 'image' => '/images/pride-and-prejudice.jpg'],
         ];
+
         foreach ($books as $bookData) {
             $book = new Book();
             $book->setTitle($bookData['title']);
@@ -169,6 +174,7 @@ class LibraryController extends AbstractController
             $book->setImage($bookData['image']);
             $entityManager->persist($book);
         }
+
         $entityManager->flush();
         $this->addFlash('success', 'Database reset successfully.');
 

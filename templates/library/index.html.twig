@@ -1,16 +1,22 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Library{% endblock %}
+{% block title %}
+    Library
+{% endblock %}
 
 {% block body %}
-    <section class="library-hero">
-        <div class="hero-content">
-            <h1>Välkommen till Vårt Digitala Bibliotek</h1>
-            <p>Upptäck, organisera och hantera din boksamling med elegans. Lägg till nya böcker, utforska titlar eller uppdatera din samling i en miljö inspirerad av klassiska bibliotek.</p>
-            <div class="library-actions">
-                <a href="{{ path('library_create') }}" class="btn btn-primary">Lägg till ny bok</a>
-                <a href="{{ path('library_show_all') }}" class="btn btn-secondary">Visa alla böcker</a>
-            </div>
+<section class="library-hero">
+    <div class="hero-content">
+        <h1>Välkommen till Vårt Digitala Bibliotek</h1>
+        <p>
+            Upptäck, organisera och hantera din boksamling med elegans. 
+            Lägg till nya böcker, utforska titlar eller uppdatera din samling 
+            i en miljö inspirerad av klassiska bibliotek.
+        </p>
+        <div class="library-actions">
+            <a href="{{ path('library_create') }}" class="btn btn-primary">Lägg till ny bok</a>
+            <a href="{{ path('library_show_all') }}" class="btn btn-secondary">Visa alla böcker</a>
         </div>
-    </section>
+    </div>
+</section>
 {% endblock %}
