@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1765134623">
-  <project timestamp="1765134623">
+<coverage generated="1765137185">
+  <project timestamp="1765137185">
     <file name="/Users/dannipham/dbwebb-kurser/mvc/me/report/src/Card/Card.php">
       <class name="App\Card\Card" namespace="global">
         <metrics complexity="6" methods="6" coveredmethods="6" conditionals="0" coveredconditionals="0" statements="10" coveredstatements="10" elements="16" coveredelements="16"/>
@@ -350,18 +350,18 @@
       <line num="107" type="stmt" count="5"/>
       <line num="108" type="stmt" count="5"/>
       <line num="109" type="stmt" count="5"/>
-      <line num="110" type="stmt" count="3"/>
+      <line num="110" type="stmt" count="2"/>
       <line num="111" type="stmt" count="3"/>
       <line num="112" type="stmt" count="0"/>
       <line num="113" type="stmt" count="3"/>
-      <line num="114" type="stmt" count="1"/>
+      <line num="114" type="stmt" count="2"/>
       <line num="115" type="stmt" count="3"/>
       <line num="116" type="stmt" count="2"/>
-      <line num="118" type="stmt" count="2"/>
+      <line num="118" type="stmt" count="3"/>
       <line num="122" type="stmt" count="5"/>
-      <line num="123" type="stmt" count="3"/>
+      <line num="123" type="stmt" count="2"/>
       <line num="124" type="stmt" count="2"/>
-      <line num="126" type="stmt" count="2"/>
+      <line num="126" type="stmt" count="1"/>
       <line num="130" type="stmt" count="5"/>
       <line num="145" type="method" name="toArray" visibility="public" complexity="1" crap="1" count="1"/>
       <line num="147" type="stmt" count="1"/>
