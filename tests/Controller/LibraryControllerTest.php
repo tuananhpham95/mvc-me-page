@@ -26,4 +26,11 @@ class LibraryControllerTest extends WebTestCase
         $client->request('GET', '/library/create');
         $this->assertResponseIsSuccessful();
     }
+
+    public function testResetPageRedirects(): void
+    {
+        $client = static::createClient();
+        $client->request('GET', '/library/reset');
+        $this->assertResponseRedirects('/library/show');
+    }
 }
