@@ -2,6 +2,10 @@
 
 ![Skärmbild av min me-sida](/assets/images/me-page.png)
 
+[![Build Status](https://scrutinizer-ci.com/g/tuananhpham95/mvc-me-page/badges/build.png?b=main)](https://scrutinizer-ci.com/g/tuananhpham95/mvc-me-page/build-status/main)
+[![Code Coverage](https://scrutinizer-ci.com/g/tuananhpham95/mvc-me-page/badges/coverage.png?b=main)](https://scrutinizer-ci.com/g/tuananhpham95/mvc-me-page/?branch=main)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/tuananhpham95/mvc-me-page/badges/quality-score.png?b=main)](https://scrutinizer-ci.com/g/tuananhpham95/mvc-me-page/?branch=main)
+
 ## Om projektet
 
 Detta är min personliga me-sida för kursen MVC. Här presenterar jag mig själv, kursen, mina redovisningstexter och en enkel JSON API. Projektet är byggt med Symfony och använder Twig för templating samt Encore för asset-hantering.

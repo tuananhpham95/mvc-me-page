@@ -406,6 +406,11 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-Controller-ApiController.html"
         },                {
+            "fqsen": "\\App\\Controller\\ApiController\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "",
+            "url": "classes/App-Controller-ApiController.html#method___construct"
+        },                {
             "fqsen": "\\App\\Controller\\ApiController\u003A\u003AapiLanding\u0028\u0029",
             "name": "apiLanding",
             "summary": "",
@@ -441,11 +446,6 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-Controller-ApiController.html#method_apiDrawNumber"
         },                {
-            "fqsen": "\\App\\Controller\\ApiController\u003A\u003AgetDeckFromSession\u0028\u0029",
-            "name": "getDeckFromSession",
-            "summary": "",
-            "url": "classes/App-Controller-ApiController.html#method_getDeckFromSession"
-        },                {
             "fqsen": "\\App\\Controller\\ApiController\u003A\u003Abooks\u0028\u0029",
             "name": "books",
             "summary": "",
@@ -456,6 +456,11 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-Controller-ApiController.html#method_book"
         },                {
+            "fqsen": "\\App\\Controller\\ApiController\u003A\u003AbookToArray\u0028\u0029",
+            "name": "bookToArray",
+            "summary": "",
+            "url": "classes/App-Controller-ApiController.html#method_bookToArray"
+        },                {
             "fqsen": "\\App\\Controller\\ApiController\u003A\u003AshowAllBooks\u0028\u0029",
             "name": "showAllBooks",
             "summary": "",
@@ -465,6 +470,11 @@ Search.appendIndex(
             "name": "showBookByIsbn",
             "summary": "",
             "url": "classes/App-Controller-ApiController.html#method_showBookByIsbn"
+        },                {
+            "fqsen": "\\App\\Controller\\ApiController\u003A\u003A\u0024deckService",
+            "name": "deckService",
+            "summary": "",
+            "url": "classes/App-Controller-ApiController.html#property_deckService"
         },                {
             "fqsen": "\\App\\Controller\\CardController",
             "name": "CardController",
@@ -761,6 +771,26 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-Repository-BookRepository.html#method___construct"
         },                {
+            "fqsen": "\\App\\Service\\DeckSessionService",
+            "name": "DeckSessionService",
+            "summary": "",
+            "url": "classes/App-Service-DeckSessionService.html"
+        },                {
+            "fqsen": "\\App\\Service\\DeckSessionService\u003A\u003AgetDeck\u0028\u0029",
+            "name": "getDeck",
+            "summary": "",
+            "url": "classes/App-Service-DeckSessionService.html#method_getDeck"
+        },                {
+            "fqsen": "\\App\\Service\\DeckSessionService\u003A\u003AsaveDeck\u0028\u0029",
+            "name": "saveDeck",
+            "summary": "",
+            "url": "classes/App-Service-DeckSessionService.html#method_saveDeck"
+        },                {
+            "fqsen": "\\App\\Service\\DeckSessionService\u003A\u003ASESSION_KEY",
+            "name": "SESSION_KEY",
+            "summary": "",
+            "url": "classes/App-Service-DeckSessionService.html#constant_SESSION_KEY"
+        },                {
             "fqsen": "\\",
             "name": "\\",
             "summary": "",
@@ -805,5 +835,10 @@ Search.appendIndex(
             "name": "Repository",
             "summary": "",
             "url": "namespaces/app-repository.html"
+        },                {
+            "fqsen": "\\App\\Service",
+            "name": "Service",
+            "summary": "",
+            "url": "namespaces/app-service.html"
         }            ]
 );

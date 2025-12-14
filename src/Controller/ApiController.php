@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Card\DeckOfCards;
 use App\Entity\Book;
 use App\Repository\BookRepository;
+use App\Service\DeckSessionService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
@@ -13,6 +14,11 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class ApiController extends AbstractController
 {
+    public function __construct(
+        private readonly DeckSessionService $deckService
+    ) {
+    }
+
     #[Route('/api', name: 'api_landing')]
     public function apiLanding(): Response
     {
@@ -73,7 +79,7 @@ class ApiController extends AbstractController
     #[Route('/api/deck', name: 'api_deck', methods: ['GET'])]
     public function apiDeck(SessionInterface $session): JsonResponse
     {
-        $deck = $this->getDeckFromSession($session);
+        $deck = $this->deckService->getDeck($session);
         $cards = array_map(fn ($card) => $card->getAsString(), $deck->getSortedCards());
 
         return $this->json([
@@ -87,7 +93,7 @@ class ApiController extends AbstractController
     {
         $deck = new DeckOfCards();
         $deck->shuffle();
-        $session->set('deck', $deck->toArray());
+        $this->deckService->saveDeck($session, $deck);
         $cards = array_map(fn ($card) => $card->getAsString(), $deck->getCards());
 
         return $this->json([
@@ -99,9 +105,9 @@ class ApiController extends AbstractController
     #[Route('/api/deck/draw', name: 'api_deck_draw', methods: ['POST'])]
     public function apiDraw(SessionInterface $session): JsonResponse
     {
-        $deck = $this->getDeckFromSession($session);
+        $deck = $this->deckService->getDeck($session);
         $drawnCards = $deck->draw();
-        $session->set('deck', $deck->toArray());
+        $this->deckService->saveDeck($session, $deck);
         $cards = array_map(fn ($card) => $card->getAsString(), $drawnCards);
 
         return $this->json([
@@ -113,9 +119,9 @@ class ApiController extends AbstractController
     #[Route('/api/deck/draw/{number<\d+>}', name: 'api_deck_draw_number', methods: ['POST'])]
     public function apiDrawNumber(SessionInterface $session, int $number): JsonResponse
     {
-        $deck = $this->getDeckFromSession($session);
+        $deck = $this->deckService->getDeck($session);
         $drawnCards = $deck->draw($number);
-        $session->set('deck', $deck->toArray());
+        $this->deckService->saveDeck($session, $deck);
         $cards = array_map(fn ($card) => $card->getAsString(), $drawnCards);
 
         return $this->json([
@@ -123,28 +129,6 @@ class ApiController extends AbstractController
             'remaining' => $deck->getCardCount(),
         ]);
     }
-
-    private function getDeckFromSession(SessionInterface $session): DeckOfCards
-    {
-        $deckData = $session->get('deck');
-
-        if (!is_array($deckData) || !isset($deckData['cards']) || !is_array($deckData['cards'])) {
-            $deck = new DeckOfCards();
-            $session->set('deck', $deck->toArray());
-            return $deck;
-        }
-
-        /**
-         * @var array{
-         *     cards: array<int, array{suit: string, value: string}>,
-         *     suits?: string[],
-         *     values?: string[]
-         * } $deckData
-         */
-        return DeckOfCards::fromArray($deckData);
-    }
-
-
 
     #[Route('/api/library/books', name: 'api_books')]
     public function books(BookRepository $repo): JsonResponse
@@ -155,29 +139,34 @@ class ApiController extends AbstractController
     #[Route('/api/library/book/{isbn}', name: 'api_book')]
     public function book(BookRepository $repo, string $isbn): JsonResponse
     {
-        $book = $repo->findOneBy(['isbn' => $isbn], null);
+        $book = $repo->findOneBy(['isbn' => $isbn]);
 
         return $this->json($book);
+    }
+
+    /**
+     * @return array{id: int|null, title: string, isbn: string, author: string, image: string|null}
+     */
+    private function bookToArray(Book $book): array
+    {
+        return [
+            'id' => $book->getId(),
+            'title' => $book->getTitle(),
+            'isbn' => $book->getIsbn(),
+            'author' => $book->getAuthor(),
+            'image' => $book->getImage(),
+        ];
     }
 
     #[Route('/library/books', name: 'api_library_books')]
     public function showAllBooks(BookRepository $bookRepository): JsonResponse
     {
         $books = $bookRepository->findAll();
-        $data = array_map(fn ($book) => [
-            'id' => $book->getId(),
-            'title' => $book->getTitle(),
-            'isbn' => $book->getIsbn(),
-            'author' => $book->getAuthor(),
-            'image' => $book->getImage(),
-        ], $books);
+        $data = array_map([$this, 'bookToArray'], $books);
 
         return $this->json($data);
     }
 
-    /**
-     * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
-     */
     #[Route('/library/book/{isbn}', name: 'api_library_book')]
     public function showBookByIsbn(string $isbn, BookRepository $bookRepository): JsonResponse
     {
@@ -187,12 +176,6 @@ class ApiController extends AbstractController
             throw $this->createNotFoundException('Book not found');
         }
 
-        return $this->json([
-            'id' => $book->getId(),
-            'title' => $book->getTitle(),
-            'isbn' => $book->getIsbn(),
-            'author' => $book->getAuthor(),
-            'image' => $book->getImage(),
-        ]);
+        return $this->json($this->bookToArray($book));
     }
 }

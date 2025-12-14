@@ -131,5 +131,16 @@
             <h4>TIL</h4>
             <p>Min TIL för Kmom05 är hur Doctrine ORM och SQLite integreras i Symfony för att skapa en robust CRUD-applikation. Doctrine:s entitetsbaserade tillvägagångssätt och Symfonys Form-komponent förenklade CRUD-operationer jämfört med rå SQL. Felsökningen av Doctrine-, bild-, och PHPStan-fel, samt skapandet av enhetstester och PHPDoc-dokumentation, förbättrade min förståelse för kodkvalitet och MVC-strukturen. Att designa ett användarvänligt bibliotekstema förstärkte vikten av visuell estetik och responsivitet.</p>
         </section>
+        <section id="kmom06">
+            <h3 id="kmom05">Kmom06</h3>
+            <h4>Hur uppfattade du verktyget phpmetrics och fann du några särskilda bitar mer värdefulla än andra? Var det några särskilda metrics eller bilder du uppskattade?</h4>
+            <p>PhpMetrics är ett kraftfullt verktyg för att få en objektiv överblick över kodkvalitet, särskilt genom visualiseringen av complexity vs maintainability (bubbel-diagrammet). Jag uppskattade mest Cyclomatic Complexity (CCN) som mätvärde , det ger tydlig indikation på vilka metoder/klasser som behöver refaktorisering (stora röda cirklar). Object oriented metrics-tabellen (Ca/Ce/Instability) var också värdefull för att analysera coupling. Mindre uppskattat var unit testing-analysen som krånglade med mina testfiler, men för produktionskod (src/) var det utmärkt.</p>
+            <h4>Berätta hur det gick att integrera med Scrutinizer och vilken är din första känsla av verktyget och dess badges? Vilken kodtäckning och kodkvalitet fick du efter första bygget?</h4>
+            <p>Integrationen med Scrutinizer gick smidigt via GitHub . Det körs automatiskt vid varje push och badgesna (build, coverage, quality) uppdateras direkt. Första känslan är positiv: verktyget är intuitivt och ger omedelbar feedback. Efter första bygget fick jag 42% coverage (låg, främst p.g.a. otestade controllers) och quality score 9.9/10. </p>
+            <h4>Hur är din egen syn på kodkvalitet, berätta lite om den? Tror du man kan man påvisa kodkvalitet i någon viss mån med badges eller vad tror du?</h4>
+            <p>Min syn på kodkvalitet är att den handlar om underhållbarhet och samarbetsvänlighet snarare än perfektion: kod ska vara läsbar, testbar och enkelt att ändra utan rädsla för regressionsfel. Clean code-principer (SRP, DRY, tidiga retur) är centrala. Badges kan absolut påvisa kodkvalitet i viss mån , de ger objektiva, mätbara siffror (coverage >80%, quality >9/10) som bygger förtroende. Men de är inte allt; de fångar inte läsbarhet eller domänkunskap. Badges är bra startpunkt, men kodreviews och parprogrammering kompletterar.</p>
+            <h4>Vilken är din TIL för detta kmom?</h4>
+            <p>Att verktyg som PhpMetrics och Scrutinizer inte bara mäter kodkvalitet utan vägleder förbättringar . Genom att identifiera specifika flaskhalsar (hög CCN i Game21, låg coverage i controllers) fick jag konkreta insikter om var refaktorisering ger mest värde, och att CI-fel (som mina Scrutinizer-problem) ofta beror på miljöskillnader snarare än felaktig kod.</p>
+        </section>
 {% endblock %}
 

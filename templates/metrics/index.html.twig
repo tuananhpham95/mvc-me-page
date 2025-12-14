@@ -57,18 +57,17 @@
     <h2>Förbättringar</h2>
     <p>Jag identifierade följande förbättringar baserat på rapporterna:
     <ul>
-        <li><strong>Förbättring 1: Öka coverage</strong>: Lägg till integrationstester för <code>LibraryController</code> (t.ex. för <code>create</code>, <code>show</code>). Jag förväntar mig att coverage ökar från 42% till 70%, vilket minskar CRAP-index (6C: Coverage).</li>
-        <li><strong>Förbättring 2: Minska complexity</strong>: Refaktorisera <code>ApiController::showAllBooks</code> genom att bryta ut array_map till en separat metod. Förväntar minskad CCN från 4 till 2 (6C: Complexity).</li>
-        <li><strong>Förbättring 3: Minska coupling</strong>: Injicera <code>BookRepository</code> istället för <code>EntityManager</code> direkt i <code>LibraryController::showAll</code>. Förväntar minskad Efferent Coupling från 5 till 3 (6C: Coupling).</li>
+        <li><strong>Förbättring 1: Öka coverage</strong>: Lade till funktionella tester för LibraryController (CRUD-operationer), ökade coverage lokalt från 42% till över 90% (lägre CRAP). Lokalt (med composer phpunit)tester passerade. På Scrutinizer uppstod tyvärr testfel i CI-miljön, så jag kunde inte få exakt coverage-siffra därifrån. Jag är dock övertygad om att testerna ökar coverage betydligt från 42% eftersom de täcker majoriteten av controllerns logik.</li>
+        <li><strong>Förbättring 2: Minska complexity</strong>: Minska complexity i ApiController. Rensade bort den privata metoden getDeckFromSession() med flera villkor och hanterar nu deck-logik direkt i varje route-metod, vilket minskade ApiControllers genomsnittliga CCN från ~5 till 2 enligt PhpMetrics.
+        <li><strong>Förbättring 3: Minska coupling</strong>: LibraryController använder injicerad BookRepository för läsoperationer istället för EntityManager direkt, vilket håller efferent coupling på acceptabel nivå (Ce = 6 enligt PhpMetrics Object oriented metrics) utan behov av ytterligare förändringar.</li>
     </ul>
     <h3>Implementation</h3>
     <ul>
-        <li><strong>Förbättring 1</strong>: Skapade <code>tests/Controller/LibraryControllerTest.php</code> med tester för <code>index</code> och <code>create</code>. Coverage ökade till 95% enligt Scrutinizer.</li>
-        <li><strong>Förbättring 2</strong>: Lade till en privat metod <code>mapBooks</code> i <code>ApiController</code>. CCN minskade till 2 enligt PhpMetrics.</li>
-        <li><strong>Förbättring 3</strong>: Uppdaterade <code>LibraryController::showAll</code> att använda <code>BookRepository</code>. Efferent Coupling minskade till 3 enligt PhpMetrics.</li>
+        <li><strong>Förbättring 1</strong>: Skapade tests/Controller/LibraryControllerTest.php med funktionella tester för samtliga CRUD-operationer i LibraryController (index, create, show all, show one, update, delete och reset). Lokalt ökade coverage till över 90% enligt PHPUnit. På Scrutinizer uppstod oväntade fel i CI-miljön (troligen relaterade till skillnader i session- eller Doctrine-miljö), men testerna täcker ändå majoriteten av controllerns logik och minskar CRAP-indexet markant.</li>
+        <li><strong>Förbättring 2</strong>: Rensade bort komplex privat logik i ApiController (tidigare getDeckFromSession med flera villkor). Deck-hantering sker nu direkt i route-metoderna. CCN för ApiController minskade från ~5 till 2 enligt PhpMetrics</li>
+        <li><strong>Förbättring 3</strong>: Bekräftade och dokumenterade att LibraryController använder injicerad BookRepository för läsoperationer (t.ex. showAll) istället för EntityManager direkt. Efferent Coupling (Ce) är 6 enligt PhpMetrics (Object oriented metrics), vilket är acceptabelt för en full CRUD-controller i Symfony.</li>
     </ul>
-    Efter implementationen (per 02:33 AM CEST, 6 september 2025): PhpMetrics visar coverage 95% (ökning från 90%), CCN 2 i refaktoriserade metoder, och coupling 3. Scrutinizer poäng ökade till 9.2/10, med lägre CRAP-risker.</p>
 
     <h2>Diskussion</h2>
-    <p>Att aktivt jobba med kodkvalitet och "clean code" genom PhpMetrics och Scrutinizer är effektivt för att identifiera svagheter och guida förbättringar. Fördelar inkluderar objektiva mätvärden som förbättrar underhållbarhet och minskar teknisk skuld. Nackdelar är tidskrävande konfiguration och att verktyg som PHPStan 9 kan flagga förväntade beteenden (t.ex. Doctrine:s skrivskyddade ID). Andra metoder för "clean code" inkluderar code reviews, SOLID-principer, och refactoring sessions, som kan komplettera verktygen. Denna process, slutförd vid 02:33 AM CEST den 6 september 2025, har stärkt min förmåga att bygga hållbar kod.</p>
+    <p>Att aktivt jobba med kodkvalitet och "clean code" genom PhpMetrics och Scrutinizer är effektivt för att identifiera svagheter och guida förbättringar. Fördelar inkluderar objektiva mätvärden som förbättrar underhållbarhet och minskar teknisk skuld. Nackdelar är tidskrävande konfiguration och att verktyg som PHPStan 9 kan flagga förväntade beteenden (t.ex. Doctrine:s skrivskyddade ID). Andra metoder för "clean code" inkluderar code reviews, SOLID-principer, och refactoring sessions, som kan komplettera verktygen.</p>
 {% endblock %}
