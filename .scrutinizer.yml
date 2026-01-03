@@ -14,10 +14,7 @@ build:
           version: 8.3.3
       tests:
         override:
-          - command: "composer phpunit"
-            coverage:
-              file: "docs/coverage.clover"
-              format: "php-clover"
+          - command: "composer phpunit -- --no-coverage"
 
     analysis:
       environment:
