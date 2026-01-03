@@ -1,0 +1,33 @@
+{% extends 'proj/base.html.twig' %}
+
+{% block title %}EduTracker{% endblock %}
+{% block body_class %}project-home{% endblock %}
+
+{% block library_body %}
+<section class="hero full-height">
+    <div class="hero-inner">
+        <h1>🎓 Welcome to EduTracker</h1>
+        <p>Track your learning progress effectively!  
+        Add new skills, manage learning resources, and stay organized.</p>
+        <div class="cta-buttons">
+            <a href="{{ path('edu_index') }}" class="btn btn-primary">View Learning Items</a>
+            <a href="{{ path('edu_create') }}" class="btn btn-outline">Add New Item</a>
+        </div>
+    </div>
+</section>
+
+<section class="features container">
+    <div class="feature-card">
+        <h3>Add Learning Items</h3>
+        <p>Create new items to track topics, courses, or resources you want to learn.</p>
+    </div>
+    <div class="feature-card">
+        <h3>Track Progress</h3>
+        <p>Mark items as Learning, Learned, or To Learn and monitor your journey.</p>
+    </div>
+    <div class="feature-card">
+        <h3>Visit Resources</h3>
+        <p>Open your saved resources in a new tab to quickly continue your learning.</p>
+    </div>
+</section>
+{% endblock %}

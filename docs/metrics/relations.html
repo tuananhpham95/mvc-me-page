@@ -49,7 +49,7 @@
 <div class="page">
     <div class="content content-first">
         <div class="report-details">
-            Created at 2025-12-14 15:20:02        , with PHPMetrics v2.9.0 (<a href="https://twitter.com/Halleck45">Jean-François Lépine</a>).
+            Created at 2026-01-03 22:27:19        , with PHPMetrics v2.9.0 (<a href="https://twitter.com/Halleck45">Jean-François Lépine</a>).
         </div>
 
         
@@ -277,7 +277,7 @@
         "relations": []
     },
     {
-        "name": "\\App\\Form\\BookType",
+        "name": "\\App\\Form\\LearningItemType",
         "size": 3000,
         "relations": [
             "\\Symfony\\Component\\Form\\AbstractType",
@@ -299,6 +299,15 @@
         "name": "\\Symfony\\Component\\OptionsResolver\\OptionsResolver",
         "size": 3000,
         "relations": []
+    },
+    {
+        "name": "\\App\\Form\\BookType",
+        "size": 3000,
+        "relations": [
+            "\\Symfony\\Component\\Form\\AbstractType",
+            "\\Symfony\\Component\\Form\\FormBuilderInterface",
+            "\\Symfony\\Component\\OptionsResolver\\OptionsResolver"
+        ]
     },
     {
         "name": "\\App\\Card\\Card",
@@ -351,7 +360,12 @@
         "relations": []
     },
     {
-        "name": "\\App\\Dice\\Dice",
+        "name": "\\App\\Entity\\LearningItem",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\DateTimeInterface",
         "size": 3000,
         "relations": []
     },
@@ -420,6 +434,14 @@
         "relations": []
     },
     {
+        "name": "\\App\\Controller\\ProjectController",
+        "size": 3000,
+        "relations": [
+            "\\Symfony\\Bundle\\FrameworkBundle\\Controller\\AbstractController",
+            "\\Symfony\\Component\\HttpFoundation\\Response"
+        ]
+    },
+    {
         "name": "\\App\\Controller\\MetricsController",
         "size": 3000,
         "relations": [
@@ -452,6 +474,23 @@
         ]
     },
     {
+        "name": "\\App\\Controller\\LearningItemController",
+        "size": 3000,
+        "relations": [
+            "\\Symfony\\Bundle\\FrameworkBundle\\Controller\\AbstractController",
+            "\\Symfony\\Component\\HttpFoundation\\Response",
+            "\\Doctrine\\ORM\\EntityManagerInterface",
+            "\\Symfony\\Component\\HttpFoundation\\Request",
+            "\\App\\Entity\\LearningItem",
+            "\\DateTime"
+        ]
+    },
+    {
+        "name": "\\Doctrine\\ORM\\EntityManagerInterface",
+        "size": 3000,
+        "relations": []
+    },
+    {
         "name": "\\App\\Controller\\LibraryController",
         "size": 3000,
         "relations": [
@@ -462,11 +501,6 @@
             "\\App\\Entity\\Book",
             "\\App\\Repository\\BookRepository"
         ]
-    },
-    {
-        "name": "\\Doctrine\\ORM\\EntityManagerInterface",
-        "size": 3000,
-        "relations": []
     },
     {
         "name": "\\App\\Command\\SeedBooksCommand",

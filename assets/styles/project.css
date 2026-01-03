@@ -1,0 +1,649 @@
+/* ---------- Global Reset & Body ---------- */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  background: #f7f8fa;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* ---------- Container ---------- */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ---------- Navbar / Header ---------- */
+header.edu-header {
+  background: #16a085;
+  color: #fff;
+  padding: 1rem 0;
+}
+
+header.edu-header h1 {
+  text-align: center;
+  font-size: 2.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.edu-nav {
+  text-align: center;
+  margin-top: 0.5rem;
+}
+
+.edu-nav a {
+  display: inline-block;
+  margin: 0 10px;
+  padding: 8px 16px;
+  color: #fff;
+  border-radius: 6px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.edu-nav a:hover {
+  background-color: #13856e;
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-block;
+  padding: 10px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  text-decoration: none;
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.btn-primary {
+  background-color: #16a085;
+  color: #fff;
+  border-color: #16a085;
+}
+
+.btn-primary:hover {
+  background-color: #13856e;
+  border-color: #13856e;
+}
+
+.btn-outline {
+  background-color: transparent;
+  color: #15584b;
+  border-color: #16a085;
+}
+
+.btn-outline:hover {
+  background-color: #16a085;
+  color: #fff;
+}
+
+.btn-danger {
+  background-color: #e74c3c;
+  color: #fff;
+  border-color: #e74c3c;
+}
+
+.btn-danger:hover {
+  background-color: #c0392b;
+  border-color: #c0392b;
+}
+
+/* ---------- Hero Section (Home & About) ---------- */
+.hero,
+.about-hero {
+  width: 100%;
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  color: #fff;
+  padding: 0 20px;
+}
+
+.hero::after,
+.about-hero::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url("https://source.unsplash.com/1600x900/?education,learning")
+    center/cover no-repeat;
+  opacity: 0.15;
+  z-index: 0;
+}
+
+.hero-inner,
+.about-hero .hero-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 800px;
+}
+
+.hero {
+  background: linear-gradient(135deg, #16a085, #1abc9c);
+}
+
+.about-hero {
+  background: linear-gradient(135deg, #16a085, #1abc9c);
+}
+
+.hero h1,
+.about-hero h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.hero p,
+.about-hero p {
+  font-size: 1rem;
+  margin-bottom: 2rem;
+}
+
+.hero .cta-buttons,
+.about-hero .cta-buttons {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* ---------- Features / About Section ---------- */
+.features,
+.edu-features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  margin: 60px 0;
+  padding: 0 20px;
+}
+.features.container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  margin: 80px auto 80px auto;
+  justify-content: center;
+  max-width: 1200px;
+  padding: 0 20px;
+}
+
+.feature-card {
+  position: relative;
+  background: #fff;
+  border-radius: 16px;
+  padding: 2.5rem 1.5rem;
+  text-align: center;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+}
+
+.feature-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+}
+
+.feature-card::before {
+  content: "";
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  top: -20px;
+  right: -20px;
+  background: rgba(79, 70, 229, 0.1);
+  border-radius: 50%;
+}
+
+.feature-card i {
+  font-size: 2.5rem;
+  color: #4f46e5;
+  margin-bottom: 15px;
+}
+
+.feature-card h3 {
+  margin-bottom: 10px;
+  font-size: 1.3rem;
+  color: #4f46e5;
+}
+
+.feature-card p {
+  font-size: 1rem;
+  color: #555;
+}
+
+/* About details section */
+.about-details,
+.edu-details {
+  max-width: 850px;
+  margin: 60px auto;
+  padding: 40px 30px;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.08);
+}
+
+.edu-details h2,
+.about-details h2 {
+  color: #16a085;
+  margin-bottom: 15px;
+}
+
+.edu-details ul,
+.about-details ul {
+  margin-bottom: 20px;
+  padding-left: 20px;
+}
+
+.edu-details li,
+.about-details li {
+  margin-bottom: 10px;
+}
+
+/* ---------- EduTracker Index Page ---------- */
+.edu-container {
+  max-width: 1200px;
+  margin: 60px auto;
+  padding: 0 20px;
+}
+
+/* Header Section (Index) */
+.edu-header {
+  text-align: center;
+  padding: 40px 20px;
+  background: linear-gradient(135deg, #4ade80, #60a5fa);
+  color: #fff;
+}
+
+.edu-header h1 {
+  font-size: 2.8rem;
+  margin-bottom: 15px;
+  font-weight: 700;
+}
+
+.edu-header p {
+  font-size: 1.25rem;
+  margin-bottom: 25px;
+}
+
+.edu-header .btn {
+  font-size: 1rem;
+  padding: 12px 28px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+}
+
+.edu-header .btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* Grid of Cards */
+.edu-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+  margin-top: 42px;
+}
+
+/* Edu Cards */
+.edu-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 25px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  position: relative;
+  margin-top: 40px;
+}
+
+.edu-card:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+}
+
+/* Status Badge */
+.status {
+  display: inline-block;
+  padding: 6px 14px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  margin-bottom: 15px;
+  color: #fff;
+  text-transform: uppercase;
+}
+
+.status.learning {
+  background: #3498db;
+}
+.status.learned {
+  background: #2ecc71;
+}
+.status.to-learn {
+  background: #f39c12;
+}
+
+/* Card Title & Description */
+.edu-card h2 {
+  color: #16a085;
+  font-size: 1.5rem;
+  margin-bottom: 12px;
+}
+
+.edu-card p {
+  color: #555;
+  font-size: 1rem;
+  flex-grow: 1;
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+
+/* Card Footer Actions */
+.edu-card-footer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: flex-start;
+}
+
+.edu-card-footer .btn.small {
+  padding: 8px 16px;
+  font-size: 0.85rem;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+.edu-card-footer .btn.small:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* Empty State */
+.edu-grid p {
+  grid-column: 1 / -1;
+  text-align: center;
+  font-size: 1.2rem;
+  color: #555;
+  padding: 30px 0;
+}
+
+/* ---------- Forms ---------- */
+.edu-form-container {
+  max-width: 700px;
+  margin: 60px auto;
+  padding: 40px 20px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+}
+
+.edu-form .form-group {
+  margin-bottom: 20px;
+}
+
+.edu-form .form-input,
+.edu-form .form-textarea,
+.edu-form .form-select {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+/* ---------- Footer ---------- */
+footer.edu-footer {
+  background: #16a085;
+  color: #fff;
+  text-align: center;
+  padding: 1rem 0;
+  margin-top: auto;
+}
+
+.edu-footer a {
+  color: #fff;
+  text-decoration: underline;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 768px) {
+  .edu-card {
+    padding: 20px;
+  }
+  .edu-form-container {
+    padding: 30px 15px;
+  }
+  .edu-header h1 {
+    font-size: 1.8rem;
+  }
+  .edu-header p {
+    font-size: 1rem;
+  }
+  .edu-nav a {
+    margin: 5px;
+    padding: 6px 12px;
+  }
+  .edu-hero h1,
+  .about-hero h1 {
+    font-size: 2.2rem;
+  }
+  .edu-hero p,
+  .about-hero p {
+    font-size: 1rem;
+  }
+  .feature-card h3 {
+    font-size: 1.1rem;
+  }
+  .edu-card h2 {
+    font-size: 1.25rem;
+  }
+  .edu-card p {
+    font-size: 0.95rem;
+  }
+  .edu-card-footer .btn.small {
+    padding: 6px 12px;
+    font-size: 0.8rem;
+  }
+}
+
+/* ---------- Edu Cards (Redesign Premium) ---------- */
+.edu-card {
+  background: rgba(255, 255, 255, 0.95); /* glass effect */
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 30px 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
+  transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.edu-card::before {
+  content: "";
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  top: -30px;
+  right: -30px;
+  background: linear-gradient(135deg, #34d399, #3b82f6);
+  border-radius: 50%;
+  opacity: 0.15;
+  z-index: 0;
+  transition: all 0.5s ease;
+}
+
+.edu-card:hover::before {
+  transform: scale(1.2);
+  opacity: 0.25;
+}
+
+.edu-card:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.18);
+}
+
+/* Status Badge */
+.status {
+  display: inline-block;
+  padding: 6px 18px;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 0.85rem;
+  margin-bottom: 15px;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.status.learning {
+  background: linear-gradient(135deg, #3b82f6, #60a5fa);
+}
+
+.status.learned {
+  background: linear-gradient(135deg, #22c55e, #4ade80);
+}
+
+.status.to-learn {
+  background: linear-gradient(135deg, #f59e0b, #facc15);
+}
+
+/* Card Title & Description */
+.edu-card h2 {
+  color: #0f766e;
+  font-size: 1.6rem;
+  margin-bottom: 15px;
+  font-weight: 700;
+  line-height: 1.3;
+  z-index: 1;
+  position: relative;
+}
+
+.edu-card p {
+  color: #555;
+  font-size: 1rem;
+  line-height: 1.6;
+  flex-grow: 1;
+  margin-bottom: 25px;
+  z-index: 1;
+  position: relative;
+}
+
+/* Card Footer Actions */
+.edu-card-footer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: flex-start;
+  z-index: 1;
+  position: relative;
+}
+
+.edu-card-footer .btn.small {
+  padding: 10px 20px;
+  font-size: 0.85rem;
+  border-radius: 12px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.1);
+}
+
+.edu-card-footer .btn.small:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .edu-card {
+    padding: 25px 20px;
+  }
+  .edu-card h2 {
+    font-size: 1.4rem;
+  }
+  .edu-card p {
+    font-size: 0.95rem;
+  }
+  .edu-card-footer .btn.small {
+    padding: 8px 16px;
+    font-size: 0.8rem;
+  }
+}
+
+/* ---------- Edu Card Buttons with Icons ---------- */
+.edu-card-footer .btn.small {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  font-size: 0.85rem;
+  border-radius: 12px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.1);
+  text-decoration: none;
+}
+
+/* Hover effect */
+.edu-card-footer .btn.small:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Color Variants */
+.btn-icon-primary {
+  background: #16a085;
+  color: #fff;
+  border: none;
+}
+
+.btn-icon-primary:hover {
+  background: #13856e;
+}
+
+.btn-icon-outline {
+  background: #fff;
+  color: #16a085;
+  border: 2px solid #16a085;
+}
+
+.btn-icon-outline:hover {
+  background: #16a085;
+  color: #fff;
+}
+
+.btn-icon-danger {
+  background: #e74c3c;
+  color: #fff;
+  border: none;
+}
+
+.btn-icon-danger:hover {
+  background: #c0392b;
+}

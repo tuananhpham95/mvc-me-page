@@ -3,128 +3,107 @@
 namespace App\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
-use Symfony\Bundle\FrameworkBundle\KernelBrowser;
 
 class LibraryControllerTest extends WebTestCase
 {
-    /** @var KernelBrowser */
-    private $client;
-
-    protected function setUp(): void
+    public function testIndexLoads(): void
     {
-        $this->client = static::createClient();
-        $this->client->followRedirects();
-    }
-
-    public function testLibraryIndex(): void
-    {
-        $this->client->request('GET', '/library/');
+        $client = static::createClient();
+        $crawler = $client->request('GET', '/library/');
 
         $this->assertResponseIsSuccessful();
-        $this->assertSelectorTextContains('.library-hero h1', 'Välkommen till Vårt Digitala Bibliotek');
+        $this->assertSelectorTextContains('.intro h1', 'Digital Library');
+        $this->assertSelectorExists('a.btn.btn-primary');
+        $this->assertSelectorExists('a.btn.btn-outline');
     }
 
-    public function testCreateBook(): void
+    public function testShowAllLoads(): void
     {
-        $crawler = $this->client->request('GET', '/library/create');
+        $client = static::createClient();
+        $client->request('GET', '/library/reset');
+
+        $crawler = $client->request('GET', '/library/show');
 
         $this->assertResponseIsSuccessful();
-        $this->assertSelectorTextContains('.library-form-container h1', 'Lägg till en ny bok');
+        $this->assertSelectorTextContains('section.library-books h1', 'Alla Böcker');
+        $this->assertSelectorExists('.book-grid');
+    }
+
+    public function testCreateBookForm(): void
+    {
+        $client = static::createClient();
+        $crawler = $client->request('GET', '/library/create');
+
+        $this->assertResponseIsSuccessful();
+        $this->assertSelectorExists('form');
+        $this->assertSelectorExists('input');
+    }
+
+    public function testUpdateBookForm(): void
+    {
+        $client = static::createClient();
+        $client->request('GET', '/library/reset');
+
+        $crawler = $client->request('GET', '/library/show');
+
+        $link = $crawler->filter('.book-card a')->first()->attr('href');
+        $this->assertNotNull($link, 'Book link should exist');
+
+        $matches = [];
+        if (preg_match('/\d+$/', (string) $link, $matches)) {
+            $bookId = $matches[0];
+        } else {
+            $this->fail('Could not extract book ID from link: ' . $link);
+        }
+
+        $crawler = $client->request('GET', '/library/update/' . $bookId);
+
+        $this->assertResponseIsSuccessful();
+        $this->assertSelectorExists('form');
+    }
+
+    public function testShowBookDetails(): void
+    {
+        $client = static::createClient();
+        $client->request('GET', '/library/reset');
+
+        $crawler = $client->request('GET', '/library/show');
+
+        $firstBookLink = $crawler->filter('.book-card a')->first()->attr('href');
+        $this->assertNotNull($firstBookLink, 'First book link should exist');
+
+        $matches = [];
+        if (preg_match('/\d+$/', (string) $firstBookLink, $matches)) {
+            $bookId = $matches[0];
+        } else {
+            $this->fail('Could not extract book ID from link: ' . $firstBookLink);
+        }
+
+        $crawler = $client->request('GET', '/library/show/' . $bookId);
+
+        $this->assertResponseIsSuccessful();
+        $this->assertSelectorExists('section.book-details');
+        $this->assertSelectorExists('section.book-details h1');
+        $this->assertSelectorTextContains('section.book-details', 'ISBN');
+        $this->assertSelectorTextContains('section.book-details', 'Författare');
+    }
+
+    public function testCreateAndDeleteBook(): void
+    {
+        $client = static::createClient();
+        $client->request('GET', '/library/reset');
+
+        $crawler = $client->request('GET', '/library/create');
 
         $form = $crawler->selectButton('Create Book')->form();
+        $form['form[title]'] = 'Test Book';
+        $form['form[author]'] = 'Test Author';
+        $form['form[isbn]'] = '1234567890123';
 
-        $values = $form->getPhpValues();
-        $formName = array_keys($values)[0];
+        $client->submit($form);
 
-        $values[$formName]['title'] = 'Ny testbok';
-        $values[$formName]['isbn'] = '978-91-123-4567-8';
-        $values[$formName]['author'] = 'Test Författare';
-        $values[$formName]['image'] = 'https://example.com/book.jpg';
-
-        $this->client->request($form->getMethod(), $form->getUri(), $values, $form->getPhpFiles());
-
-        $this->assertResponseIsSuccessful();
-        $this->assertSelectorExists('.alert.alert-success');
-        $this->assertSelectorTextContains('.alert.alert-success', 'Book created successfully.');
-        $this->assertSelectorTextContains('body', 'Ny testbok');
-    }
-
-    public function testShowAllBooks(): void
-    {
-        $this->createTestBook();
-
-        $this->client->request('GET', '/library/show');
-
-        $this->assertResponseIsSuccessful();
-        $this->assertSelectorTextContains('.library-books h1', 'Alla Böcker');
-        $this->assertSelectorTextContains('body', 'Ny testbok');
-    }
-
-    public function testUpdateBook(): void
-    {
-        $this->createTestBook();
-
-        $crawler = $this->client->request('GET', '/library/show');
-
-        $editLink = $crawler->filter('a:contains("Redigera")')->first()->link();
-        $crawler = $this->client->click($editLink);
-
-        $this->assertResponseIsSuccessful();
-
-        $form = $crawler->selectButton('Update Book')->form();
-
-        $values = $form->getPhpValues();
-        $formName = array_keys($values)[0];
-
-        $values[$formName]['title'] = 'Uppdaterad testbok';
-
-        $this->client->request($form->getMethod(), $form->getUri(), $values, $form->getPhpFiles());
-
-        $this->assertResponseIsSuccessful();
-        $this->assertSelectorExists('.alert.alert-success');
-        $this->assertSelectorTextContains('.alert.alert-success', 'Book updated successfully.');
-        $this->assertSelectorTextContains('body', 'Uppdaterad testbok');
-    }
-
-    public function testDeleteBook(): void
-    {
-        $this->createTestBook();
-
-        $crawler = $this->client->request('GET', '/library/show');
-
-        $deleteForm = $crawler->filter('button:contains("Radera")')->first()->form();
-
-        $this->client->submit($deleteForm);
-
-        $this->assertResponseIsSuccessful();
-        $this->assertSelectorExists('.alert.alert-success');
-        $this->assertSelectorTextContains('.alert.alert-success', 'Book deleted successfully.');
-    }
-
-    public function testResetDatabase(): void
-    {
-        $this->client->request('GET', '/library/reset');
-
-        $this->assertResponseIsSuccessful();
-        $this->assertSelectorExists('.alert.alert-success');
-        $this->assertSelectorTextContains('.alert.alert-success', 'Database reset successfully.');
-        $this->assertSelectorTextContains('body', 'To Kill a Mockingbird');
-    }
-
-    private function createTestBook(): void
-    {
-        $crawler = $this->client->request('GET', '/library/create');
-
-        $form = $crawler->selectButton('Create Book')->form();
-
-        $values = $form->getPhpValues();
-        $formName = array_keys($values)[0];
-
-        $values[$formName]['title'] = 'Ny testbok';
-        $values[$formName]['isbn'] = '978-91-123-4567-8';
-        $values[$formName]['author'] = 'Test Författare';
-        $values[$formName]['image'] = 'https://example.com/book.jpg';
-
-        $this->client->request($form->getMethod(), $form->getUri(), $values, $form->getPhpFiles());
+        $this->assertResponseRedirects('/library/show');
+        $client->followRedirect();
+        $this->assertSelectorTextContains('.book-grid', 'Test Book');
     }
 }

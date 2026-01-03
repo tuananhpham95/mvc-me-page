@@ -91,7 +91,9 @@ h4 {
 main h2 {
   text-align: center;
 }
-
+main h1 {
+  text-align: center;
+}
 .card-landing h2 {
   text-align: start;
 }

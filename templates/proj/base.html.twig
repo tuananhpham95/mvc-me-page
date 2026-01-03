@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}EduTracker{% endblock %}</title>
+    <link rel="stylesheet" href="{{ asset('styles/project.css') }}">
+    {% block javascripts %}{% endblock %}
+</head>
+<body class="{% block body_class %}{% endblock %}">
+
+<header class="edu-header">
+    <div class="container">
+        <h1>📚 EduTracker</h1>
+        <nav class="edu-nav">
+            <a href="{{ path('project_home') }}">Home</a>
+            <a href="{{ path('project_about') }}">About</a>
+            <a href="{{ path('edu_index') }}">EduTracker</a>
+            <a href="{{ path('edu_create') }}" class="btn btn-outline">Add New</a>
+        </nav>
+    </div>
+</header>
+
+<main class="edu-main">
+    {% block library_body %}{% endblock %}
+</main>
+
+<footer class="edu-footer">
+    <div class="container">
+        <p>&copy; 2026 - Tuan Anh Pham | <a href="https://github.com/tuananhpham95/mvc-me-page" target="_blank">GitHub</a></p>
+    </div>
+</footer>
+
+</body>
+</html>

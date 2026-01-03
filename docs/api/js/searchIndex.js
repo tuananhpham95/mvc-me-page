@@ -566,6 +566,36 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-Controller-GameController.html#method_getGameFromSession"
         },                {
+            "fqsen": "\\App\\Controller\\LearningItemController",
+            "name": "LearningItemController",
+            "summary": "",
+            "url": "classes/App-Controller-LearningItemController.html"
+        },                {
+            "fqsen": "\\App\\Controller\\LearningItemController\u003A\u003Aindex\u0028\u0029",
+            "name": "index",
+            "summary": "",
+            "url": "classes/App-Controller-LearningItemController.html#method_index"
+        },                {
+            "fqsen": "\\App\\Controller\\LearningItemController\u003A\u003Acreate\u0028\u0029",
+            "name": "create",
+            "summary": "",
+            "url": "classes/App-Controller-LearningItemController.html#method_create"
+        },                {
+            "fqsen": "\\App\\Controller\\LearningItemController\u003A\u003Ashow\u0028\u0029",
+            "name": "show",
+            "summary": "",
+            "url": "classes/App-Controller-LearningItemController.html#method_show"
+        },                {
+            "fqsen": "\\App\\Controller\\LearningItemController\u003A\u003Aedit\u0028\u0029",
+            "name": "edit",
+            "summary": "",
+            "url": "classes/App-Controller-LearningItemController.html#method_edit"
+        },                {
+            "fqsen": "\\App\\Controller\\LearningItemController\u003A\u003Adelete\u0028\u0029",
+            "name": "delete",
+            "summary": "",
+            "url": "classes/App-Controller-LearningItemController.html#method_delete"
+        },                {
             "fqsen": "\\App\\Controller\\LibraryController",
             "name": "LibraryController",
             "summary": "",
@@ -641,30 +671,20 @@ Search.appendIndex(
             "summary": "Displays\u0020the\u0020metrics\u0020analysis\u0020page\u0020for\u0020code\u0020quality.",
             "url": "classes/App-Controller-MetricsController.html#method_index"
         },                {
-            "fqsen": "\\App\\Dice\\Dice",
-            "name": "Dice",
+            "fqsen": "\\App\\Controller\\ProjectController",
+            "name": "ProjectController",
             "summary": "",
-            "url": "classes/App-Dice-Dice.html"
+            "url": "classes/App-Controller-ProjectController.html"
         },                {
-            "fqsen": "\\App\\Dice\\Dice\u003A\u003A__construct\u0028\u0029",
-            "name": "__construct",
+            "fqsen": "\\App\\Controller\\ProjectController\u003A\u003Ahome\u0028\u0029",
+            "name": "home",
             "summary": "",
-            "url": "classes/App-Dice-Dice.html#method___construct"
+            "url": "classes/App-Controller-ProjectController.html#method_home"
         },                {
-            "fqsen": "\\App\\Dice\\Dice\u003A\u003Aroll\u0028\u0029",
-            "name": "roll",
+            "fqsen": "\\App\\Controller\\ProjectController\u003A\u003Aabout\u0028\u0029",
+            "name": "about",
             "summary": "",
-            "url": "classes/App-Dice-Dice.html#method_roll"
-        },                {
-            "fqsen": "\\App\\Dice\\Dice\u003A\u003AgetAsString\u0028\u0029",
-            "name": "getAsString",
-            "summary": "",
-            "url": "classes/App-Dice-Dice.html#method_getAsString"
-        },                {
-            "fqsen": "\\App\\Dice\\Dice\u003A\u003A\u0024value",
-            "name": "value",
-            "summary": "",
-            "url": "classes/App-Dice-Dice.html#property_value"
+            "url": "classes/App-Controller-ProjectController.html#method_about"
         },                {
             "fqsen": "\\App\\Entity\\Book",
             "name": "Book",
@@ -741,6 +761,96 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-Entity-Book.html#property_image"
         },                {
+            "fqsen": "\\App\\Entity\\LearningItem",
+            "name": "LearningItem",
+            "summary": "",
+            "url": "classes/App-Entity-LearningItem.html"
+        },                {
+            "fqsen": "\\App\\Entity\\LearningItem\u003A\u003AgetId\u0028\u0029",
+            "name": "getId",
+            "summary": "",
+            "url": "classes/App-Entity-LearningItem.html#method_getId"
+        },                {
+            "fqsen": "\\App\\Entity\\LearningItem\u003A\u003AgetTitle\u0028\u0029",
+            "name": "getTitle",
+            "summary": "",
+            "url": "classes/App-Entity-LearningItem.html#method_getTitle"
+        },                {
+            "fqsen": "\\App\\Entity\\LearningItem\u003A\u003AsetTitle\u0028\u0029",
+            "name": "setTitle",
+            "summary": "",
+            "url": "classes/App-Entity-LearningItem.html#method_setTitle"
+        },                {
+            "fqsen": "\\App\\Entity\\LearningItem\u003A\u003AgetDescription\u0028\u0029",
+            "name": "getDescription",
+            "summary": "",
+            "url": "classes/App-Entity-LearningItem.html#method_getDescription"
+        },                {
+            "fqsen": "\\App\\Entity\\LearningItem\u003A\u003AsetDescription\u0028\u0029",
+            "name": "setDescription",
+            "summary": "",
+            "url": "classes/App-Entity-LearningItem.html#method_setDescription"
+        },                {
+            "fqsen": "\\App\\Entity\\LearningItem\u003A\u003AgetUrl\u0028\u0029",
+            "name": "getUrl",
+            "summary": "",
+            "url": "classes/App-Entity-LearningItem.html#method_getUrl"
+        },                {
+            "fqsen": "\\App\\Entity\\LearningItem\u003A\u003AsetUrl\u0028\u0029",
+            "name": "setUrl",
+            "summary": "",
+            "url": "classes/App-Entity-LearningItem.html#method_setUrl"
+        },                {
+            "fqsen": "\\App\\Entity\\LearningItem\u003A\u003AgetStatus\u0028\u0029",
+            "name": "getStatus",
+            "summary": "",
+            "url": "classes/App-Entity-LearningItem.html#method_getStatus"
+        },                {
+            "fqsen": "\\App\\Entity\\LearningItem\u003A\u003AsetStatus\u0028\u0029",
+            "name": "setStatus",
+            "summary": "",
+            "url": "classes/App-Entity-LearningItem.html#method_setStatus"
+        },                {
+            "fqsen": "\\App\\Entity\\LearningItem\u003A\u003AgetCreatedAt\u0028\u0029",
+            "name": "getCreatedAt",
+            "summary": "",
+            "url": "classes/App-Entity-LearningItem.html#method_getCreatedAt"
+        },                {
+            "fqsen": "\\App\\Entity\\LearningItem\u003A\u003AsetCreatedAt\u0028\u0029",
+            "name": "setCreatedAt",
+            "summary": "",
+            "url": "classes/App-Entity-LearningItem.html#method_setCreatedAt"
+        },                {
+            "fqsen": "\\App\\Entity\\LearningItem\u003A\u003A\u0024id",
+            "name": "id",
+            "summary": "",
+            "url": "classes/App-Entity-LearningItem.html#property_id"
+        },                {
+            "fqsen": "\\App\\Entity\\LearningItem\u003A\u003A\u0024title",
+            "name": "title",
+            "summary": "",
+            "url": "classes/App-Entity-LearningItem.html#property_title"
+        },                {
+            "fqsen": "\\App\\Entity\\LearningItem\u003A\u003A\u0024description",
+            "name": "description",
+            "summary": "",
+            "url": "classes/App-Entity-LearningItem.html#property_description"
+        },                {
+            "fqsen": "\\App\\Entity\\LearningItem\u003A\u003A\u0024url",
+            "name": "url",
+            "summary": "",
+            "url": "classes/App-Entity-LearningItem.html#property_url"
+        },                {
+            "fqsen": "\\App\\Entity\\LearningItem\u003A\u003A\u0024status",
+            "name": "status",
+            "summary": "",
+            "url": "classes/App-Entity-LearningItem.html#property_status"
+        },                {
+            "fqsen": "\\App\\Entity\\LearningItem\u003A\u003A\u0024createdAt",
+            "name": "createdAt",
+            "summary": "",
+            "url": "classes/App-Entity-LearningItem.html#property_createdAt"
+        },                {
             "fqsen": "\\App\\Form\\BookType",
             "name": "BookType",
             "summary": "",
@@ -755,6 +865,21 @@ Search.appendIndex(
             "name": "configureOptions",
             "summary": "",
             "url": "classes/App-Form-BookType.html#method_configureOptions"
+        },                {
+            "fqsen": "\\App\\Form\\LearningItemType",
+            "name": "LearningItemType",
+            "summary": "",
+            "url": "classes/App-Form-LearningItemType.html"
+        },                {
+            "fqsen": "\\App\\Form\\LearningItemType\u003A\u003AbuildForm\u0028\u0029",
+            "name": "buildForm",
+            "summary": "",
+            "url": "classes/App-Form-LearningItemType.html#method_buildForm"
+        },                {
+            "fqsen": "\\App\\Form\\LearningItemType\u003A\u003AconfigureOptions\u0028\u0029",
+            "name": "configureOptions",
+            "summary": "",
+            "url": "classes/App-Form-LearningItemType.html#method_configureOptions"
         },                {
             "fqsen": "\\App\\Kernel",
             "name": "Kernel",
@@ -810,11 +935,6 @@ Search.appendIndex(
             "name": "Controller",
             "summary": "",
             "url": "namespaces/app-controller.html"
-        },                {
-            "fqsen": "\\App\\Dice",
-            "name": "Dice",
-            "summary": "",
-            "url": "namespaces/app-dice.html"
         },                {
             "fqsen": "\\App\\Entity",
             "name": "Entity",
