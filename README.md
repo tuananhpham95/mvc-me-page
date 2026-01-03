@@ -34,13 +34,13 @@ With EduTracker, users can:
 
 ## Project Structure
 
-/proj # Project pages (Home, About, EduTracker)
-/edu # EduTracker templates (index, show, create, edit)
-/src # Controllers, Entities, Forms, Repositories
-/templates # Twig templates
-/public/assets # CSS, JS, Images
-/tests # PHPUnit tests
-/docs # Documentation and generated reports
+- /proj # Project pages (Home, About, EduTracker)
+- /edu # EduTracker templates (index, show, create, edit)
+- /src # Controllers, Entities, Forms, Repositories
+- /templates # Twig templates
+- /public/assets # CSS, JS, Images
+- /tests # PHPUnit tests
+- /docs # Documentation and generated reports
 
 ---
 
