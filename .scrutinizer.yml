@@ -14,12 +14,10 @@ build:
           version: 8.3.3
       tests:
         override:
-          # Xóa cache và tạo schema test SQLite trước khi chạy PHPUnit
-          - php bin/console cache:clear --env=test
-          - php bin/console doctrine:schema:create --env=test
-
-          # Chạy PHPUnit mà không tạo coverage để tránh memory crash
-          - composer phpunit -- --no-coverage
+          - command: "composer phpunit"
+            coverage:
+              file: "docs/coverage.clover"
+              format: "php-clover"
 
     analysis:
       environment:

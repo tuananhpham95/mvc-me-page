@@ -2,14 +2,24 @@
 
 namespace App\Tests\Controller;
 
+use App\Entity\Book;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+use Doctrine\ORM\EntityManagerInterface;
 
 class LibraryControllerTest extends WebTestCase
 {
+    private $client;
+    private EntityManagerInterface $em;
+
+    protected function setUp(): void
+    {
+        $this->client = static::createClient();
+        $this->em = static::getContainer()->get(EntityManagerInterface::class);
+    }
+
     public function testIndexLoads(): void
     {
-        $client = static::createClient();
-        $crawler = $client->request('GET', '/library/');
+        $crawler = $this->client->request('GET', '/library/');
 
         $this->assertResponseIsSuccessful();
         $this->assertSelectorTextContains('.intro h1', 'Digital Library');
@@ -19,10 +29,9 @@ class LibraryControllerTest extends WebTestCase
 
     public function testShowAllLoads(): void
     {
-        $client = static::createClient();
-        $client->request('GET', '/library/reset');
+        $this->client->request('GET', '/library/reset');
 
-        $crawler = $client->request('GET', '/library/show');
+        $crawler = $this->client->request('GET', '/library/show');
 
         $this->assertResponseIsSuccessful();
         $this->assertSelectorTextContains('section.library-books h1', 'Alla Böcker');
@@ -31,32 +40,25 @@ class LibraryControllerTest extends WebTestCase
 
     public function testCreateBookForm(): void
     {
-        $client = static::createClient();
-        $crawler = $client->request('GET', '/library/create');
+        $crawler = $this->client->request('GET', '/library/create');
 
         $this->assertResponseIsSuccessful();
-        $this->assertSelectorExists('form');
-        $this->assertSelectorExists('input');
+        $this->assertSelectorExists('form[name="form"]');
+        $this->assertSelectorExists('input[name="form[title]"]');
     }
 
     public function testUpdateBookForm(): void
     {
-        $client = static::createClient();
-        $client->request('GET', '/library/reset');
+        $this->client->request('GET', '/library/reset');
 
-        $crawler = $client->request('GET', '/library/show');
+        $crawler = $this->client->request('GET', '/library/show');
 
-        $link = $crawler->filter('.book-card a')->first()->attr('href');
-        $this->assertNotNull($link, 'Book link should exist');
+        // Tìm bất kỳ link nào có action update (dùng href chứa "update")
+        $editLinks = $crawler->filter('a[href*="/update/"]');
+        $this->assertGreaterThan(0, $editLinks->count(), 'No edit link found');
 
-        $matches = [];
-        if (preg_match('/\d+$/', (string) $link, $matches)) {
-            $bookId = $matches[0];
-        } else {
-            $this->fail('Could not extract book ID from link: ' . $link);
-        }
-
-        $crawler = $client->request('GET', '/library/update/' . $bookId);
+        $editLink = $editLinks->first()->link();
+        $crawler = $this->client->click($editLink);
 
         $this->assertResponseIsSuccessful();
         $this->assertSelectorExists('form');
@@ -64,22 +66,16 @@ class LibraryControllerTest extends WebTestCase
 
     public function testShowBookDetails(): void
     {
-        $client = static::createClient();
-        $client->request('GET', '/library/reset');
+        $this->client->request('GET', '/library/reset');
 
-        $crawler = $client->request('GET', '/library/show');
+        $crawler = $this->client->request('GET', '/library/show');
 
-        $firstBookLink = $crawler->filter('.book-card a')->first()->attr('href');
-        $this->assertNotNull($firstBookLink, 'First book link should exist');
+        // Tìm link show chi tiết bằng href chứa "/show/" và ID (không phải update hoặc delete)
+        $detailLinks = $crawler->filter('a[href*="/show/"]:not(a[href*="/update"]):not(a[href*="/delete"])');
+        $this->assertGreaterThan(0, $detailLinks->count(), 'No detail link found');
 
-        $matches = [];
-        if (preg_match('/\d+$/', (string) $firstBookLink, $matches)) {
-            $bookId = $matches[0];
-        } else {
-            $this->fail('Could not extract book ID from link: ' . $firstBookLink);
-        }
-
-        $crawler = $client->request('GET', '/library/show/' . $bookId);
+        $detailLink = $detailLinks->first()->link();
+        $crawler = $this->client->click($detailLink);
 
         $this->assertResponseIsSuccessful();
         $this->assertSelectorExists('section.book-details');
@@ -90,20 +86,27 @@ class LibraryControllerTest extends WebTestCase
 
     public function testCreateAndDeleteBook(): void
     {
-        $client = static::createClient();
-        $client->request('GET', '/library/reset');
+        $this->client->request('GET', '/library/reset');
 
-        $crawler = $client->request('GET', '/library/create');
+        $crawler = $this->client->request('GET', '/library/create');
 
         $form = $crawler->selectButton('Create Book')->form();
-        $form['form[title]'] = 'Test Book';
-        $form['form[author]'] = 'Test Author';
-        $form['form[isbn]'] = '1234567890123';
+        $form['form[title]'] = 'Ny bok skapad av PHPUnit';
+        $form['form[author]'] = 'PHPUnit Författare';
+        $form['form[isbn]'] = '7777777777777';
 
-        $client->submit($form);
+        $this->client->submit($form);
+        $this->assertResponseRedirects('/library/show');
+
+        $crawler = $this->client->followRedirect();
+        $this->assertSelectorTextContains('.book-grid', 'Ny bok skapad av PHPUnit');
+
+        $deleteForm = $crawler->filter('form[action*="/delete"]')->last()->form();
+        $this->client->submit($deleteForm);
 
         $this->assertResponseRedirects('/library/show');
-        $client->followRedirect();
-        $this->assertSelectorTextContains('.book-grid', 'Test Book');
+        $this->client->followRedirect();
+
+        $this->assertSelectorTextNotContains('.book-grid', 'Ny bok skapad av PHPUnit');
     }
 }
