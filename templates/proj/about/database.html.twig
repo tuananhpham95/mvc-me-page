@@ -115,13 +115,11 @@
         <h2>Scrutinizer och databastester</h2>
 
         <p>
-            Eftersom projektet använder en lokal SQLite-databas är det svårt att
-            köra fullständiga databastester i Scrutinizer.
-        </p>
+            När jag kör PHPUnit-tester lokalt fungerar allt korrekt, inklusive tester mot databasen.
 
-        <p>
-            Däremot har tester kunnat köras lokalt i utvecklingsmiljön utan att
-            påverka produktionsdata.
+På Scrutinizer misslyckas testerna dock med felmeddelandet: Allowed memory size of 134217728 bytes exhausted. Jag har försökt olika lösningar, som att minska testdata och konfigurera inställningar, men testerna fortsätter att faila.
+
+Problemet verkar bero på begränsad minneskapacitet i CI-miljön, och jag har för närvarande inte lyckats lösa det.
         </p>
     </div>
 

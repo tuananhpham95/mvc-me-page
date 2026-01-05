@@ -87,7 +87,7 @@ class LibraryController extends AbstractController
     #[Route('/show', name: 'library_show_all')]
     public function showAll(BookRepository $bookRepository): Response
     {
-        return $this->render('library/show_ALL.html.twig', [
+        return $this->render('library/show_all.html.twig', [
             'books' => $bookRepository->findAll(),
         ]);
     }
