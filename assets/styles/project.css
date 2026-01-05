@@ -647,3 +647,300 @@ footer.edu-footer {
 .btn-icon-danger:hover {
   background: #c0392b;
 }
+/* ---------- API Page Styles (Scoped) ---------- */
+.edu-api {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: #1e1e2f;
+  color: #f0f0f0;
+  min-height: 100vh;
+  padding: 60px 20px;
+}
+
+/* Container */
+.edu-api .edu-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+/* Page Title */
+.edu-api .edu-container h1 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+  color: #4ade80; /* green accent */
+}
+
+/* API Cards */
+.edu-api .api-card {
+  background: #2a2a3d;
+  padding: 25px 20px;
+  border-radius: 16px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+  margin-bottom: 25px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.edu-api .api-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+}
+
+.edu-api .api-card h3 {
+  color: #60a5fa;
+  margin-bottom: 10px;
+}
+
+.edu-api .api-card p {
+  color: #cbd5e1;
+  margin-bottom: 15px;
+}
+
+/* API Links */
+.edu-api .api-card a {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #4ade80;
+  color: #1e1e2f;
+  font-weight: 600;
+  border-radius: 10px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.edu-api .api-card a:hover {
+  background: #22c55e;
+  color: #fff;
+}
+
+/* Forms */
+.edu-api .api-card form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.edu-api .api-card form label {
+  font-weight: 600;
+  color: #f0f0f0;
+}
+
+.edu-api .api-card form input,
+.edu-api .api-card form select,
+.edu-api .api-card form textarea {
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #555;
+  background: #1e1e2f;
+  color: #f0f0f0;
+  font-size: 1rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.edu-api .api-card form input:focus,
+.edu-api .api-card form select:focus,
+.edu-api .api-card form textarea:focus {
+  outline: none;
+  border-color: #4ade80;
+  box-shadow: 0 0 6px rgba(74, 222, 128, 0.5);
+}
+
+/* Submit Button */
+.edu-api .api-card form button {
+  padding: 10px 18px;
+  background: #60a5fa;
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.edu-api .api-card form button:hover {
+  background: #3b82f6;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .edu-api .edu-container h1 {
+    font-size: 2rem;
+  }
+
+  .edu-api .api-card h3 {
+    font-size: 1.2rem;
+  }
+
+  .edu-api .api-card form button {
+    width: 100%;
+    padding: 12px;
+  }
+}
+
+/* API */
+.api-container {
+  max-width: 750px;
+  margin: 2em auto;
+  padding: 2em;
+  background-color: #f0f8ff;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.08);
+  font-family: Arial, sans-serif;
+}
+
+.api-container h1 {
+  text-align: center;
+  color: #2c3e50;
+}
+
+.api-container h2,
+.api-container h3 {
+  color: #2980b9;
+}
+
+.api-card {
+  background: #ffffff;
+  padding: 1.2em 1.5em;
+  border-radius: 10px;
+  margin-bottom: 1.5em;
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.api-card a {
+  color: #2980b9;
+  text-decoration: none;
+}
+
+.api-card a:hover {
+  text-decoration: underline;
+}
+
+.api-card input,
+.api-card select,
+.api-card textarea,
+.api-card button {
+  width: 100%;
+  margin-top: 0.3em;
+  padding: 0.6em;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  font-size: 1em;
+}
+
+.api-card button {
+  background-color: #2980b9;
+  color: white;
+  font-weight: bold;
+  border: none;
+  margin-top: 1em;
+  cursor: pointer;
+}
+
+.api-card button:hover {
+  background-color: #3498db;
+}
+
+/* Global container for database page */
+.database-container {
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 1rem 2rem;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Page title */
+.database-container h1 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: #2c3e50;
+}
+
+/* Section titles */
+.database-container h2 {
+  font-size: 1.8rem;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  color: #34495e;
+  border-bottom: 2px solid #bdc3c7;
+  padding-bottom: 0.3rem;
+}
+
+/* ER Diagram image */
+.database-container .er-diagram {
+  text-align: center;
+  margin: 1.5rem 0;
+}
+
+.database-container .er-diagram img {
+  max-width: 100%;
+  height: auto;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Table description cards */
+.database-container .table-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 1rem 1.5rem;
+  margin-bottom: 1.5rem;
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.database-container .table-card h3 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  font-size: 1.3rem;
+  color: #1abc9c;
+}
+
+.database-container .table-card p {
+  margin: 0;
+}
+
+/* Relations description */
+.database-container .relations {
+  background-color: #ecf0f1;
+  border-left: 4px solid #3498db;
+  padding: 1rem;
+  margin: 1rem 0;
+  border-radius: 6px;
+}
+
+/* List styles */
+.database-container ul {
+  list-style: disc;
+  margin-left: 1.5rem;
+}
+
+.database-container li {
+  margin-bottom: 0.5rem;
+}
+
+/* Paragraph spacing */
+.database-container p {
+  margin-bottom: 1rem;
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+  .database-container {
+    padding: 1rem;
+  }
+
+  .database-container h1 {
+    font-size: 2rem;
+  }
+
+  .database-container h2 {
+    font-size: 1.5rem;
+  }
+}

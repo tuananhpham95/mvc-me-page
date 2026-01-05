@@ -1,0 +1,201 @@
+{% extends 'proj/base.html.twig' %}
+
+{% block title %}Database & ORM – EduTracker{% endblock %}
+
+{% block library_head %}
+    <link rel="stylesheet" href="{{ asset('styles/project.css') }}">
+{% endblock %}
+
+{% block library_body %}
+<section class="database-container">
+
+    <h1>Database & ORM</h1>
+
+    <p class="intro">
+        Denna sida beskriver hur databasen är uppbyggd och används i projektet
+        EduTracker, samt hur Doctrine ORM har använts för att hantera data.
+    </p>
+
+    <!-- ER Diagram -->
+    <div class="db-card">
+        <h2>ER-diagram</h2>
+
+        <p>
+            Nedanstående ER-diagram visar relationen mellan projektets två
+            huvudtabeller: <strong>Category</strong> och <strong>LearningItem</strong>.
+        </p>
+        <pre>
++------------------+        1      n        +----------------------+
+|    Category      |---------------------->|    LearningItem      |
++------------------+                       +----------------------+
+| id (PK)          |                       | id (PK)              |
+| name             |                       | title                |
++------------------+                       | description          |
+                                           | url                  |
+                                           | status               |
+                                           | created_at           |
+                                           | category_id (FK)     |
+                                           +----------------------+
+</pre>
+
+        <p class="note">
+            Diagrammet visar en one-to-many-relation där en kategori kan innehålla
+            flera learning items.
+        </p>
+    </div>
+
+    <!-- Tables -->
+    <div class="db-card">
+        <h2>Tabeller</h2>
+
+        <h3>Category</h3>
+        <p>
+            Tabellen <em>Category</em> lagrar olika kategorier eller ämnesområden,
+            till exempel programmering, matematik, databaser och webbutveckling.
+        </p>
+
+        <h3>LearningItem</h3>
+        <p>
+            Tabellen <em>LearningItem</em> lagrar individuella studiemål med titel,
+            beskrivning, status, URL, skapandedatum och tillhörande kategori.
+        </p>
+    </div>
+
+    <!-- Relationships -->
+    <div class="db-card">
+        <h2>Relationer mellan tabeller</h2>
+
+        <p>
+            Det finns en <strong>one-to-many-relation</strong> mellan tabellerna
+            Category och LearningItem.
+            En kategori kan ha många learning items, men varje learning item
+            tillhör endast en kategori.
+        </p>
+
+        <p>
+            Relationen är implementerad med Doctrine ORM genom en foreign key
+            (<code>category_id</code>) i tabellen <em>learning_items</em>.
+        </p>
+    </div>
+
+    <!-- Database technology -->
+    <div class="db-card">
+        <h2>Databasteknik</h2>
+
+        <p>
+            Projektet använder <strong>SQLite</strong> som databashanterare.
+            Databasen lagras lokalt i filen <code>var/data.db</code> och hanteras
+            via Doctrine ORM i Symfony.
+        </p>
+
+        <p>
+            Doctrine sköter objekt–relationsmappning genom att automatiskt
+            konvertera PHP-entiteter till databastabeller och SQL-frågor.
+        </p>
+    </div>
+
+    <!-- Testing -->
+    <div class="db-card">
+        <h2>Enhetstester mot databasen</h2>
+
+        <p>
+            Enhetstester har skrivits för delar av applikationen som interagerar
+            med databasen, främst genom controllers och repositories som använder
+            Doctrine ORM.
+        </p>
+
+        <p>
+            Tester har körts i utvecklingsmiljön för att verifiera att data kan
+            sparas, hämtas och relateras korrekt.
+        </p>
+    </div>
+
+    <!-- Scrutinizer -->
+    <div class="db-card">
+        <h2>Scrutinizer och databastester</h2>
+
+        <p>
+            Eftersom projektet använder en lokal SQLite-databas är det svårt att
+            köra fullständiga databastester i Scrutinizer.
+        </p>
+
+        <p>
+            Däremot har tester kunnat köras lokalt i utvecklingsmiljön utan att
+            påverka produktionsdata.
+        </p>
+    </div>
+
+    <!-- Reflection -->
+    <div class="db-card">
+        <h2>Reflektion: ORM jämfört med databaskursen</h2>
+
+        <p>
+            Att arbeta med ORM som Doctrine skiljer sig tydligt från hur databaser
+            hanterades i databaskursen där SQL-frågor skrevs manuellt.
+            En stor fördel med ORM är att man kan arbeta objektorienterat och låta
+            ramverket generera SQL automatiskt.
+            Detta leder till mer strukturerad och lättläst kod.
+            ORM minskar även risken för SQL-injection eftersom frågor inte skrivs
+            direkt av användaren.
+            En annan fördel är att relationer mellan tabeller blir tydligare genom
+            entities och annotations.
+            Nackdelen är att man ibland tappar insyn i exakt vilka SQL-frågor som
+            körs mot databasen.
+            Detta kan göra felsökning och prestandaoptimering svårare.
+            I databaskursen gav manuellt skrivna SQL-frågor en djupare förståelse
+            för joins, index och databaslogik.
+            ORM kan kännas abstrakt i början men sparar mycket tid i större
+            applikationer.
+            Sammanfattningsvis passar ORM bra för strukturerade webbapplikationer,
+            medan manuellt SQL är mer pedagogiskt för att förstå databaser på djupet.
+        </p>
+    </div>
+    <div class="db-card">
+    <h2>Avancerade features (Krav 6 – extra)</h2>
+
+    <p>
+        Utöver baskraven i projektet har flera mer avancerade och utmanande
+        funktioner implementerats. Nedan beskrivs några delar som gått utanför
+        grundkraven och krävt extra arbete och eftertanke.
+    </p>
+
+    <h3>1. Relationer mellan entiteter med Doctrine ORM</h3>
+    <p>
+        Implementeringen av en korrekt one-to-many-relation mellan Category och
+        LearningItem var en utmaning. Det krävde förståelse för Doctrine-mapping,
+        foreign keys samt hur relationer exponeras både i webbgränssnittet och
+        i JSON API:et. Detta går tydligt utanför enklare CRUD-hantering.
+    </p>
+
+    <h3>2. Eget JSON API med validering och relationer</h3>
+    <p>
+        Projektet innehåller ett REST-liknande JSON API där learning items kan
+        skapas, hämtas och filtreras. API:et hanterar både JSON-payload och
+        formulärdata samt koppling till kategori via ID, vilket krävde extra
+        validering och typkontroll.
+    </p>
+
+    <h3>3. Enhetstester mot controllers och databas</h3>
+    <p>
+        Ett omfattande testpaket har skrivits för både web controllers och API.
+        Testerna använder Doctrine ORM och en riktig SQLite-databas, vilket
+        innebar utmaningar kring testisolering, fixtures och datarensning
+        mellan tester.
+    </p>
+
+    <h3>4. Integration av kategori i formulär och vyer</h3>
+    <p>
+        Kategorier hanteras via ett EntityType-formulärfält som hämtar data
+        direkt från databasen. Detta krävde samspel mellan Doctrine, Symfony
+        Forms och Twig-mallar, vilket är mer avancerat än enkla textfält.
+    </p>
+
+    <p>
+        Sammantaget har dessa delar inneburit både tekniska och konceptuella
+        utmaningar och visar arbete som sträcker sig utanför baskraven.
+    </p>
+</div>
+
+
+</section>
+{% endblock %}

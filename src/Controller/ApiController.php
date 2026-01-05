@@ -12,6 +12,17 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
+/**
+ * Global API Controller for the course project.
+ *
+ * Provides various JSON endpoints used throughout the course:
+ * - Random quote and current time
+ * - Card deck operations (view, shuffle, draw one or multiple cards)
+ * - Library book data (all books or by ISBN)
+ *
+ * All routes are under /api
+ * Includes a landing page listing all available endpoints.
+ */
 class ApiController extends AbstractController
 {
     public function __construct(
@@ -19,6 +30,13 @@ class ApiController extends AbstractController
     ) {
     }
 
+    /**
+     * API landing page with overview of all available endpoints.
+     *
+     * Displays a human-readable list of all JSON API routes with descriptions and example links.
+     *
+     * @return Response Rendered API documentation page
+     */
     #[Route('/api', name: 'api_landing')]
     public function apiLanding(): Response
     {
@@ -31,7 +49,7 @@ class ApiController extends AbstractController
             ['route' => 'POST /api/deck/draw/{number}', 'description' => 'Draws specified number of cards and returns them with remaining count as JSON.'],
             ['route' => 'GET /api/game', 'description' => 'Returns the current state of the game 21 as JSON.'],
             ['route' => 'GET /api/library/books', 'description' => 'Returns all books in the library as JSON.'],
-            ['route' => 'GET /api/library/book/{isbn}', 'description' => 'Returns a book by ISBN as JSON. Example: <a href="'.$this->generateUrl('api_library_book', ['isbn' => '9780446310789']).'">/api/library/book/9780446310789</a>'],
+            ['route' => 'GET /api/library/book/{isbn}', 'description' => 'Returns a book by ISBN as JSON. Example: /api/library/book/9780446310789'],
         ];
 
         return $this->render('api/index.html.twig', [
@@ -39,6 +57,11 @@ class ApiController extends AbstractController
         ]);
     }
 
+    /**
+     * Returns a random inspirational quote with current date and timestamp.
+     *
+     * @return JsonResponse JSON with quote, date and timestamp (Stockholm timezone)
+     */
     #[Route('/api/quote', name: 'api_quote')]
     public function quote(): JsonResponse
     {
@@ -62,6 +85,11 @@ class ApiController extends AbstractController
         return new JsonResponse($data);
     }
 
+    /**
+     * Returns current time and date information.
+     *
+     * @return JsonResponse JSON with current time, date and timezone (Stockholm)
+     */
     #[Route('/api/time', name: 'api_time')]
     public function time(): JsonResponse
     {
@@ -76,6 +104,15 @@ class ApiController extends AbstractController
         return new JsonResponse($data);
     }
 
+    /**
+     * Returns the current deck in sorted order.
+     *
+     * Uses session-stored deck via DeckSessionService.
+     *
+     * @param SessionInterface $session Current user session
+     *
+     * @return JsonResponse JSON with sorted cards and remaining count
+     */
     #[Route('/api/deck', name: 'api_deck', methods: ['GET'])]
     public function apiDeck(SessionInterface $session): JsonResponse
     {
@@ -88,6 +125,15 @@ class ApiController extends AbstractController
         ]);
     }
 
+    /**
+     * Shuffles the deck and returns the new order.
+     *
+     * Creates a fresh shuffled deck and stores it in session.
+     *
+     * @param SessionInterface $session Current user session
+     *
+     * @return JsonResponse JSON with shuffled cards and remaining count
+     */
     #[Route('/api/deck/shuffle', name: 'api_deck_shuffle', methods: ['POST'])]
     public function apiShuffle(SessionInterface $session): JsonResponse
     {
@@ -102,6 +148,13 @@ class ApiController extends AbstractController
         ]);
     }
 
+    /**
+     * Draws one card from the deck.
+     *
+     * @param SessionInterface $session Current user session
+     *
+     * @return JsonResponse JSON with drawn card and remaining count
+     */
     #[Route('/api/deck/draw', name: 'api_deck_draw', methods: ['POST'])]
     public function apiDraw(SessionInterface $session): JsonResponse
     {
@@ -116,6 +169,14 @@ class ApiController extends AbstractController
         ]);
     }
 
+    /**
+     * Draws a specified number of cards from the deck.
+     *
+     * @param SessionInterface $session Current user session
+     * @param int              $number  Number of cards to draw (validated as digit)
+     *
+     * @return JsonResponse JSON with drawn cards and remaining count
+     */
     #[Route('/api/deck/draw/{number<\d+>}', name: 'api_deck_draw_number', methods: ['POST'])]
     public function apiDrawNumber(SessionInterface $session, int $number): JsonResponse
     {
@@ -130,12 +191,27 @@ class ApiController extends AbstractController
         ]);
     }
 
+    /**
+     * Returns all books from the library database.
+     *
+     * @param BookRepository $repo Injected book repository
+     *
+     * @return JsonResponse JSON array of all books (serialized entities)
+     */
     #[Route('/api/library/books', name: 'api_books')]
     public function books(BookRepository $repo): JsonResponse
     {
         return $this->json($repo->findAll());
     }
 
+    /**
+     * Returns a single book by ISBN.
+     *
+     * @param BookRepository $repo Injected book repository
+     * @param string         $isbn The book's ISBN
+     *
+     * @return JsonResponse JSON representation of the book or null if not found
+     */
     #[Route('/api/library/book/{isbn}', name: 'api_book')]
     public function book(BookRepository $repo, string $isbn): JsonResponse
     {
@@ -145,7 +221,11 @@ class ApiController extends AbstractController
     }
 
     /**
-     * @return array{id: int|null, title: string, isbn: string, author: string, image: string|null}
+     * Converts a Book entity to a simple array for JSON response.
+     *
+     * @param Book $book The book entity
+     *
+     * @return array{id: int|null, title: string, isbn: string, author: string, image: string|null} Book data as array
      */
     private function bookToArray(Book $book): array
     {
@@ -158,6 +238,13 @@ class ApiController extends AbstractController
         ];
     }
 
+    /**
+     * Alternative endpoint: Returns all books as clean arrays (without entity serialization issues).
+     *
+     * @param BookRepository $bookRepository Injected repository
+     *
+     * @return JsonResponse JSON array of book data
+     */
     #[Route('/library/books', name: 'api_library_books')]
     public function showAllBooks(BookRepository $bookRepository): JsonResponse
     {
@@ -167,6 +254,16 @@ class ApiController extends AbstractController
         return $this->json($data);
     }
 
+    /**
+     * Alternative endpoint: Returns a single book by ISBN as clean array.
+     *
+     * Throws 404 if book not found.
+     *
+     * @param string         $isbn            The book's ISBN
+     * @param BookRepository $bookRepository Injected repository
+     *
+     * @return JsonResponse JSON representation of the book
+     */
     #[Route('/library/book/{isbn}', name: 'api_library_book')]
     public function showBookByIsbn(string $isbn, BookRepository $bookRepository): JsonResponse
     {

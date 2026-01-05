@@ -39,22 +39,22 @@ class SeedBooksCommandTest extends KernelTestCase
         $this->assertCount(3, $books);
 
         // Kontrollera data
-        $titles = array_map(fn(Book $book) => $book->getTitle(), $books);
+        $titles = array_map(fn (Book $book) => $book->getTitle(), $books);
         $this->assertContains('To Kill a Mockingbird', $titles);
         $this->assertContains('1984', $titles);
         $this->assertContains('Pride and Prejudice', $titles);
 
-        $isbns = array_map(fn(Book $book) => $book->getIsbn(), $books);
+        $isbns = array_map(fn (Book $book) => $book->getIsbn(), $books);
         $this->assertContains('9780446310789', $isbns);
         $this->assertContains('9780451524935', $isbns);
         $this->assertContains('9780141439518', $isbns);
 
-        $authors = array_map(fn(Book $book) => $book->getAuthor(), $books);
+        $authors = array_map(fn (Book $book) => $book->getAuthor(), $books);
         $this->assertContains('Harper Lee', $authors);
         $this->assertContains('George Orwell', $authors);
         $this->assertContains('Jane Austen', $authors);
 
-        $images = array_map(fn(Book $book) => $book->getImage(), $books);
+        $images = array_map(fn (Book $book) => $book->getImage(), $books);
         $this->assertContains('to-kill-a-mockingbird.jpg', $images);
         $this->assertContains('1984.jpeg', $images);
         $this->assertContains('pride-and-prejudice.jpg', $images);

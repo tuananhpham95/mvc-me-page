@@ -1,7 +1,10 @@
 <?php
+
 namespace App\Form;
 
 use App\Entity\LearningItem;
+use App\Entity\Category;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -36,6 +39,12 @@ class LearningItemType extends AbstractType
                     'To Learn' => 'to learn'
                 ],
                 'placeholder' => 'Select status'
+            ])
+            ->add('category', EntityType::class, [
+                'class' => Category::class,
+                'choice_label' => 'name',
+                'placeholder' => 'Select a category',
+                'required' => true,
             ]);
     }
 

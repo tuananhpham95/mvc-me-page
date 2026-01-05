@@ -1,0 +1,75 @@
+{% extends 'proj/base.html.twig' %}
+
+{% block title %}EduTracker API{% endblock %}
+
+{% block library_head %}
+    <link rel="stylesheet" href="{{ asset('styles/project.css') }}">
+    <link rel="stylesheet" href="{{ asset('styles/proj_api.css') }}">
+{% endblock %}
+
+{% block library_body %}
+<section class="api-container">
+    <h1>📡 EduTracker JSON API</h1>
+
+    <!-- GET /items -->
+    <div class="api-card">
+        <h3>GET /proj/api/items</h3>
+        <p>Retrieve all learning items</p>
+        <a href="{{ path('api_items_index') }}" target="_blank">Test GET /items</a>
+    </div>
+
+    <!-- GET /items/{id} -->
+    <div class="api-card">
+        <h3>GET /proj/api/items/{id}</h3>
+        <p>Retrieve a single item by ID</p>
+        <a href="{{ path('api_items_show', {id: 1}) }}" target="_blank">Test GET /items/1</a>
+    </div>
+
+    <!-- GET /status/{status} -->
+    <div class="api-card">
+        <h3>GET /proj/api/status/{status}</h3>
+        <p>Retrieve items by status. Available statuses: learning, to learn, learned</p>
+        <a href="{{ path('api_items_by_status', {status: 'learning'}) }}" target="_blank">Test GET /status/learning</a>
+    </div>
+
+    <!-- GET /stats -->
+    <div class="api-card">
+        <h3>GET /proj/api/stats</h3>
+        <p>Get statistics of items by status</p>
+        <a href="{{ path('api_items_stats') }}" target="_blank">Test GET /stats</a>
+    </div>
+
+    <!-- POST /items -->
+    <div class="api-card">
+        <h3>POST /proj/api/items</h3>
+        <p>Create a new learning item</p>
+        <form method="post" action="{{ path('api_items_create') }}">
+            <label for="title">Title <span style="color:red;">*</span></label>
+            <input type="text" id="title" name="title" placeholder="Enter title" required>
+
+            <label for="status">Status</label>
+            <select id="status" name="status">
+                <option value="learning">Learning</option>
+                <option value="to learn">To Learn</option>
+                <option value="learned">Learned</option>
+            </select>
+
+            <label for="category">Category</label>
+            <select id="category" name="category_id" required>
+                <option value="">Select a category</option>
+                {% for category in categories %}
+                    <option value="{{ category.id }}">{{ category.name }}</option>
+                {% endfor %}
+            </select>
+            
+            <label for="description">Description</label>
+            <textarea id="description" name="description" placeholder="Enter description"></textarea>
+
+            <label for="url">URL (optional)</label>
+            <input type="text" id="url" name="url" placeholder="https://example.com">
+            
+            <button type="submit">Create Item</button>
+        </form>
+    </div>
+</section>
+{% endblock %}

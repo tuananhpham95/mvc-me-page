@@ -27,6 +27,11 @@
             {{ form_label(form.status) }}
             {{ form_widget(form.status, {'attr': {'class':'form-select'}}) }}
         </div>
+        <div class="form-group">
+            {{ form_label(form.category) }}
+            {{ form_widget(form.category, {'attr': {'class':'form-select'}}) }}
+        </div>
+
 
         <button type="submit" class="btn btn-primary">Save Item</button>
     {{ form_end(form) }}

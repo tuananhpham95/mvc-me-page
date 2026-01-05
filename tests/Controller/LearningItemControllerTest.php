@@ -4,8 +4,8 @@ namespace App\Tests\Controller;
 
 use App\Entity\LearningItem;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Bundle\FrameworkBundle\KernelBrowser;
+use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 class LearningItemControllerTest extends WebTestCase
 {
@@ -16,13 +16,14 @@ class LearningItemControllerTest extends WebTestCase
     {
         $this->client = static::createClient();
 
-        /** @var EntityManagerInterface $em */
         $em = static::getContainer()->get(EntityManagerInterface::class);
+        if (!$em instanceof EntityManagerInterface) {
+            throw new \RuntimeException('EntityManager not found in container');
+        }
         $this->em = $em;
 
-        // Clear database before each test
-        $items = $this->em->getRepository(LearningItem::class)->findAll();
-        foreach ($items as $item) {
+        // Clear database
+        foreach ($this->em->getRepository(LearningItem::class)->findAll() as $item) {
             $this->em->remove($item);
         }
         $this->em->flush();
@@ -31,7 +32,6 @@ class LearningItemControllerTest extends WebTestCase
     public function testIndexPage(): void
     {
         $this->client->request('GET', '/proj/edu/');
-
         $this->assertResponseIsSuccessful();
         $this->assertSelectorTextContains('h1', 'EduTracker');
     }
@@ -39,7 +39,6 @@ class LearningItemControllerTest extends WebTestCase
     public function testCreateItem(): void
     {
         $crawler = $this->client->request('GET', '/proj/edu/create');
-
         $this->assertResponseIsSuccessful();
         $this->assertSelectorTextContains('.page-title', 'Add Learning Item');
 
@@ -77,16 +76,10 @@ class LearningItemControllerTest extends WebTestCase
         $this->em->flush();
 
         $this->client->request('GET', '/proj/edu/' . $item->getId());
-
         $this->assertResponseIsSuccessful();
-        $this->assertSelectorTextContains(
-            '.edu-header .page-title',
-            (string) $item->getTitle()
-        );
-        $this->assertSelectorTextContains(
-            '.edu-card p',
-            (string) $item->getDescription()
-        );
+
+        $this->assertSelectorTextContains('.edu-header .page-title', $item->getTitle() ?? '');
+        $this->assertSelectorTextContains('.edu-card p', $item->getDescription() ?? '');
     }
 
     public function testEditItem(): void
@@ -100,27 +93,18 @@ class LearningItemControllerTest extends WebTestCase
         $this->em->persist($item);
         $this->em->flush();
 
-        $crawler = $this->client->request(
-            'GET',
-            '/proj/edu/' . $item->getId() . '/edit'
-        );
-
+        $crawler = $this->client->request('GET', '/proj/edu/' . $item->getId() . '/edit');
         $this->assertResponseIsSuccessful();
         $this->assertSelectorTextContains('.page-title', 'Edit Learning Item');
 
         $form = $crawler->selectButton('Update Item')->form();
         $form['learning_item[description]'] = 'Updated description after edit';
-
         $this->client->submit($form);
         $this->assertResponseRedirects('/proj/edu/');
 
         $crawler = $this->client->followRedirect();
         $this->assertResponseIsSuccessful();
-
-        $this->assertSelectorTextContains(
-            '.edu-card p',
-            'Updated description after edit'
-        );
+        $this->assertSelectorTextContains('.edu-card p', 'Updated description after edit');
     }
 
     public function testDeleteItem(): void
@@ -141,29 +125,20 @@ class LearningItemControllerTest extends WebTestCase
             ->filter('form[action$="/' . $item->getId() . '/delete"]')
             ->first();
 
-        $token = $deleteForm
-            ->filter('input[name="_token"]')
-            ->attr('value');
+        $this->assertGreaterThan(0, $deleteForm->count(), 'Delete form not found');
 
-        $this->client->request(
-            'POST',
-            '/proj/edu/' . $item->getId() . '/delete',
-            ['_token' => $token]
-        );
+        $token = $deleteForm->filter('input[name="_token"]')->attr('value');
 
+        $this->client->request('POST', '/proj/edu/' . $item->getId() . '/delete', ['_token' => $token]);
         $this->assertResponseRedirects('/proj/edu/');
+
         $crawler = $this->client->followRedirect();
         $this->assertResponseIsSuccessful();
 
-        $found = $crawler
-            ->filter('.edu-card p')
-            ->reduce(function ($node) {
-                return str_contains(
-                    $node->text(),
-                    'This item will be deleted'
-                );
-            });
+        $found = $crawler->filter('.edu-card')->reduce(function ($node) {
+            return str_contains($node->text(), 'Delete Item Test Title');
+        });
 
-        $this->assertCount(0, $found);
+        $this->assertCount(0, $found, 'Deleted item should not appear on index page');
     }
 }

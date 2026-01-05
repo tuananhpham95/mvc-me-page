@@ -15,7 +15,6 @@ class GameControllerTest extends WebTestCase
     {
         $this->client = static::createClient();
 
-        // Mock session để kiểm soát trạng thái game
         $session = new Session(new MockArraySessionStorage());
         $this->client->getContainer()->set('session', $session);
     }

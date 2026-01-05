@@ -19,7 +19,7 @@ class DeckSessionService
             $deck = new DeckOfCards();
             $session->set(self::SESSION_KEY, $deck->toArray());
             return $deck;
-        }        
+        }
 
         return DeckOfCards::fromArray($deckData);
     }

@@ -403,7 +403,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Controller\\ApiController",
             "name": "ApiController",
-            "summary": "",
+            "summary": "Global\u0020API\u0020Controller\u0020for\u0020the\u0020course\u0020project.",
             "url": "classes/App-Controller-ApiController.html"
         },                {
             "fqsen": "\\App\\Controller\\ApiController\u003A\u003A__construct\u0028\u0029",
@@ -413,62 +413,62 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Controller\\ApiController\u003A\u003AapiLanding\u0028\u0029",
             "name": "apiLanding",
-            "summary": "",
+            "summary": "API\u0020landing\u0020page\u0020with\u0020overview\u0020of\u0020all\u0020available\u0020endpoints.",
             "url": "classes/App-Controller-ApiController.html#method_apiLanding"
         },                {
             "fqsen": "\\App\\Controller\\ApiController\u003A\u003Aquote\u0028\u0029",
             "name": "quote",
-            "summary": "",
+            "summary": "Returns\u0020a\u0020random\u0020inspirational\u0020quote\u0020with\u0020current\u0020date\u0020and\u0020timestamp.",
             "url": "classes/App-Controller-ApiController.html#method_quote"
         },                {
             "fqsen": "\\App\\Controller\\ApiController\u003A\u003Atime\u0028\u0029",
             "name": "time",
-            "summary": "",
+            "summary": "Returns\u0020current\u0020time\u0020and\u0020date\u0020information.",
             "url": "classes/App-Controller-ApiController.html#method_time"
         },                {
             "fqsen": "\\App\\Controller\\ApiController\u003A\u003AapiDeck\u0028\u0029",
             "name": "apiDeck",
-            "summary": "",
+            "summary": "Returns\u0020the\u0020current\u0020deck\u0020in\u0020sorted\u0020order.",
             "url": "classes/App-Controller-ApiController.html#method_apiDeck"
         },                {
             "fqsen": "\\App\\Controller\\ApiController\u003A\u003AapiShuffle\u0028\u0029",
             "name": "apiShuffle",
-            "summary": "",
+            "summary": "Shuffles\u0020the\u0020deck\u0020and\u0020returns\u0020the\u0020new\u0020order.",
             "url": "classes/App-Controller-ApiController.html#method_apiShuffle"
         },                {
             "fqsen": "\\App\\Controller\\ApiController\u003A\u003AapiDraw\u0028\u0029",
             "name": "apiDraw",
-            "summary": "",
+            "summary": "Draws\u0020one\u0020card\u0020from\u0020the\u0020deck.",
             "url": "classes/App-Controller-ApiController.html#method_apiDraw"
         },                {
             "fqsen": "\\App\\Controller\\ApiController\u003A\u003AapiDrawNumber\u0028\u0029",
             "name": "apiDrawNumber",
-            "summary": "",
+            "summary": "Draws\u0020a\u0020specified\u0020number\u0020of\u0020cards\u0020from\u0020the\u0020deck.",
             "url": "classes/App-Controller-ApiController.html#method_apiDrawNumber"
         },                {
             "fqsen": "\\App\\Controller\\ApiController\u003A\u003Abooks\u0028\u0029",
             "name": "books",
-            "summary": "",
+            "summary": "Returns\u0020all\u0020books\u0020from\u0020the\u0020library\u0020database.",
             "url": "classes/App-Controller-ApiController.html#method_books"
         },                {
             "fqsen": "\\App\\Controller\\ApiController\u003A\u003Abook\u0028\u0029",
             "name": "book",
-            "summary": "",
+            "summary": "Returns\u0020a\u0020single\u0020book\u0020by\u0020ISBN.",
             "url": "classes/App-Controller-ApiController.html#method_book"
         },                {
             "fqsen": "\\App\\Controller\\ApiController\u003A\u003AbookToArray\u0028\u0029",
             "name": "bookToArray",
-            "summary": "",
+            "summary": "Converts\u0020a\u0020Book\u0020entity\u0020to\u0020a\u0020simple\u0020array\u0020for\u0020JSON\u0020response.",
             "url": "classes/App-Controller-ApiController.html#method_bookToArray"
         },                {
             "fqsen": "\\App\\Controller\\ApiController\u003A\u003AshowAllBooks\u0028\u0029",
             "name": "showAllBooks",
-            "summary": "",
+            "summary": "Alternative\u0020endpoint\u003A\u0020Returns\u0020all\u0020books\u0020as\u0020clean\u0020arrays\u0020\u0028without\u0020entity\u0020serialization\u0020issues\u0029.",
             "url": "classes/App-Controller-ApiController.html#method_showAllBooks"
         },                {
             "fqsen": "\\App\\Controller\\ApiController\u003A\u003AshowBookByIsbn\u0028\u0029",
             "name": "showBookByIsbn",
-            "summary": "",
+            "summary": "Alternative\u0020endpoint\u003A\u0020Returns\u0020a\u0020single\u0020book\u0020by\u0020ISBN\u0020as\u0020clean\u0020array.",
             "url": "classes/App-Controller-ApiController.html#method_showBookByIsbn"
         },                {
             "fqsen": "\\App\\Controller\\ApiController\u003A\u003A\u0024deckService",
@@ -566,34 +566,64 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-Controller-GameController.html#method_getGameFromSession"
         },                {
+            "fqsen": "\\App\\Controller\\LearningItemApiController",
+            "name": "LearningItemApiController",
+            "summary": "JSON\u0020API\u0020Controller\u0020for\u0020EduTracker\u0020Learning\u0020Items.",
+            "url": "classes/App-Controller-LearningItemApiController.html"
+        },                {
+            "fqsen": "\\App\\Controller\\LearningItemApiController\u003A\u003Aindex\u0028\u0029",
+            "name": "index",
+            "summary": "Get\u0020all\u0020learning\u0020items.",
+            "url": "classes/App-Controller-LearningItemApiController.html#method_index"
+        },                {
+            "fqsen": "\\App\\Controller\\LearningItemApiController\u003A\u003Ashow\u0028\u0029",
+            "name": "show",
+            "summary": "Get\u0020a\u0020single\u0020learning\u0020item\u0020by\u0020ID.",
+            "url": "classes/App-Controller-LearningItemApiController.html#method_show"
+        },                {
+            "fqsen": "\\App\\Controller\\LearningItemApiController\u003A\u003Acreate\u0028\u0029",
+            "name": "create",
+            "summary": "Create\u0020a\u0020new\u0020learning\u0020item.",
+            "url": "classes/App-Controller-LearningItemApiController.html#method_create"
+        },                {
+            "fqsen": "\\App\\Controller\\LearningItemApiController\u003A\u003AbyStatus\u0028\u0029",
+            "name": "byStatus",
+            "summary": "Get\u0020items\u0020by\u0020status.",
+            "url": "classes/App-Controller-LearningItemApiController.html#method_byStatus"
+        },                {
+            "fqsen": "\\App\\Controller\\LearningItemApiController\u003A\u003Astats\u0028\u0029",
+            "name": "stats",
+            "summary": "Get\u0020learning\u0020statistics\u0020by\u0020status.",
+            "url": "classes/App-Controller-LearningItemApiController.html#method_stats"
+        },                {
             "fqsen": "\\App\\Controller\\LearningItemController",
             "name": "LearningItemController",
-            "summary": "",
+            "summary": "Controller\u0020handling\u0020CRUD\u0020operations\u0020for\u0020LearningItem\u0020entities\u0020in\u0020the\u0020EduTracker\u0020project.",
             "url": "classes/App-Controller-LearningItemController.html"
         },                {
             "fqsen": "\\App\\Controller\\LearningItemController\u003A\u003Aindex\u0028\u0029",
             "name": "index",
-            "summary": "",
+            "summary": "Displays\u0020a\u0020list\u0020of\u0020all\u0020learning\u0020items,\u0020sorted\u0020by\u0020creation\u0020date\u0020\u0028newest\u0020first\u0029.",
             "url": "classes/App-Controller-LearningItemController.html#method_index"
         },                {
             "fqsen": "\\App\\Controller\\LearningItemController\u003A\u003Acreate\u0028\u0029",
             "name": "create",
-            "summary": "",
+            "summary": "Handles\u0020creation\u0020of\u0020a\u0020new\u0020learning\u0020item\u0020via\u0020form.",
             "url": "classes/App-Controller-LearningItemController.html#method_create"
         },                {
             "fqsen": "\\App\\Controller\\LearningItemController\u003A\u003Ashow\u0028\u0029",
             "name": "show",
-            "summary": "",
+            "summary": "Displays\u0020details\u0020of\u0020a\u0020single\u0020learning\u0020item.",
             "url": "classes/App-Controller-LearningItemController.html#method_show"
         },                {
             "fqsen": "\\App\\Controller\\LearningItemController\u003A\u003Aedit\u0028\u0029",
             "name": "edit",
-            "summary": "",
+            "summary": "Handles\u0020editing\u0020an\u0020existing\u0020learning\u0020item\u0020via\u0020form.",
             "url": "classes/App-Controller-LearningItemController.html#method_edit"
         },                {
             "fqsen": "\\App\\Controller\\LearningItemController\u003A\u003Adelete\u0028\u0029",
             "name": "delete",
-            "summary": "",
+            "summary": "Deletes\u0020a\u0020learning\u0020item\u0020if\u0020CSRF\u0020token\u0020is\u0020valid.",
             "url": "classes/App-Controller-LearningItemController.html#method_delete"
         },                {
             "fqsen": "\\App\\Controller\\LibraryController",
@@ -673,18 +703,28 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Controller\\ProjectController",
             "name": "ProjectController",
-            "summary": "",
+            "summary": "Main\u0020Project\u0020Controller\u0020for\u0020the\u0020EduTracker\u0020application.",
             "url": "classes/App-Controller-ProjectController.html"
         },                {
             "fqsen": "\\App\\Controller\\ProjectController\u003A\u003Ahome\u0028\u0029",
             "name": "home",
-            "summary": "",
+            "summary": "Project\u0020home\u0020page.",
             "url": "classes/App-Controller-ProjectController.html#method_home"
         },                {
             "fqsen": "\\App\\Controller\\ProjectController\u003A\u003Aabout\u0028\u0029",
             "name": "about",
-            "summary": "",
+            "summary": "About\u0020page\u0020for\u0020the\u0020project.",
             "url": "classes/App-Controller-ProjectController.html#method_about"
+        },                {
+            "fqsen": "\\App\\Controller\\ProjectController\u003A\u003Aapi\u0028\u0029",
+            "name": "api",
+            "summary": "Interactive\u0020JSON\u0020API\u0020testing\u0020page.",
+            "url": "classes/App-Controller-ProjectController.html#method_api"
+        },                {
+            "fqsen": "\\App\\Controller\\ProjectController\u003A\u003AaboutDatabase\u0028\u0029",
+            "name": "aboutDatabase",
+            "summary": "About\u0020Database\u0020page\u0020\u0028for\u0020optional\u0020ORM\u0020krav\u0029.",
+            "url": "classes/App-Controller-ProjectController.html#method_aboutDatabase"
         },                {
             "fqsen": "\\App\\Entity\\Book",
             "name": "Book",
@@ -761,10 +801,45 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-Entity-Book.html#property_image"
         },                {
+            "fqsen": "\\App\\Entity\\Category",
+            "name": "Category",
+            "summary": "",
+            "url": "classes/App-Entity-Category.html"
+        },                {
+            "fqsen": "\\App\\Entity\\Category\u003A\u003AgetId\u0028\u0029",
+            "name": "getId",
+            "summary": "",
+            "url": "classes/App-Entity-Category.html#method_getId"
+        },                {
+            "fqsen": "\\App\\Entity\\Category\u003A\u003AgetName\u0028\u0029",
+            "name": "getName",
+            "summary": "",
+            "url": "classes/App-Entity-Category.html#method_getName"
+        },                {
+            "fqsen": "\\App\\Entity\\Category\u003A\u003AsetName\u0028\u0029",
+            "name": "setName",
+            "summary": "",
+            "url": "classes/App-Entity-Category.html#method_setName"
+        },                {
+            "fqsen": "\\App\\Entity\\Category\u003A\u003A\u0024id",
+            "name": "id",
+            "summary": "",
+            "url": "classes/App-Entity-Category.html#property_id"
+        },                {
+            "fqsen": "\\App\\Entity\\Category\u003A\u003A\u0024name",
+            "name": "name",
+            "summary": "",
+            "url": "classes/App-Entity-Category.html#property_name"
+        },                {
             "fqsen": "\\App\\Entity\\LearningItem",
             "name": "LearningItem",
             "summary": "",
             "url": "classes/App-Entity-LearningItem.html"
+        },                {
+            "fqsen": "\\App\\Entity\\LearningItem\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "",
+            "url": "classes/App-Entity-LearningItem.html#method___construct"
         },                {
             "fqsen": "\\App\\Entity\\LearningItem\u003A\u003AgetId\u0028\u0029",
             "name": "getId",
@@ -821,6 +896,16 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-Entity-LearningItem.html#method_setCreatedAt"
         },                {
+            "fqsen": "\\App\\Entity\\LearningItem\u003A\u003AgetCategory\u0028\u0029",
+            "name": "getCategory",
+            "summary": "",
+            "url": "classes/App-Entity-LearningItem.html#method_getCategory"
+        },                {
+            "fqsen": "\\App\\Entity\\LearningItem\u003A\u003AsetCategory\u0028\u0029",
+            "name": "setCategory",
+            "summary": "",
+            "url": "classes/App-Entity-LearningItem.html#method_setCategory"
+        },                {
             "fqsen": "\\App\\Entity\\LearningItem\u003A\u003A\u0024id",
             "name": "id",
             "summary": "",
@@ -850,6 +935,11 @@ Search.appendIndex(
             "name": "createdAt",
             "summary": "",
             "url": "classes/App-Entity-LearningItem.html#property_createdAt"
+        },                {
+            "fqsen": "\\App\\Entity\\LearningItem\u003A\u003A\u0024category",
+            "name": "category",
+            "summary": "",
+            "url": "classes/App-Entity-LearningItem.html#property_category"
         },                {
             "fqsen": "\\App\\Form\\BookType",
             "name": "BookType",

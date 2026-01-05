@@ -44,7 +44,6 @@ class DeckOfCards
                 $this->cards[] = new CardGraphic($suit, $value);
             }
         }
-        file_put_contents('/tmp/card_serialize.log', 'DeckOfCards constructed: '.count($this->cards)." cards\n", FILE_APPEND);
     }
 
     /**
@@ -53,7 +52,6 @@ class DeckOfCards
     public function shuffle(): void
     {
         shuffle($this->cards);
-        file_put_contents('/tmp/card_serialize.log', 'DeckOfCards shuffled: '.count($this->cards)." cards\n", FILE_APPEND);
     }
 
     /**
@@ -71,7 +69,6 @@ class DeckOfCards
             throw new \InvalidArgumentException("Cannot draw $number cards; only ".count($this->cards).' cards remain.');
         }
         $drawnCards = array_splice($this->cards, 0, $number);
-        file_put_contents('/tmp/card_serialize.log', 'DeckOfCards drew '.$number.' cards, remaining: '.count($this->cards)."\n", FILE_APPEND);
 
         return $drawnCards;
     }

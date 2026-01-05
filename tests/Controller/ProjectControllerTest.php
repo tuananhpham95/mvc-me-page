@@ -33,4 +33,4 @@ class ProjectControllerTest extends WebTestCase
         $this->assertSelectorExists('ul li:contains("Organize and track learning goals efficiently")');
         $this->assertSelectorTextContains('.about-details p', 'Symfony, Twig, Doctrine ORM');
     }
-} 
+}

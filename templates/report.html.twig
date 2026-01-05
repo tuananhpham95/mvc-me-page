@@ -142,5 +142,70 @@
             <h4>Vilken är din TIL för detta kmom?</h4>
             <p>Att verktyg som PhpMetrics och Scrutinizer inte bara mäter kodkvalitet utan vägleder förbättringar . Genom att identifiera specifika flaskhalsar (hög CCN i Game21, låg coverage i controllers) fick jag konkreta insikter om var refaktorisering ger mest värde, och att CI-fel (som mina Scrutinizer-problem) ofta beror på miljöskillnader snarare än felaktig kod.</p>
         </section>
+
+        <section id="kmom10">
+            <h3 id="kmom10">Kmom10 – Projekt (EduTracker)</h3>
+
+            <h4>Krav 1–3: Grundläggande funktionalitet</h4>
+            <p>
+                Krav 1–3 uppfylldes genom att bygga webbapplikationen EduTracker med Symfony
+                och Twig enligt MVC-arkitekturen. Applikationen innehåller ett komplett
+                webbgränssnitt där användaren kan skapa, visa, redigera och ta bort
+                learning items. Controllers, routes och templates är tydligt separerade,
+                vilket gör koden lätt att förstå och underhålla. En gemensam baslayout
+                används för att säkerställa konsekvent design och navigation.
+                Grundfunktionaliteten fungerar stabilt och utgör grunden för resten av projektet.
+            </p>
+
+            <h4>Krav 4: JSON API</h4>
+            <p>
+                Krav 4 uppfylldes genom att implementera ett JSON-baserat API för EduTracker.
+                API:t tillhandahåller endpoints för att hämta, skapa, uppdatera och radera
+                learning items via HTTP-anrop. Alla svar returneras i JSON-format och
+                använder lämpliga HTTP-statuskoder. API-logiken är separerad från
+                webbgränssnittet och hanteras i egna controllers, vilket gör applikationen
+                användbar även som backend-tjänst för externa klienter.
+            </p>
+
+            <h4>Krav 5: Databas och ORM</h4>
+            <p>
+                Krav 5 uppfylldes genom användning av SQLite tillsammans med Doctrine ORM.
+                Datamodellen består av entiteterna Category och LearningItem med en
+                one-to-many-relation. Doctrine hanterar objekt–relationsmappning och
+                genererar SQL automatiskt, vilket gör databasarbetet effektivt och säkert.
+                Tester har skrivits för controllers som interagerar med databasen för att
+                verifiera att CRUD-funktionaliteten fungerar korrekt.
+            </p>
+
+            <h4>Krav 6: Avancerade features (optionellt)</h4>
+            <p>
+                Krav 6 uppfylldes genom flera delar som gick utanför baskraven. Relationer mellan kategorier och learning items var också
+                utmanande, särskilt i formulär och API-svar. Automatiserade tester mot
+                databasen tog tid att konfigurera men förbättrade kodkvaliteten avsevärt.
+                Även hantering av routing, prefix och olika svarstyper (HTML vs JSON)
+                bidrog till ökad teknisk komplexitet.
+            </p>
+
+            <h4>Allmän reflektion över projektet</h4>
+            <p>
+                Projektet var både utmanande och lärorikt. Mycket tid lades på att förstå
+                hur Symfony, Doctrine och routing samverkar, särskilt när både webb- och
+                API-funktionalitet skulle fungera parallellt. Vissa delar gick snabbt,
+                medan tester och databasrelationer var mer tidskrävande. Samtidigt gav
+                projektet en tydlig bild av hur en modern backend-applikation byggs upp.
+                Sammantaget var projektet krävande men rimligt för kursens nivå.
+            </p>
+
+            <h4>Avslutande tankar om kursen</h4>
+            <p>
+                Kursen har gett en god förståelse för objektorienterad PHP-utveckling med
+                Symfony. Materialet var tydligt och progressionen mellan kursmomenten var
+                logisk. Vissa delar var utmanande, särskilt tester och API-design, men
+                samtidigt mycket givande. Handledningen var hjälpsam och gav bra stöd vid
+                problem. Jag är överlag nöjd med kursen och skulle kunna rekommendera den
+                till andra. På en skala 1–10 ger jag kursen betyget 9.
+            </p>
+        </section>
+
 {% endblock %}
 

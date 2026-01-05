@@ -92,7 +92,6 @@ class LibraryController extends AbstractController
         ]);
     }
 
-
     /**
      * Handles the updating of an existing book.
      *
@@ -140,7 +139,7 @@ class LibraryController extends AbstractController
     #[Route('/delete/{id}', name: 'library_delete', methods: ['POST'], requirements: ['id' => '\d+'])]
     public function delete(Request $request, Book $book, EntityManagerInterface $entityManager): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$book->getId(), $request->request->getString('_token'))) {
+        if ($this->isCsrfTokenValid('delete'.$book->getId(), (string)$request->request->get('_token'))) {
             $entityManager->remove($book);
             $entityManager->flush();
             $this->addFlash('success', 'Book deleted successfully.');
